@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎒 Mochila Acadêmica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Poppins:wght@600;700&amp;display=swap');
+        
+        :root {
+            --primary: #6366f1;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .title-font {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Mochila visual animada */
+        .backpack-container {
+            position: relative;
+            width: 280px;
+            height: 320px;
+            margin: 0 auto;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .backpack-container:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+        
+        .backpack {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #4f46e5, #6366f1);
+            border-radius: 40% 40% 20% 20%;
+            box-shadow: 0 25px 50px -12px rgb(99 102 241 / 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .backpack::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 80px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            filter: blur(10px);
+        }
+        
+        .strap {
+            position: absolute;
+            top: 30px;
+            width: 30px;
+            height: 180px;
+            background: linear-gradient(#312e81, #4338ca);
+            border-radius: 50px;
+            box-shadow: inset 0 10px 15px rgba(0,0,0,0.3);
+        }
+        
+        .strap-left { left: 25px; transform: rotate(-25deg); }
+        .strap-right { right: 25px; transform: rotate(25deg); }
+        
+        .buckle {
+            position: absolute;
+            top: 140px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 20px;
+            background: #f1f5f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        /* Card de matéria */
+        .subject-card {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .subject-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 30px 40px -15px rgb(99 102 241 / 0.35);
+        }
+        
+        .add-animation {
+            animation: addPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        @keyframes addPop {
+            0% { transform: scale(0.6) rotate(-15deg); opacity: 0; }
+            60% { transform: scale(1.15) rotate(8deg); }
+            100% { transform: scale(1) rotate(0); opacity: 1; }
+        }
+        
+        .modal {
+            animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        @keyframes modalPop {
+            0% { transform: scale(0.8) translateY(50px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        
+        .note-item {
+            transition: all 0.3s ease;
+        }
+        
+        .backpack-shake {
+            animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both;
+        }
+        
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-3px, 0, 0); }
+            40%, 60% { transform: translate3d(3px, 0, 0); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-950 to-indigo-950 text-white min-h-screen overflow-x-hidden">
+    <div class="max-w-7xl mx-auto">
+        <!-- HEADER -->
+        <header class="border-b border-white/10 bg-black/40 backdrop-blur-xl fixed w-full z-50">
+            <div class="flex items-center justify-between px-8 py-5">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center text-3xl shadow-inner">
+                        🎒
+                    </div>
+                    <div>
+                        <h1 class="title-font text-3xl font-bold tracking-tighter">Mochila Acadêmica</h1>
+                        <p class="text-xs text-indigo-300 tracking-widest">Organize • Estude • Conquiste</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-6">
+                    <div onclick="clearAll()" 
+                         class="flex items-center gap-2 text-sm hover:text-red-400 transition-colors cursor-pointer">
+                        <i class="fa-solid fa-trash"></i>
+                        <span>Limpar mochila</span>
+                    </div>
+                    <div class="bg-white/10 text-white text-xs px-5 py-2.5 rounded-3xl flex items-center gap-2 font-medium">
+                        <div class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
+                        12 matérias salvas
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="pt-28 pb-12 px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- MOCHILA VISUAL -->
+                <div class="lg:col-span-4">
+                    <div class="sticky top-28">
+                        <div class="text-center mb-8">
+                            <div id="backpack-visual" class="backpack-container mx-auto">
+                                <div class="backpack">
+                                    <!-- straps -->
+                                    <div class="strap strap-left"></div>
+                                    <div class="strap strap-right"></div>
+                                    <!-- buckle -->
+                                    <div class="buckle"></div>
+                                    <!-- zipper -->
+                                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 w-40 h-1 bg-white/30 rounded-full"></div>
+                                </div>
+                            </div>
+                            <p class="mt-6 text-indigo-300 text-sm font-medium flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-book-open"></i>
+                                Sua mochila inteligente
+                            </p>
+                        </div>
+
+                        <!-- Input de adicionar matéria -->
+                        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl">
+                            <div class="flex gap-3">
+                                <input 
+                                    id="subject-input"
+                                    type="text" 
+                                    placeholder="Nome da matéria (ex: Matemática)"
+                                    class="flex-1 bg-white/10 border border-white/20 focus:border-indigo-500 rounded-2xl px-6 py-4 text-lg placeholder:text-white/40 focus:outline-none transition-all">
+                                <button onclick="addSubject()" 
+                                        class="bg-indigo-600 hover:bg-indigo-500 transition-all px-8 rounded-2xl font-semibold flex items-center gap-3 shadow-inner">
+                                    <i class="fa-solid fa-plus"></i>
+                                    <span>Adicionar</span>
+                                </button>
+                            </div>
+                            <p class="text-center text-xs text-white/50 mt-4">Pressione ENTER para adicionar</p>
+                        </div>
+
+                        <!-- Status -->
+                        <div id="count" 
+                             class="mt-6 text-center text-xs font-mono tracking-widest text-emerald-400">
+                            0 MATÉRIAS NA MOCHILA
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LISTA DE MATÉRIAS -->
+                <div class="lg:col-span-8">
+                    <div class="mb-6 flex items-center justify-between">
+                        <h2 class="text-2xl font-semibold flex items-center gap-3">
+                            <span class="text-4xl">📚</span>
+                            Matérias na mochila
+                        </h2>
+                        <div onclick="toggleSort()" 
+                             class="flex items-center gap-2 text-sm cursor-pointer hover:text-indigo-300 transition-colors">
+                            <i class="fa-solid fa-arrow-up-wide-short"></i>
+                            <span id="sort-text">A-Z</span>
+                        </div>
+                    </div>
+
+                    <!-- Lista -->
+                    <div id="subjects-list" 
+                         class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Cartões gerados pelo JS -->
+                    </div>
+
+                    <!-- Estado vazio -->
+                    <div id="empty-state" 
+                         class="hidden flex flex-col items-center justify-center py-20 text-center">
+                        <div class="text-8xl mb-6 opacity-40">🎒</div>
+                        <h3 class="text-2xl font-medium mb-2">Sua mochila está vazia</h3>
+                        <p class="text-white/60 max-w-xs">Adicione sua primeira matéria para começar a organizar seus estudos!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE ANOTAÇÕES -->
+    <div id="notes-modal" 
+         class="hidden fixed inset-0 bg-black/80 backdrop-blur-3xl z-[999] flex items-center justify-center p-6">
+        <div class="modal bg-slate-900 border border-white/10 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
+            
+            <!-- Header do modal -->
+            <div class="px-8 py-6 border-b border-white/10 flex items-center justify-between bg-indigo-950">
+                <div class="flex items-center gap-4">
+                    <div id="modal-subject-icon" class="text-4xl">📖</div>
+                    <div>
+                        <h3 id="modal-subject-name" class="text-2xl font-semibold"></h3>
+                        <p class="text-xs text-indigo-300">ANOTAÇÕES</p>
+                    </div>
+                </div>
+                <button onclick="closeModal()" 
+                        class="text-white/70 hover:text-white text-3xl leading-none">×</button>
+            </div>
+
+            <!-- Lista de anotações -->
+            <div id="notes-list" 
+                 class="p-8 overflow-auto max-h-[420px] space-y-4">
+                <!-- Notas geradas pelo JS -->
+            </div>
+
+            <!-- Adicionar nova anotação -->
+            <div class="p-8 border-t border-white/10 bg-black/30">
+                <textarea id="note-text" 
+                          rows="3"
+                          placeholder="Digite sua anotação aqui... (ex: Fórmula da física)"
+                          class="w-full bg-white/10 border border-white/20 focus:border-indigo-400 rounded-2xl px-6 py-5 text-base resize-none focus:outline-none"></textarea>
+                
+                <div class="flex gap-3 mt-5">
+                    <button onclick="addNote()" 
+                            class="flex-1 bg-emerald-600 hover:bg-emerald-500 py-4 rounded-2xl font-semibold flex items-center justify-center gap-3 transition-all">
+                        <i class="fa-solid fa-save"></i>
+                        SALVAR ANOTAÇÃO
+                    </button>
+                    <button onclick="closeModal()" 
+                            class="px-8 border border-white/30 hover:bg-white/10 rounded-2xl transition-all">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" 
+         class="hidden fixed bottom-8 right-8 bg-indigo-600 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3 text-sm font-medium">
+        <i class="fa-solid fa-check-circle"></i>
+        <span id="toast-text"></span>
+    </div>
+
+    <script>
+        // Tailwind script já carregado via CDN
+        function initializeTailwind() {
+            // Nada extra necessário
+        }
+        
+        // Variáveis globais
+        let subjects = [];
+        let currentSubjectId = null;
+        let sortMode = 'name'; // name ou date
+        let audioContext;
+
+        // Inicializar AudioContext para efeitos sonoros
+        function initAudio() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+        
+        function playSound(type) {
+            initAudio();
+            const oscillator = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            
+            oscillator.connect(gain);
+            gain.connect(audioContext.destination);
+            
+            if (type === 'add') {
+                oscillator.frequency.value = 920;
+                gain.gain.value = 0.3;
+                oscillator.type = 'sine';
+                gain.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.35);
+            } 
+            else if (type === 'remove') {
+                oscillator.frequency.value = 280;
+                gain.gain.value = 0.4;
+                oscillator.type = 'sawtooth';
+                gain.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.45);
+            } 
+            else if (type === 'note') {
+                oscillator.frequency.value = 1380;
+                gain.gain.value = 0.25;
+                oscillator.type = 'triangle';
+                gain.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.25);
+            }
+            
+            oscillator.start();
+            oscillator.stop(audioContext.currentTime + 0.6);
+            
+            // Segundo tom para efeito mais rico
+            if (type === 'add' || type === 'note') {
+                setTimeout(() => {
+                    const osc2 = audioContext.createOscillator();
+                    const g2 = audioContext.createGain();
+                    osc2.frequency.value = type === 'add' ? 1240 : 1620;
+                    osc2.type = 'sine';
+                    osc2.connect(g2);
+                    g2.connect(audioContext.destination);
+                    g2.gain.value = 0.15;
+                    g2.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.3);
+                    osc2.start();
+                    osc2.stop(audioContext.currentTime + 0.3);
+                }, 80);
+            }
+        }
+
+        // Carregar do localStorage
+        function loadSubjects() {
+            const saved = localStorage.getItem('mochilaSubjects');
+            if (saved) {
+                subjects = JSON.parse(saved);
+            }
+        }
+        
+        // Salvar no localStorage
+        function saveSubjects() {
+            localStorage.setItem('mochilaSubjects', JSON.stringify(subjects));
+        }
+        
+        // Renderizar lista de matérias
+        function renderSubjects() {
+            const container = document.getElementById('subjects-list');
+            container.innerHTML = '';
+            
+            const countEl = document.getElementById('count');
+            countEl.textContent = `${subjects.length} MATÉRIAS NA MOCHILA`;
+            
+            if (subjects.length === 0) {
+                document.getElementById('empty-state').classList.remove('hidden');
+                return;
+            }
+            
+            document.getElementById('empty-state').classList.add('hidden');
+            
+            // Ordenar
+            let sorted = [...subjects];
+            if (sortMode === 'name') {
+                sorted.sort((a, b) => a.name.localeCompare(b.name));
+            } else {
+                sorted.sort((a, b) => b.id - a.id);
+            }
+            
+            sorted.forEach(subject => {
+                const card = document.createElement('div');
+                card.className = `subject-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 flex flex-col group`;
+                card.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-2xl flex items-center justify-center text-3xl shadow-inner">
+                                📘
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-xl tracking-tight">${subject.name}</h4>
+                                <p class="text-xs text-white/50">${subject.notes.length} anotações</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col gap-2">
+                            <button onclick="openNotes(${subject.id}); event.stopImmediatePropagation();" 
+                                    class="w-9 h-9 bg-white/10 hover:bg-emerald-500/20 transition-colors rounded-2xl flex items-center justify-center text-emerald-400">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button onclick="removeSubject(${subject.id}); event.stopImmediatePropagation();" 
+                                    class="w-9 h-9 bg-white/10 hover:bg-red-500/20 transition-colors rounded-2xl flex items-center justify-center text-red-400">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-auto pt-6 text-[10px] font-mono text-white/40 flex items-center justify-between">
+                        <span>Adicionado ${new Date(subject.id).toLocaleDateString('pt-BR')}</span>
+                        <span class="group-hover:text-indigo-400 transition-colors cursor-pointer" onclick="openNotes(${subject.id}); event.stopImmediatePropagation();">
+                            VER ANOTAÇÕES →
+                        </span>
+                    </div>
+                `;
+                card.onclick = () => openNotes(subject.id);
+                container.appendChild(card);
+            });
+        }
+        
+        // Adicionar matéria
+        function addSubject() {
+            const input = document.getElementById('subject-input');
+            const name = input.value.trim();
+            
+            if (!name) {
+                showToast("Digite o nome da matéria!", "red");
+                return;
+            }
+            
+            // Evitar duplicatas
+            if (subjects.some(s => s.name.toLowerCase() === name.toLowerCase())) {
+                showToast("Essa matéria já está na mochila!", "orange");
+                return;
+            }
+            
+            const newSubject = {
+                id: Date.now(),
+                name: name,
+                notes: []
+            };
+            
+            subjects.push(newSubject);
+            saveSubjects();
+            renderSubjects();
+            
+            // Animação na mochila
+            const backpack = document.getElementById('backpack-visual');
+            backpack.classList.add('backpack-shake');
+            setTimeout(() => backpack.classList.remove('backpack-shake'), 800);
+            
+            playSound('add');
+            showToast(`✅ ${name} adicionada à mochila!`, "emerald");
+            
+            // Limpar input e foco
+            input.value = '';
+            input.focus();
+            
+            // Scroll suave para o topo da lista
+            window.scrollTo({ top: 300, behavior: 'smooth' });
+        }
+        
+        // Remover matéria
+        function removeSubject(id) {
+            if (!confirm("Remover esta matéria e todas as anotações?")) return;
+            
+            subjects = subjects.filter(s => s.id !== id);
+            saveSubjects();
+            renderSubjects();
+            playSound('remove');
+            showToast("Matéria removida da mochila", "red");
+        }
+        
+        // Abrir modal de anotações
+        function openNotes(id) {
+            currentSubjectId = id;
+            const subject = subjects.find(s => s.id === id);
+            if (!subject) return;
+            
+            document.getElementById('modal-subject-name').textContent = subject.name;
+            document.getElementById('notes-modal').classList.remove('hidden');
+            document.getElementById('notes-modal').classList.add('flex');
+            
+            renderNotes();
+            playSound('note');
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('notes-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            currentSubjectId = null;
+        }
+        
+        // Renderizar anotações dentro do modal
+        function renderNotes() {
+            const container = document.getElementById('notes-list');
+            container.innerHTML = '';
+            
+            const subject = subjects.find(s => s.id === currentSubjectId);
+            if (!subject || subject.notes.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 opacity-60">
+                        <div class="text-6xl mb-4">📝</div>
+                        <p class="text-lg">Nenhuma anotação ainda...</p>
+                        <p class="text-xs mt-2">Seja o primeiro a registrar algo!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            subject.notes.forEach((note, index) => {
+                const noteDiv = document.createElement('div');
+                noteDiv.className = `note-item bg-white/5 border border-white/10 rounded-2xl p-5 flex gap-5 group`;
+                noteDiv.innerHTML = `
+                    <div class="flex-1">
+                        <p class="text-white/90 leading-relaxed">${note.text}</p>
+                        <p class="text-[10px] text-white/40 mt-3 font-mono">${note.date}</p>
+                    </div>
+                    <button onclick="deleteNote(${index}); event.stopImmediatePropagation();" 
+                            class="opacity-0 group-hover:opacity-100 transition-all text-red-400 hover:text-red-500">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                `;
+                container.appendChild(noteDiv);
+            });
+        }
+        
+        // Adicionar anotação
+        function addNote() {
+            const textarea = document.getElementById('note-text');
+            const text = textarea.value.trim();
+            
+            if (!text || !currentSubjectId) return;
+            
+            const subject = subjects.find(s => s.id === currentSubjectId);
+            if (!subject) return;
+            
+            subject.notes.push({
+                text: text,
+                date: new Date().toLocaleString('pt-BR', { 
+                    day: '2-digit', 
+                    month: 'short', 
+                    hour: '2-digit', 
+                    minute: '2-digit' 
+                })
+            });
+            
+            saveSubjects();
+            renderNotes();
+            textarea.value = '';
+            playSound('note');
+            showToast("Anotação salva com sucesso!", "emerald");
+        }
+        
+        // Deletar anotação específica
+        function deleteNote(index) {
+            if (!confirm("Excluir esta anotação?")) return;
+            
+            const subject = subjects.find(s => s.id === currentSubjectId);
+            if (subject) {
+                subject.notes.splice(index, 1);
+                saveSubjects();
+                renderNotes();
+                playSound('remove');
+            }
+        }
+        
+        // Toast notification
+        function showToast(message, color = "indigo") {
+            const toast = document.getElementById('toast');
+            const text = document.getElementById('toast-text');
+            
+            text.textContent = message;
+            
+            if (color === "red") toast.style.backgroundColor = "#ef4444";
+            else if (color === "emerald") toast.style.backgroundColor = "#10b981";
+            else if (color === "orange") toast.style.backgroundColor = "#f59e0b";
+            else toast.style.backgroundColor = "#6366f1";
+            
+            toast.classList.remove('hidden');
+            toast.style.transform = 'translateY(30px)';
+            toast.style.opacity = '0';
+            
+            // Animate in
+            setTimeout(() => {
+                toast.style.transition = 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                toast.style.transform = 'translateY(0)';
+                toast.style.opacity = '1';
+            }, 10);
+            
+            setTimeout(() => {
+                toast.style.transition = 'all 0.3s ease';
+                toast.style.transform = 'translateY(40px)';
+                toast.style.opacity = '0';
+                
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                }, 300);
+            }, 3200);
+        }
+        
+        // Limpar tudo
+        function clearAll() {
+            if (subjects.length === 0) return;
+            if (!confirm("Limpar TODAS as matérias e anotações? Essa ação não pode ser desfeita.")) return;
+            
+            subjects = [];
+            saveSubjects();
+            renderSubjects();
+            showToast("Mochila limpa com sucesso!", "red");
+        }
+        
+        function toggleSort() {
+            if (sortMode === 'name') {
+                sortMode = 'date';
+                document.getElementById('sort-text').textContent = 'Mais recentes';
+            } else {
+                sortMode = 'name';
+                document.getElementById('sort-text').textContent = 'A-Z';
+            }
+            renderSubjects();
+        }
+        
+        // Evento de tecla Enter no input
+        function setupKeyboard() {
+            const input = document.getElementById('subject-input');
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addSubject();
+                }
+            });
+            
+            // Fechar modal com ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === "Escape") {
+                    const modal = document.getElementById('notes-modal');
+                    if (!modal.classList.contains('hidden')) {
+                        closeModal();
+                    }
+                }
+            });
+        }
+        
+        // Inicialização
+        function init() {
+            initializeTailwind();
+            loadSubjects();
+            renderSubjects();
+            setupKeyboard();
+            
+            // Mensagem de boas-vindas
+            setTimeout(() => {
+                if (subjects.length === 0) {
+                    showToast("Bem-vindo à sua Mochila Acadêmica! 🎒", "indigo");
+                }
+            }, 1200);
+            
+            // Demo: se estiver vazio, adicionar 2 exemplos
+            if (subjects.length === 0) {
+                subjects = [
+                    {
+                        id: 1740000000000,
+                        name: "Matemática",
+                        notes: [
+                            { text: "Fórmula da derivada: f'(x) = lim...", date: "19 mar 2025, 08:14" }
+                        ]
+                    },
+                    {
+                        id: 1740001000000,
+                        name: "História do Brasil",
+                        notes: []
+                    }
+                ];
+                saveSubjects();
+                renderSubjects();
+            }
+        }
+        
+        // Iniciar tudo
+        window.onload = init;
+    </script>
+</body>
+</html>
