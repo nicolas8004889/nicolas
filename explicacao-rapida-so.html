@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXPLICAÇÃO RÁPIDA • 4 Tipos de S.O.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap');
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .title-font { font-family: 'Poppins', sans-serif; }
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="pb-12">
+    <div class="max-w-5xl mx-auto px-6 pt-12">
+        <button onclick="window.close()" 
+                class="flex items-center gap-2 text-indigo-300 hover:text-white mb-8">
+            <i class="fa-solid fa-arrow-left"></i> Voltar para a Mochila
+        </button>
+
+        <div class="text-center mb-12">
+            <h1 class="title-font text-5xl font-bold mb-3">EXPLICAÇÃO RÁPIDA</h1>
+            <h2 class="text-3xl text-yellow-400">Os 4 Tipos de Sistemas Operacionais</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Desktop -->
+            <div class="glass rounded-3xl p-8">
+                <div class="text-7xl mb-4">💻</div>
+                <h3 class="text-3xl font-bold mb-2">Desktop</h3>
+                <p class="text-emerald-400 mb-6">Ex: Microsoft Windows</p>
+                <ul class="space-y-3 text-lg">
+                    <li class="flex gap-3"><span class="text-emerald-400">👉</span> Usado em computadores pessoais</li>
+                    <li class="flex gap-3"><span class="text-emerald-400">👉</span> Foco: usuário final</li>
+                </ul>
+            </div>
+
+            <!-- Mobile -->
+            <div class="glass rounded-3xl p-8">
+                <div class="text-7xl mb-4">📱</div>
+                <h3 class="text-3xl font-bold mb-2">Mobile</h3>
+                <p class="text-emerald-400 mb-6">Ex: Android</p>
+                <ul class="space-y-3 text-lg">
+                    <li class="flex gap-3"><span class="text-emerald-400">👉</span> Smartphones</li>
+                    <li class="flex gap-3"><span class="text-emerald-400">👉</span> Foco: apps + mobilidade</li>
+                </ul>
+            </div>
+
+            <!-- Servidores -->
+            <div class="glass rounded-3xl p-8">
+                <div class="text-7xl mb-4">🌐</div>
+                <h3 class="text-3xl font-bold mb-2">Servidores</h3>
+                <p class="text-emerald-400 mb-6">Ex: Linux Server</p>
+                <ul class="space-y-3 text-lg">
+                    <li class="flex gap-3"><span class="text-emerald-400">👉</span> Computadores que “servem” outros</li>
+                    <li class="flex gap-3"><span class="text-emerald-400">👉</span> Hospedam sites (inclusive GitHub Pages)</li>
+                </ul>
+            </div>
+
+            <!-- Embarcados -->
+            <div class="glass rounded-3xl p-8">
+                <div class="text-7xl mb-4">🤖</div>
+                <h3 class="text-3xl font-bold mb-2">Embarcados</h3>
+                <p class="text-emerald-400 mb-6">Ex: sistemas em dispositivos</p>
+                <ul class="space-y-3 text-lg">
+                    <li class="flex gap-3"><span class="text-emerald-400">👉</span> Estão dentro de dispositivos</li>
+                    <li class="flex gap-3"><span class="text-emerald-400">👉</span> Ex: TV, carro, micro-ondas</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center text-xs text-white/40 mt-20">
+        🎒 Mochila Acadêmica • Explicação Rápida - Sistemas Operacionais
+    </footer>
+</body>
+</html>
