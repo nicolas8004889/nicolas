@@ -3,85 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EXPLICAÇÃO RÁPIDA • 4 Tipos de S.O.</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Tipos de Sistemas Operacionais</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap');
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
-            color: white;
-            min-height: 100vh;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .title-font { font-family: 'Poppins', sans-serif; }
-        .glass {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
+       
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e2937);
+            color: #e2e8f0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: titlePulse 2s infinite alternate ease-in-out;
+        }
+
+        @keyframes titlePulse {
+            from { text-shadow: 0 0 10px #60a5fa; }
+            to { text-shadow: 0 0 30px #3b82f6, 0 0 40px #60a5fa; }
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #60a5fa;
+        }
+
+        .subtitle {
+            font-size: 1.35rem;
+            color: #94a3b8;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: rgba(15, 23, 42, 0.95);
+            border-radius: 20px;
+            padding: 32px 28px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: cardFadeIn 0.8s forwards;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.3s; }
+        .card:nth-child(3) { animation-delay: 0.5s; }
+        .card:nth-child(4) { animation-delay: 0.7s; }
+
+        @keyframes cardFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card:hover {
+            transform: scale(1.08) translateY(-15px);
+            border-color: #60a5fa;
+            box-shadow: 0 25px 40px -10px rgba(96, 165, 250, 0.4);
+        }
+
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            transition: transform 0.4s;
+        }
+
+        .card:hover .icon {
+            transform: scale(1.2) rotate(8deg);
+        }
+
+        h2 {
+            font-size: 1.9rem;
+            margin-bottom: 15px;
+            color: #93c5fd;
+        }
+
+        .exemplo {
+            color: #facc15;
+            font-weight: bold;
+            margin: 12px 0;
+        }
+
+        ul {
+            margin: 18px 0 22px 22px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .btn-voltar {
+            display: inline-block;
+            margin: 60px auto 0;
+            padding: 14px 40px;
+            background: linear-gradient(90deg, #3b82f6, #1e40af);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.4s;
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-voltar:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.5);
+            background: linear-gradient(90deg, #1e40af, #3b82f6);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 90px;
+            padding: 25px;
+            color: #64748b;
+            font-size: 0.95rem;
         }
     </style>
 </head>
-<body class="pb-12">
-    <div class="max-w-5xl mx-auto px-6 pt-12">
-        <button onclick="window.close()" 
-                class="flex items-center gap-2 text-indigo-300 hover:text-white mb-8">
-            <i class="fa-solid fa-arrow-left"></i> Voltar para a Mochila
-        </button>
+<body>
 
-        <div class="text-center mb-12">
-            <h1 class="title-font text-5xl font-bold mb-3">EXPLICAÇÃO RÁPIDA</h1>
-            <h2 class="text-3xl text-yellow-400">Os 4 Tipos de Sistemas Operacionais</h2>
-        </div>
+    <!-- Áudio do Naruto Theme (toca ao carregar) -->
+    <audio id="narutoTheme" preload="auto">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"> <!-- Substitua por link real de Naruto theme se quiser -->
+    </audio>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- Áudio de Dattebayo / Jutsu -->
+    <audio id="jutsuSound" preload="auto">
+        <source src="https://www.myinstants.com/media/sounds/dattebayo.mp3" type="audio/mpeg"> <!-- Exemplo - troque por link real -->
+    </audio>
+
+    <div class="container">
+        <header>
+            <h1>Tipos de Sistemas Operacionais</h1>
+            <p class="subtitle">Entenda os 4 principais tipos de SO que existem</p>
+        </header>
+
+        <div class="cards">
             <!-- Desktop -->
-            <div class="glass rounded-3xl p-8">
-                <div class="text-7xl mb-4">💻</div>
-                <h3 class="text-3xl font-bold mb-2">Desktop</h3>
-                <p class="text-emerald-400 mb-6">Ex: Microsoft Windows</p>
-                <ul class="space-y-3 text-lg">
-                    <li class="flex gap-3"><span class="text-emerald-400">👉</span> Usado em computadores pessoais</li>
-                    <li class="flex gap-3"><span class="text-emerald-400">👉</span> Foco: usuário final</li>
+            <div class="card" onmouseover="playJutsu()">
+                <div class="icon">💻</div>
+                <h2>Desktop</h2>
+                <p class="exemplo">Exemplos: Microsoft Windows, macOS, Linux</p>
+                <ul>
+                    <li>Usado em computadores pessoais (PC e Notebooks)</li>
+                    <li>Foco principal: experiência do <strong>usuário final</strong></li>
+                    <li>Produtividade, jogos, edição de vídeo/foto e navegação</li>
                 </ul>
             </div>
 
             <!-- Mobile -->
-            <div class="glass rounded-3xl p-8">
-                <div class="text-7xl mb-4">📱</div>
-                <h3 class="text-3xl font-bold mb-2">Mobile</h3>
-                <p class="text-emerald-400 mb-6">Ex: Android</p>
-                <ul class="space-y-3 text-lg">
-                    <li class="flex gap-3"><span class="text-emerald-400">👉</span> Smartphones</li>
-                    <li class="flex gap-3"><span class="text-emerald-400">👉</span> Foco: apps + mobilidade</li>
+            <div class="card" onmouseover="playJutsu()">
+                <div class="icon">📱</div>
+                <h2>Mobile</h2>
+                <p class="exemplo">Exemplos: Android, iOS</p>
+                <ul>
+                    <li>Usado em smartphones e tablets</li>
+                    <li>Foco: <strong>aplicativos + mobilidade</strong></li>
+                    <li>Otimização para toque, bateria, sensores e conexão</li>
                 </ul>
             </div>
 
             <!-- Servidores -->
-            <div class="glass rounded-3xl p-8">
-                <div class="text-7xl mb-4">🌐</div>
-                <h3 class="text-3xl font-bold mb-2">Servidores</h3>
-                <p class="text-emerald-400 mb-6">Ex: Linux Server</p>
-                <ul class="space-y-3 text-lg">
-                    <li class="flex gap-3"><span class="text-emerald-400">👉</span> Computadores que “servem” outros</li>
-                    <li class="flex gap-3"><span class="text-emerald-400">👉</span> Hospedam sites (inclusive GitHub Pages)</li>
+            <div class="card" onmouseover="playJutsu()">
+                <div class="icon">🌐</div>
+                <h2>Servidores</h2>
+                <p class="exemplo">Exemplos: Linux Server, Windows Server</p>
+                <ul>
+                    <li>Computadores projetados para "servir" outros dispositivos</li>
+                    <li>Hospedam sites, bancos de dados e serviços online</li>
+                    <li>Foco: estabilidade, segurança e funcionamento 24/7</li>
                 </ul>
             </div>
 
             <!-- Embarcados -->
-            <div class="glass rounded-3xl p-8">
-                <div class="text-7xl mb-4">🤖</div>
-                <h3 class="text-3xl font-bold mb-2">Embarcados</h3>
-                <p class="text-emerald-400 mb-6">Ex: sistemas em dispositivos</p>
-                <ul class="space-y-3 text-lg">
-                    <li class="flex gap-3"><span class="text-emerald-400">👉</span> Estão dentro de dispositivos</li>
-                    <li class="flex gap-3"><span class="text-emerald-400">👉</span> Ex: TV, carro, micro-ondas</li>
+            <div class="card" onmouseover="playJutsu()">
+                <div class="icon">🤖</div>
+                <h2>Embarcados (Embedded)</h2>
+                <p class="exemplo">Exemplos: TVs, carros, micro-ondas, roteadores</p>
+                <ul>
+                    <li>Integrados diretamente no hardware do dispositivo</li>
+                    <li>Foco: eficiência energética e confiabilidade</li>
+                    <li>Usados em eletrodomésticos inteligentes, veículos, etc.</li>
                 </ul>
             </div>
         </div>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="btn-voltar" onclick="playClick()">← Voltar para a Página Inicial</a>
+        </div>
+
+        <footer>
+            <p>Feito com ❤️ por NÍCOLAS • Página 2 • Dattebayo!</p>
+        </footer>
     </div>
 
-    <footer class="text-center text-xs text-white/40 mt-20">
-        🎒 Mochila Acadêmica • Explicação Rápida - Sistemas Operacionais
-    </footer>
+    <script>
+        // Toca o tema do Naruto ao carregar a página (volume baixo)
+        window.onload = function() {
+            const theme = document.getElementById('narutoTheme');
+            if (theme) {
+                theme.volume = 0.25;
+                theme.play().catch(() => {}); // ignora erro de autoplay
+            }
+        };
+
+        // Som de Jutsu ao passar mouse nos cards
+        function playJutsu() {
+            const sound = document.getElementById('jutsuSound');
+            if (sound) {
+                sound.currentTime = 0;
+                sound.volume = 0.6;
+                sound.play().catch(() => {});
+            }
+        }
+
+        // Som ao clicar no botão voltar
+        function playClick() {
+            // Você pode adicionar outro áudio de clique aqui se quiser
+            console.log("Dattebayo! Voltando...");
+        }
+    </script>
 </body>
 </html>
