@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎒 Mochila • Sistemas Operacionais</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap');
+        :root {
+            --primary: #6366f1;
+        }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+            color: white;
+        }
+        .title-font { font-family: 'Poppins', sans-serif; }
+        .glass { 
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 30px 50px -15px rgb(99 102 241 / 0.4);
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(to right, #6366f1, #a5b4fc);
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-20">
+
+    <!-- Header da Página -->
+    <header class="border-b border-white/10 bg-black/60 backdrop-blur-2xl sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-8 py-6 flex items-center justify-between">
+            <div class="flex items-center gap-x-4">
+                <div onclick="window.history.back()" class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-3xl flex items-center justify-center text-4xl cursor-pointer hover:rotate-12 transition-transform">
+                    🎒
+                </div>
+                <div>
+                    <h1 class="title-font text-4xl font-bold tracking-tight">Sistemas Operacionais</h1>
+                    <p class="text-indigo-300 text-sm">📚 Aula de Informática • Mochila Acadêmica</p>
+                </div>
+            </div>
+            <a href="#" onclick="window.history.back()" 
+               class="flex items-center gap-x-2 px-6 py-3 glass rounded-3xl hover:bg-white/10 text-sm font-medium">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Voltar para Mochila</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-8 pt-12">
+
+        <!-- Introdução Hero -->
+        <div class="glass rounded-3xl p-10 mb-12 text-center relative overflow-hidden">
+            <div class="absolute top-6 right-8 text-8xl opacity-20">💻</div>
+            <h2 class="text-5xl font-bold title-font mb-4">O que é um Sistema Operacional?</h2>
+            <p class="max-w-2xl mx-auto text-lg text-white/80 leading-relaxed">
+                O <strong>Sistema Operacional (SO)</strong> é o software principal que gerencia todo o hardware do computador e serve de ponte entre você (usuário) e a máquina. 
+                Sem ele, o computador seria apenas um monte de circuitos sem utilidade prática.
+            </p>
+            <div class="mt-8 flex justify-center gap-8 text-sm">
+                <div class="flex items-center gap-x-3">
+                    <span class="text-3xl">🛡️</span>
+                    <div>
+                        <div class="font-semibold">Gerencia recursos</div>
+                        <div class="text-white/60 text-xs">CPU, Memória, Disco</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-x-3">
+                    <span class="text-3xl">🔌</span>
+                    <div>
+                        <div class="font-semibold">Interface com usuário</div>
+                        <div class="text-white/60 text-xs">Janelas, mouse, teclado</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-x-3">
+                    <span class="text-3xl">🚀</span>
+                    <div>
+                        <div class="font-semibold">Executa programas</div>
+                        <div class="text-white/60 text-xs">Aplicativos e jogos</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção 1: Conceitos Básicos -->
+        <div class="mb-16">
+            <h3 class="section-title text-3xl font-semibold mb-8 flex items-center gap-x-3">
+                <i class="fa-solid fa-lightbulb text-amber-400"></i>
+                Conceitos Básicos
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glass rounded-3xl p-8 card-hover">
+                    <h4 class="text-2xl font-semibold mb-4 text-indigo-300">Definição</h4>
+                    <p class="text-white/80 leading-relaxed">
+                        Um Sistema Operacional é um conjunto de programas que atua como <strong>intermediário</strong> entre o usuário e o hardware do computador. 
+                        Ele é carregado logo após o boot e fica residente na memória durante todo o uso.
+                    </p>
+                    <ul class="mt-6 space-y-3 text-sm">
+                        <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> Gerencia recursos do hardware (CPU, memória RAM, disco, periféricos)</li>
+                        <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> Fornece uma interface amigável para o usuário</li>
+                        <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> Executa e coordena múltiplos programas simultaneamente</li>
+                    </ul>
+                </div>
+
+                <div class="glass rounded-3xl p-8 card-hover">
+                    <h4 class="text-2xl font-semibold mb-4 text-indigo-300">Funções Principais</h4>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 bg-indigo-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">📊</div>
+                            <div>
+                                <strong>Gerenciamento de Processos</strong>
+                                <p class="text-xs text-white/70">Cria, executa e finaliza programas</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 bg-violet-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">💾</div>
+                            <div>
+                                <strong>Gerenciamento de Memória</strong>
+                                <p class="text-xs text-white/70">Aloca e libera espaço na RAM</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 bg-sky-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">🗄️</div>
+                            <div>
+                                <strong>Gerenciamento de Arquivos</strong>
+                                <p class="text-xs text-white/70">Cria, lê, grava e organiza arquivos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção 2: Tipos de Sistemas Operacionais -->
+        <div class="mb-16">
+            <h3 class="section-title text-3xl font-semibold mb-8">Tipos de Sistemas Operacionais</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="glass rounded-3xl p-7 card-hover">
+                    <div class="text-4xl mb-4">🖥️</div>
+                    <h4 class="font-semibold text-xl mb-2">Para Computadores Pessoais</h4>
+                    <p class="text-white/70 text-sm">Windows, macOS, Linux</p>
+                    <p class="mt-4 text-xs leading-relaxed">Focados em uso individual, interface gráfica amigável e execução de aplicativos diversos.</p>
+                </div>
+                <div class="glass rounded-3xl p-7 card-hover">
+                    <div class="text-4xl mb-4">📱</div>
+                    <h4 class="font-semibold text-xl mb-2">Para Dispositivos Móveis</h4>
+                    <p class="text-white/70 text-sm">Android, iOS</p>
+                    <p class="mt-4 text-xs leading-relaxed">Otimizados para telas touch, bateria, conectividade e aplicativos leves.</p>
+                </div>
+                <div class="glass rounded-3xl p-7 card-hover">
+                    <div class="text-4xl mb-4">🌐</div>
+                    <h4 class="font-semibold text-xl mb-2">Servidores / Rede</h4>
+                    <p class="text-white/70 text-sm">Linux Server, Windows Server</p>
+                    <p class="mt-4 text-xs leading-relaxed">Multitarefa pesada, segurança e atendimento a múltiplos usuários simultaneamente.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção 3: Principais Exemplos -->
+        <div>
+            <h3 class="section-title text-3xl font-semibold mb-8 flex items-center gap-x-3">
+                <i class="fa-solid fa-laptop-code"></i>
+                Principais Sistemas Operacionais
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Windows -->
+                <div class="glass rounded-3xl p-8 card-hover border border-indigo-500/30">
+                    <div class="flex items-center gap-x-4 mb-6">
+                        <div class="text-6xl">🪟</div>
+                        <div>
+                            <h4 class="text-2xl font-bold">Microsoft Windows</h4>
+                            <p class="text-emerald-400 text-sm">Mais usado no mundo (PCs)</p>
+                        </div>
+                    </div>
+                    <p class="text-white/80">
+                        Lançado em 1985. Evoluiu do MS-DOS para interface gráfica. Versões atuais: Windows 10 e 11. 
+                        Excelente compatibilidade com jogos e softwares profissionais.
+                    </p>
+                    <div class="mt-6 pt-6 border-t border-white/10 text-xs text-white/60">
+                        Vantagens: Fácil de usar • Grande ecossistema de programas<br>
+                        Desvantagens: Mais vulnerável a vírus • Pago
+                    </div>
+                </div>
+
+                <!-- Linux -->
+                <div class="glass rounded-3xl p-8 card-hover border border-emerald-500/30">
+                    <div class="flex items-center gap-x-4 mb-6">
+                        <div class="text-6xl">🐧</div>
+                        <div>
+                            <h4 class="text-2xl font-bold">Linux</h4>
+                            <p class="text-emerald-400 text-sm">Código aberto e gratuito</p>
+                        </div>
+                    </div>
+                    <p class="text-white/80">
+                        Criado por Linus Torvalds em 1991. Muito usado em servidores, supercomputadores e por programadores. 
+                        Distribuições populares: Ubuntu, Fedora, Mint.
+                    </p>
+                    <div class="mt-6 pt-6 border-t border-white/10 text-xs text-white/60">
+                        Vantagens: Seguro • Estável • Gratuito • Altamente personalizável<br>
+                        Desvantagens: Curva de aprendizado maior para iniciantes
+                    </div>
+                </div>
+
+                <!-- macOS -->
+                <div class="glass rounded-3xl p-8 card-hover border border-sky-500/30">
+                    <div class="flex items-center gap-x-4 mb-6">
+                        <div class="text-6xl"></div>
+                        <div>
+                            <h4 class="text-2xl font-bold">macOS (Apple)</h4>
+                            <p class="text-emerald-400 text-sm">Para computadores Mac</p>
+                        </div>
+                    </div>
+                    <p class="text-white/80">
+                        Lançado em 2001 (baseado no Unix). Conhecido pela integração perfeita com hardware Apple, design elegante e foco em criatividade (edição de vídeo/foto).
+                    </p>
+                    <div class="mt-6 pt-6 border-t border-white/10 text-xs text-white/60">
+                        Vantagens: Muito estável • Interface bonita • Segurança alta<br>
+                        Desvantagens: Caro • Menos compatível com alguns softwares
+                    </div>
+                </div>
+
+                <!-- Mobile -->
+                <div class="glass rounded-3xl p-8 card-hover border border-violet-500/30 md:col-span-2 lg:col-span-1">
+                    <div class="flex gap-x-8">
+                        <div class="flex-1">
+                            <div class="text-5xl mb-4">🤖</div>
+                            <h4 class="font-bold text-xl">Android</h4>
+                            <p class="text-xs text-white/70">Google • Open source • Maior market share mundial em celulares</p>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-5xl mb-4">📱</div>
+                            <h4 class="font-bold text-xl">iOS</h4>
+                            <p class="text-xs text-white/70">Apple • Fechado • Foco em privacidade e desempenho</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Espaço para Anotações Pessoais -->
+        <div class="mt-20 glass rounded-3xl p-10">
+            <h3 class="text-2xl font-semibold mb-6 flex items-center gap-x-3">
+                <i class="fa-solid fa-note-sticky text-amber-400"></i>
+                Minhas Anotações da Aula
+            </h3>
+            <textarea id="personal-notes" rows="8"
+                class="w-full glass border border-white/20 focus:border-indigo-400 rounded-3xl px-7 py-6 text-base resize-y outline-none placeholder:text-white/40"
+                placeholder="Escreva aqui o que você entendeu da aula, dúvidas, exemplos do professor, fórmulas ou resumos..."></textarea>
+            
+            <div class="mt-6 flex justify-end">
+                <button onclick="saveMyNotes()" 
+                        class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 px-10 py-4 rounded-3xl font-semibold flex items-center gap-x-3">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    SALVAR ANOTAÇÕES
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer simples -->
+    <footer class="text-center text-xs text-white/40 mt-20 pb-10">
+        <p>🎒 Mochila Acadêmica v2.0 • Sistemas Operacionais • Informática</p>
+        <p class="mt-1">Estude com consistência e a mochila ficará sempre cheia de conhecimento!</p>
+    </footer>
+
+    <script>
+        function saveMyNotes() {
+            const notes = document.getElementById('personal-notes').value.trim();
+            if (notes) {
+                localStorage.setItem('mochila_so_notes', notes);
+                alert('✅ Anotações salvas com sucesso na sua mochila!');
+            } else {
+                alert('Escreva algo antes de salvar!');
+            }
+        }
+
+        // Carregar anotações salvas (se existirem)
+        window.onload = () => {
+            const saved = localStorage.getItem('mochila_so_notes');
+            if (saved) {
+                document.getElementById('personal-notes').value = saved;
+            }
+        };
+    </script>
+</body>
+</html>
