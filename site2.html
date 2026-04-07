@@ -13,7 +13,8 @@
       
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f172a, #1e2937);
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), 
+                        url('https://images.alphacoders.com/134/1340585.jpg') center/cover no-repeat fixed;
             color: #e2e8f0;
             line-height: 1.6;
             overflow-x: hidden;
@@ -29,17 +30,17 @@
             animation: titlePulse 2s infinite alternate ease-in-out;
         }
         @keyframes titlePulse {
-            from { text-shadow: 0 0 10px #60a5fa; }
-            to { text-shadow: 0 0 30px #3b82f6, 0 0 40px #60a5fa; }
+            from { text-shadow: 0 0 10px #c026d3; }
+            to { text-shadow: 0 0 30px #7e22ce, 0 0 40px #c026d3; }
         }
         h1 {
             font-size: 3rem;
             margin-bottom: 10px;
-            color: #60a5fa;
+            color: #c026d3;
         }
         .subtitle {
             font-size: 1.35rem;
-            color: #94a3b8;
+            color: #e0bbff;
         }
         .cards {
             display: grid;
@@ -48,7 +49,7 @@
             margin-top: 40px;
         }
         .card {
-            background: rgba(15, 23, 42, 0.95);
+            background: rgba(15, 23, 42, 0.92);
             border-radius: 20px;
             padding: 32px 28px;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -59,8 +60,8 @@
         }
         .card:hover {
             transform: scale(1.08) translateY(-15px);
-            border-color: #60a5fa;
-            box-shadow: 0 25px 40px -10px rgba(96, 165, 250, 0.4);
+            border-color: #c026d3;
+            box-shadow: 0 25px 40px -10px rgba(192, 38, 211, 0.5);
         }
         .icon {
             font-size: 4.5rem;
@@ -73,7 +74,7 @@
         h2 {
             font-size: 1.9rem;
             margin-bottom: 15px;
-            color: #93c5fd;
+            color: #e0bbff;
         }
         .exemplo {
             color: #facc15;
@@ -90,126 +91,130 @@
             display: inline-block;
             margin: 60px auto 0;
             padding: 14px 40px;
-            background: linear-gradient(90deg, #3b82f6, #1e40af);
+            background: linear-gradient(90deg, #c026d3, #6b21a8);
             color: white;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
             font-size: 1.1rem;
             transition: all 0.4s;
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 10px 20px rgba(192, 38, 211, 0.4);
         }
         .btn-voltar:hover {
             transform: scale(1.1);
-            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.5);
+            box-shadow: 0 15px 30px rgba(192, 38, 211, 0.6);
         }
         footer {
             text-align: center;
             margin-top: 90px;
             padding: 25px;
-            color: #64748b;
+            color: #a78bfa;
             font-size: 0.95rem;
         }
 
-        /* Efeitos visuais especiais */
-        .rasengan::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(59,130,246,0.6) 0%, transparent 70%);
-            opacity: 0;
-            animation: rasenganSpin 1.2s ease-out;
-            pointer-events: none;
-        }
-        @keyframes rasenganSpin {
-            0% { transform: rotate(0deg) scale(0.5); opacity: 0.8; }
-            100% { transform: rotate(720deg) scale(1.8); opacity: 0; }
-        }
-
-        .chidori::after {
+        /* Efeitos Jujutsu Kaisen */
+        .domain::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(transparent, #facc15, transparent);
+            background: radial-gradient(circle, rgba(192,38,211,0.6) 0%, transparent 70%);
             opacity: 0;
-            animation: chidoriFlash 0.8s ease-out;
+            animation: domainExpansion 1.5s ease-out;
+            pointer-events: none;
         }
-        @keyframes chidoriFlash {
+        @keyframes domainExpansion {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        .hollow::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, #a855f7, transparent);
+            opacity: 0;
+            animation: hollowPurple 0.9s ease-out;
+        }
+        @keyframes hollowPurple {
             0%, 100% { opacity: 0; }
-            50% { opacity: 0.7; }
+            40% { opacity: 0.75; }
         }
     </style>
 </head>
 <body>
-    <!-- Áudios Naruto -->
-    <audio id="rasenganSound" preload="auto">
-        <source src="https://www.myinstants.com/media/sounds/rasengan.mp3" type="audio/mpeg">
+    <!-- Música de fundo: SPECIALZ (You Are My Special) -->
+    <audio id="bgMusic" loop autoplay volume="0.25">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"> <!-- Substitua por link real de SPECIALZ se encontrar um direto -->
+        Seu navegador não suporta áudio.
     </audio>
-    <audio id="jutsuSound" preload="auto">
-        <source src="https://www.myinstants.com/media/sounds/naruto-jutsu.mp3" type="audio/mpeg">
+
+    <!-- Áudios Jujutsu Kaisen -->
+    <audio id="domainSound" preload="auto">
+        <source src="https://www.myinstants.com/media/sounds/gojo-domain-expansion-60533.mp3" type="audio/mpeg">
     </audio>
-    <audio id="chidoriSound" preload="auto">
-        <source src="https://www.myinstants.com/media/sounds/chidori.mp3" type="audio/mpeg">
+    <audio id="hollowSound" preload="auto">
+        <source src="https://www.myinstants.com/media/sounds/hollow-purple-jjk-60677.mp3" type="audio/mpeg">
     </audio>
-    <audio id="kageSound" preload="auto">
-        <source src="https://www.myinstants.com/media/sounds/naruto-kage-bunshin.mp3" type="audio/mpeg">
+    <audio id="jujutsuSound" preload="auto">
+        <source src="https://www.myinstants.com/media/sounds/jujutsu-kaisen-53691.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="sukunaSound" preload="auto">
+        <source src="https://www.myinstants.com/media/sounds/domain-expansion-sukuna-17759.mp3" type="audio/mpeg">
     </audio>
 
     <div class="container">
         <header>
             <h1>Tipos de Sistemas Operacionais</h1>
-            <p class="subtitle">Entenda os 4 principais tipos de SO que existem • Dattebayo!</p>
+            <p class="subtitle">Entenda os 4 principais tipos de SO • Jujutsu Kaisen Edition 🔥</p>
         </header>
 
         <div class="cards">
-            <!-- Desktop - Rasengan -->
-            <div class="card" onclick="playRasengan(this)">
+            <!-- Desktop -->
+            <div class="card" onclick="playDomain(this)">
                 <div class="icon">💻</div>
                 <h2>Desktop</h2>
                 <p class="exemplo">Ex: Microsoft Windows, macOS, Linux</p>
                 <ul>
-                    <li>Usado em computadores pessoais (PC e Notebooks)</li>
-                    <li>Foco principal: experiência do <strong>usuário final</strong></li>
+                    <li>Usado em computadores pessoais</li>
+                    <li>Foco principal: experiência do usuário final</li>
                     <li>Produtividade, jogos, edição</li>
                 </ul>
             </div>
 
-            <!-- Mobile - Jutsu -->
-            <div class="card" onclick="playJutsu(this)">
+            <!-- Mobile -->
+            <div class="card" onclick="playHollow(this)">
                 <div class="icon">📱</div>
                 <h2>Mobile</h2>
                 <p class="exemplo">Ex: Android, iOS</p>
                 <ul>
                     <li>Usado em smartphones e tablets</li>
-                    <li>Foco: <strong>aplicativos + mobilidade</strong></li>
+                    <li>Foco: aplicativos + mobilidade</li>
                     <li>Otimização para toque e bateria</li>
                 </ul>
             </div>
 
-            <!-- Servidores - Kage Bunshin -->
-            <div class="card" onclick="playKageBunshin(this)">
+            <!-- Servidores -->
+            <div class="card" onclick="playSukuna(this)">
                 <div class="icon">🌐</div>
                 <h2>Servidores</h2>
                 <p class="exemplo">Ex: Linux Server, Windows Server</p>
                 <ul>
-                    <li>Computadores que “servem” outros dispositivos</li>
+                    <li>Computadores que servem outros dispositivos</li>
                     <li>Hospedam sites e serviços 24/7</li>
                     <li>Foco: estabilidade e segurança</li>
                 </ul>
             </div>
 
-            <!-- Embarcados - Chidori -->
-            <div class="card" onclick="playChidori(this)">
+            <!-- Embarcados -->
+            <div class="card" onclick="playJujutsu(this)">
                 <div class="icon">🤖</div>
                 <h2>Embarcados (Embedded)</h2>
                 <p class="exemplo">Ex: TV, carro, micro-ondas</p>
                 <ul>
                     <li>Integrados diretamente no hardware</li>
                     <li>Foco: eficiência energética</li>
-                    <li>Usados em dispositivos inteligentes</li>
+                    <li>Dispositivos inteligentes</li>
                 </ul>
             </div>
         </div>
@@ -219,63 +224,56 @@
         </div>
 
         <footer>
-            <p>Feito com ❤️ e muito chakra • Dattebayo!</p>
+            <p>Feito com ❤️ e muito Cursed Energy • You are my special!</p>
         </footer>
     </div>
 
     <script>
-        // Funções de som e efeito
+        // Controle da música de fundo
+        const bgMusic = document.getElementById('bgMusic');
+        bgMusic.volume = 0.22; // volume baixo para não atrapalhar
 
-        function playRasengan(card) {
-            const sound = document.getElementById('rasenganSound');
-            if (sound) {
-                sound.currentTime = 0;
-                sound.volume = 0.7;
-                sound.play().catch(() => {});
-            }
-            card.classList.add('rasengan');
-            setTimeout(() => card.classList.remove('rasengan'), 1200);
+        // Funções de som Jujutsu Kaisen
+        function playDomain(card) {
+            const sound = document.getElementById('domainSound');
+            sound.currentTime = 0;
+            sound.volume = 0.75;
+            sound.play().catch(() => {});
+            card.classList.add('domain');
+            setTimeout(() => card.classList.remove('domain'), 1600);
         }
 
-        function playJutsu(card) {
-            const sound = document.getElementById('jutsuSound');
-            if (sound) {
-                sound.currentTime = 0;
-                sound.volume = 0.65;
-                sound.play().catch(() => {});
-            }
-            card.style.transition = 'all 0.3s';
-            card.style.boxShadow = '0 0 40px #22d3ee';
-            setTimeout(() => {
-                card.style.boxShadow = '';
-            }, 600);
+        function playHollow(card) {
+            const sound = document.getElementById('hollowSound');
+            sound.currentTime = 0;
+            sound.volume = 0.8;
+            sound.play().catch(() => {});
+            card.classList.add('hollow');
+            setTimeout(() => card.classList.remove('hollow'), 1000);
         }
 
-        function playKageBunshin(card) {
-            const sound = document.getElementById('kageSound');
-            if (sound) {
-                sound.currentTime = 0;
-                sound.volume = 0.6;
-                sound.play().catch(() => {});
-            }
-            card.style.transform = 'scale(1.12)';
-            setTimeout(() => card.style.transform = '', 400);
+        function playSukuna(card) {
+            const sound = document.getElementById('sukunaSound');
+            sound.currentTime = 0;
+            sound.volume = 0.7;
+            sound.play().catch(() => {});
+            card.style.transform = 'scale(1.15)';
+            setTimeout(() => card.style.transform = '', 500);
         }
 
-        function playChidori(card) {
-            const sound = document.getElementById('chidoriSound');
-            if (sound) {
-                sound.currentTime = 0;
-                sound.volume = 0.7;
-                sound.play().catch(() => {});
-            }
-            card.classList.add('chidori');
-            setTimeout(() => card.classList.remove('chidori'), 800);
+        function playJujutsu(card) {
+            const sound = document.getElementById('jujutsuSound');
+            sound.currentTime = 0;
+            sound.volume = 0.7;
+            sound.play().catch(() => {});
+            card.style.boxShadow = '0 0 50px #c026d3';
+            setTimeout(() => card.style.boxShadow = '', 700);
         }
 
-        // Toca tema ao carregar (opcional - volume baixo)
-        window.onload = function() {
-            console.log("%cDattebayo! Página carregada com chakra 🔥", "color:#60a5fa; font-weight:bold");
+        // Inicia música ao carregar
+        window.onload = () => {
+            console.log("%cYou are my special... Página carregada com Cursed Energy 🔥", "color:#c026d3; font-weight:bold");
+            // bgMusic.play().catch(() => {}); // descomente se quiser autoplay forçado
         };
     </script>
 </body>
