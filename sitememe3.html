@@ -12,25 +12,19 @@
             --laranja: #ff8800;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'VT323', monospace;
             color: white;
+            background: #0a0a0a;
             overflow-x: hidden;
         }
 
-        /* FUNDO PRINCIPAL - SUA FOTO */
+        /* FUNDOS */
         .background {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background-image: url('https://i.imgur.com/5tdoP.png');
             background-size: cover;
             background-position: center;
@@ -38,311 +32,253 @@
             z-index: -3;
         }
 
-        /* FUNDO CAVALO MEME (leve) */
         .cavalo-meme {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background-image: url('https://i.imgur.com/0z3fK8J.jpeg');
             background-size: cover;
-            background-position: center;
-            opacity: 0.15;
+            opacity: 0.12;
             z-index: -2;
             mix-blend-mode: overlay;
         }
 
         .overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(rgba(0,0,0,0.78), rgba(40,20,0,0.88));
             z-index: -1;
         }
 
-        /* HERO */
+        /* NAVEGAÇÃO */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.9);
+            border-bottom: 6px solid var(--amarelo);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: none;
+            border: 4px solid var(--amarelo);
+            color: var(--amarelo);
+            padding: 12px 25px;
+            font-size: 1.6rem;
+            cursor: pointer;
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        .nav-btn.active {
+            background: var(--amarelo);
+            color: #000;
+        }
+
+        /* CONTEÚDO DAS ABAS */
+        .tab-content {
+            display: none;
+            padding-top: 100px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* HERO (aba Início) */
         .hero {
-            height: 100vh;
+            height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            position: relative;
         }
 
         .hero h1 {
             font-family: 'Press Start 2P', cursive;
-            font-size: 5rem;
-            line-height: 1.05;
-            text-shadow: 0 0 30px var(--amarelo), 0 0 60px var(--laranja), 0 0 80px #000;
+            font-size: 5.2rem;
+            text-shadow: 0 0 30px var(--amarelo), 0 0 60px var(--laranja);
             color: #ffdd88;
         }
 
         .hero .subtitle {
             font-size: 3.5rem;
             color: #ffcc00;
-            text-shadow: 0 0 40px #ffaa00;
         }
 
-        /* SEÇÕES */
-        section {
-            padding: 100px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .about, .music-section, .shorts-section {
-            background: rgba(20, 15, 5, 0.95);
-            backdrop-filter: blur(12px);
-            margin-bottom: 40px;
-            border-radius: 30px;
-            padding: 50px;
-        }
-
-        h2 {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 3.6rem;
-            color: #ffcc00;
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .card {
-            background: rgba(255, 204, 0, 0.15);
-            border: 7px solid #ffcc00;
-            padding: 40px;
-            border-radius: 25px;
-            margin: 20px;
-        }
-
-        .orelhas {
-            font-size: 8rem;
-            animation: orelha-vibra 1.5s infinite alternate;
-            text-align: center;
-        }
-
-        @keyframes orelha-vibra {
-            from { transform: rotate(-25deg); }
-            to { transform: rotate(25deg); }
-        }
-
-        /* PLAYLIST MACHIMELLO */
-        .music-grid {
+        /* JOGOS */
+        .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 18px;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 25px;
+            padding: 20px;
         }
 
-        .music-btn {
-            background: #ffcc00;
-            color: #000;
-            border: none;
-            padding: 18px;
-            font-size: 1.55rem;
-            font-weight: bold;
-            border-radius: 15px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .music-btn:hover {
-            background: #ffdd55;
-            transform: scale(1.05);
-        }
-
-        /* SHORTS DO CILULIRO - ROLANDO COMO FEED */
-        .shorts-feed {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            padding: 20px 0;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: thin;
-        }
-
-        .shorts-feed::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .shorts-item {
-            flex: 0 0 320px;
-            scroll-snap-align: start;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 0 30px rgba(255, 204, 0, 0.5);
-        }
-
-        .shorts-item iframe {
-            width: 100%;
-            height: 520px;
-            border: none;
-        }
-
-        .shorts-title {
+        .game-card {
+            background: rgba(255, 204, 0, 0.15);
+            border: 8px solid var(--amarelo);
+            border-radius: 25px;
+            padding: 20px;
             text-align: center;
-            padding: 12px;
-            background: #ffcc00;
-            color: #000;
-            font-size: 1.4rem;
-            font-weight: bold;
+        }
+
+        .game-container {
+            background: #111;
+            border: 6px solid #ffcc00;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 15px 0;
+            position: relative;
+            height: 380px;
+            overflow: hidden;
+        }
+
+        canvas {
+            background: #000;
+            border-radius: 10px;
+            image-rendering: pixelated;
+        }
+
+        .game-title {
+            font-size: 2rem;
+            color: var(--amarelo);
+            margin: 15px 0;
         }
 
         footer {
             background: #111;
-            padding: 80px 20px;
+            padding: 60px 20px;
             text-align: center;
-            font-size: 1.9rem;
+            font-size: 1.8rem;
             border-top: 10px solid #ffcc00;
         }
 
         .audio-controls {
             position: fixed;
-            top: 25px;
+            top: 80px;
             right: 25px;
             z-index: 100;
             background: rgba(0,0,0,0.8);
-            padding: 15px 25px;
+            padding: 12px 22px;
             border-radius: 50px;
             border: 5px solid #ffcc00;
-            font-size: 1.7rem;
-        }
-
-        .github {
-            position: fixed;
-            bottom: 35px;
-            left: 35px;
-            background: #000;
-            color: #ffcc00;
-            padding: 16px 32px;
-            border: 5px solid #ffcc00;
-            font-size: 1.45rem;
-            text-decoration: none;
-            z-index: 99;
+            font-size: 1.6rem;
         }
     </style>
 </head>
 <body>
 
-    <!-- FUNDOS -->
     <div class="background"></div>
     <div class="cavalo-meme"></div>
     <div class="overlay"></div>
 
-    <!-- CONTROLE DE ÁUDIO PRINCIPAL -->
+    <!-- NAVEGAÇÃO -->
+    <nav>
+        <div class="nav-container">
+            <button class="nav-btn active" onclick="showTab(0)">Início</button>
+            <button class="nav-btn" onclick="showTab(1)">Músicas</button>
+            <button class="nav-btn" onclick="showTab(2)">Shorts Ciluliro</button>
+            <button class="nav-btn" onclick="showTab(3)">Jogos do Ciluliro</button>
+        </div>
+    </nav>
+
     <div class="audio-controls">
-        <button onclick="toggleMainAudio()" id="mainAudioBtn" style="background:none;border:none;color:#ffcc00;font-size:1.8rem;cursor:pointer;">
-            🔊 ÁUDIO LIGADO
-        </button>
+        <button onclick="toggleMainAudio()" id="mainAudioBtn">🔊 ÁUDIO LIGADO</button>
     </div>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div>
-            <h1>HOMEM MAIS<br>ORELHUDO<br>DO BRASIL</h1>
-            <p class="subtitle">O rei das orelhas gigantes 👂🇧🇷</p>
-        </div>
-    </section>
+    <!-- ABA INÍCIO -->
+    <div id="tab0" class="tab-content active">
+        <section class="hero">
+            <div>
+                <h1>HOMEM MAIS<br>ORELHUDO<br>DO BRASIL</h1>
+                <p class="subtitle">O rei das orelhas gigantes 👂🇧🇷</p>
+            </div>
+        </section>
+    </div>
 
-    <!-- SOBRE -->
-    <section class="about">
-        <h2>O LENDÁRIO ORELHUDO BRASILEIRO</h2>
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;">
-            <div class="card">
-                <h3 style="font-size: 3rem; color: #ffdd55;">👂 ORELHAS ÉPICAS</h3>
-                <p style="font-size: 2rem;">O homem mais orelhudo do Brasil! Ninguém chega perto.</p>
+    <!-- ABA MÚSICAS -->
+    <div id="tab1" class="tab-content">
+        <section style="padding-top: 120px;">
+            <h2>🎵 MÚSICAS DO MACHIMELLO</h2>
+            <div class="games-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <button class="music-btn" onclick="playMusic(0)" style="padding:25px; font-size:1.8rem;">Alone</button>
+                <button class="music-btn" onclick="playMusic(1)" style="padding:25px; font-size:1.8rem;">Happier</button>
+                <button class="music-btn" onclick="playMusic(2)" style="padding:25px; font-size:1.8rem;">FRIENDS</button>
+                <button class="music-btn" onclick="playMusic(3)" style="padding:25px; font-size:1.8rem;">Stars</button>
             </div>
-            <div class="card">
-                <h3 style="font-size: 3rem; color: #ffdd55;">🔥 LENDÁRIO NACIONAL</h3>
-                <p style="font-size: 2rem;">As orelhas dele são tão grandes que viraram meme no país inteiro.</p>
-                <div class="orelhas">👂 👂</div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <!-- PLAYLIST MACHIMELLO -->
-    <section class="music-section">
-        <h2>🎵 MÚSICAS DO MACHIMELLO</h2>
-        <div class="music-grid">
-            <button class="music-btn" onclick="playMusic(0)">Alone</button>
-            <button class="music-btn" onclick="playMusic(1)">Happier</button>
-            <button class="music-btn" onclick="playMusic(2)">FRIENDS</button>
-            <button class="music-btn" onclick="playMusic(3)">Stars</button>
-            <button class="music-btn" onclick="playMusic(4)">Unity</button>
-            <button class="music-btn" onclick="playMusic(5)">Silence</button>
-        </div>
-    </section>
+    <!-- ABA SHORTS CILULIRO -->
+    <div id="tab2" class="tab-content">
+        <section class="shorts-section" style="padding-top: 120px;">
+            <h2>📱 SHORTS DO CILULIRO</h2>
+            <div class="shorts-feed" style="display:flex; gap:20px; overflow-x:auto; padding:20px 0;">
+                <div class="shorts-item"><iframe src="https://www.youtube.com/embed/Vy8V3YJE-TI" allowfullscreen></iframe></div>
+                <div class="shorts-item"><iframe src="https://www.youtube.com/embed/9n7BgK7xzUA" allowfullscreen></iframe></div>
+                <div class="shorts-item"><iframe src="https://www.youtube.com/embed/ALZHF5UqnU4" allowfullscreen></iframe></div>
+            </div>
+        </section>
+    </div>
 
-    <!-- SHORTS DO CILULIRO - FEED ROLANDO -->
-    <section class="shorts-section">
-        <h2>📱 SHORTS DO CILULIRO (rolando sem parar)</h2>
-        <p style="text-align:center; margin-bottom:30px; font-size:1.8rem;">Todos os melhores shorts do canal dele 🔥</p>
-        
-        <div class="shorts-feed">
-            <!-- Short 1 -->
-            <div class="shorts-item">
-                <iframe src="https://www.youtube.com/embed/Vy8V3YJE-TI" allowfullscreen></iframe>
-                <div class="shorts-title">Short 1 - Ciluliro 🔥</div>
+    <!-- ABA JOGOS -->
+    <div id="tab3" class="tab-content">
+        <section style="padding-top: 120px;">
+            <h2>🎮 JOGOS DO CILULIRO</h2>
+            <div class="games-grid">
+
+                <!-- Jogo 1: Cilurilo Clicker -->
+                <div class="game-card">
+                    <div class="game-title">🖱️ CILURILO CLICKER</div>
+                    <div class="game-container">
+                        <canvas id="clickerCanvas" width="360" height="340"></canvas>
+                    </div>
+                    <p>Pontos: <span id="score">0</span></p>
+                    <button onclick="resetClicker()" style="margin-top:10px; padding:10px 20px;">Reiniciar</button>
+                </div>
+
+                <!-- Jogo 2: Suco do Silulo -->
+                <div class="game-card">
+                    <div class="game-title">🥤 SUCO DO SILULO</div>
+                    <div class="game-container">
+                        <canvas id="sucoCanvas" width="360" height="340"></canvas>
+                    </div>
+                    <p>Pontos: <span id="sucoScore">0</span></p>
+                </div>
+
             </div>
-            
-            <!-- Short 2 -->
-            <div class="shorts-item">
-                <iframe src="https://www.youtube.com/embed/9n7BgK7xzUA" allowfullscreen></iframe>
-                <div class="shorts-title">Short 2 - Ciluliro 🔥</div>
-            </div>
-            
-            <!-- Mais do canal (você pode adicionar quantos quiser) -->
-            <div class="shorts-item">
-                <iframe src="https://www.youtube.com/embed/ALZHF5UqnU4" allowfullscreen></iframe>
-                <div class="shorts-title">Ciluliro Clássico</div>
-            </div>
-            
-            <div class="shorts-item">
-                <iframe src="https://www.youtube.com/embed/Vy8V3YJE-TI" allowfullscreen></iframe>
-                <div class="shorts-title">Ciluliro Epico</div>
-            </div>
-            
-            <div class="shorts-item">
-                <iframe src="https://www.youtube.com/embed/9n7BgK7xzUA" allowfullscreen></iframe>
-                <div class="shorts-title">Ciluliro 2026</div>
-            </div>
-            
-            <div class="shorts-item">
-                <iframe src="https://www.youtube.com/embed/ALZHF5UqnU4" allowfullscreen></iframe>
-                <div class="shorts-title">Mais um do Ciluliro</div>
-            </div>
-        </div>
-        
-        <p style="text-align:center; margin-top:30px; font-size:1.6rem; opacity:0.9;">
-            Role para o lado → Shorts do canal do Ciluliro rolando infinitamente
-        </p>
-    </section>
+        </section>
+    </div>
 
     <footer>
-        <p>Site oficial do Homem Mais Orelhudo do Brasil 👂🇧🇷</p>
-        <p style="margin-top: 20px;">Com todos os shorts do Ciluliro + playlist Machimello + cavalo meme de fundo</p>
-        <p style="margin-top: 40px; font-size: 1.6rem;">Feito com muito meme e GitHub Pages</p>
+        <p>Homem Mais Orelhudo do Brasil + Jogos do Ciluliro 👂🇧🇷</p>
     </footer>
 
-    <a href="https://github.com" target="_blank" class="github">
-        📤 SUBIR NO GITHUB
-    </a>
-
     <script>
-        // Áudio principal (Alone - Machimelo)
-        let mainAudio = null;
-        let isMainPlaying = true;
+        // ===================== NAVEGAÇÃO =====================
+        function showTab(n) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.getElementById('tab' + n).classList.add('active');
+            
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.nav-btn')[n].classList.add('active');
+        }
 
+        // ===================== ÁUDIO =====================
+        let mainAudio = null;
         function initMainAudio() {
             mainAudio = document.createElement('iframe');
             mainAudio.style.position = 'absolute';
-            mainAudio.style.width = '0';
-            mainAudio.style.height = '0';
-            mainAudio.style.opacity = '0';
+            mainAudio.style.width = '0'; mainAudio.style.height = '0'; mainAudio.style.opacity = '0';
             mainAudio.src = "https://www.youtube.com/embed/ALZHF5UqnU4?autoplay=1&loop=1&playlist=ALZHF5UqnU4";
             mainAudio.allow = "autoplay";
             document.body.appendChild(mainAudio);
@@ -350,39 +286,90 @@
 
         function toggleMainAudio() {
             const btn = document.getElementById('mainAudioBtn');
-            isMainPlaying = !isMainPlaying;
-            btn.textContent = isMainPlaying ? '🔊 ÁUDIO LIGADO' : '🔇 ÁUDIO DESLIGADO';
+            btn.textContent = btn.textContent.includes('LIGADO') ? '🔇 ÁUDIO DESLIGADO' : '🔊 ÁUDIO LIGADO';
         }
 
-        // Playlist Machimello
-        const musicIds = ["ALZHF5UqnU4", "0mV4iWAy8dU", "C5f1f0j8Z8U", "A57B7B6w3kw", "Ktu843qdrWE", "k2qgadSvNyU"];
-        let currentMusic = null;
-
+        // ===================== PLAYLIST =====================
+        const musicIds = ["ALZHF5UqnU4", "0mV4iWAy8dU", "C5f1f0j8Z8U", "A57B7B6w3kw"];
         function playMusic(index) {
-            if (currentMusic) currentMusic.remove();
-            currentMusic = document.createElement('iframe');
-            currentMusic.style.position = 'absolute';
-            currentMusic.style.width = '0';
-            currentMusic.style.height = '0';
-            currentMusic.style.opacity = '0';
-            currentMusic.src = `https://www.youtube.com/embed/${musicIds[index]}?autoplay=1`;
-            currentMusic.allow = "autoplay";
-            document.body.appendChild(currentMusic);
+            const iframe = document.createElement('iframe');
+            iframe.style.position = 'absolute'; iframe.style.opacity = '0';
+            iframe.src = `https://www.youtube.com/embed/${musicIds[index]}?autoplay=1`;
+            document.body.appendChild(iframe);
         }
 
-        // Inicialização
+        // ===================== JOGO 1: CILURILO CLICKER =====================
+        let clickerScore = 0;
+        const clickerCanvas = document.getElementById('clickerCanvas');
+        const ctx1 = clickerCanvas.getContext('2d');
+
+        function drawClicker() {
+            ctx1.clearRect(0, 0, 360, 340);
+            ctx1.font = '60px VT323';
+            ctx1.fillStyle = '#ffcc00';
+            ctx1.fillText('👂', 140, 180);
+            ctx1.font = '30px VT323';
+            ctx1.fillText('CLIQUE!', 120, 280);
+        }
+
+        clickerCanvas.addEventListener('click', () => {
+            clickerScore += Math.floor(Math.random() * 5) + 3;
+            document.getElementById('score').textContent = clickerScore;
+            
+            // animação de clique
+            ctx1.fillStyle = '#fff';
+            ctx1.font = '40px VT323';
+            ctx1.fillText('+ ' + (Math.floor(Math.random()*5)+3), Math.random()*200 + 80, 100);
+            setTimeout(drawClicker, 80);
+        });
+
+        function resetClicker() {
+            clickerScore = 0;
+            document.getElementById('score').textContent = 0;
+        }
+
+        // ===================== JOGO 2: SUCO DO SILULO =====================
+        let sucoScore = 0;
+        let sucoY = 50;
+        let sucoX = 180;
+        const sucoCanvas = document.getElementById('sucoCanvas');
+        const ctx2 = sucoCanvas.getContext('2d');
+
+        function gameLoopSuco() {
+            ctx2.clearRect(0, 0, 360, 340);
+            ctx2.fillStyle = '#00f0ff';
+            ctx2.fillRect(sucoX, sucoY, 40, 60); // suco
+            ctx2.fillStyle = '#ffcc00';
+            ctx2.fillText('🥤', sucoX - 5, sucoY + 50);
+
+            sucoY += 6;
+            if (sucoY > 340) {
+                sucoY = 0;
+                sucoX = Math.random() * 300 + 30;
+            }
+
+            // colisão com mouse (simples)
+            sucoCanvas.addEventListener('mousemove', (e) => {
+                const rect = sucoCanvas.getBoundingClientRect();
+                if (Math.abs(e.clientX - rect.left - sucoX) < 50 && Math.abs(e.clientY - rect.top - sucoY) < 60) {
+                    sucoScore += 10;
+                    document.getElementById('sucoScore').textContent = sucoScore;
+                    sucoY = 0;
+                    sucoX = Math.random() * 300 + 30;
+                }
+            }, {once: true});
+
+            requestAnimationFrame(gameLoopSuco);
+        }
+
+        // ===================== INICIALIZAÇÃO =====================
         window.onload = () => {
             initMainAudio();
-            console.log('%c👂 Site do Homem Mais Orelhudo do Brasil + Shorts do Ciluliro carregado!', 'color: #ffcc00; font-size: 20px;');
+            drawClicker();
+            gameLoopSuco();
+            showTab(0); // começa na aba Início
+            console.log('%c👂 Site completo com Jogos do Ciluliro carregado!', 'color:#ffcc00;font-size:22px');
         };
-
-        // Efeito orelhas
-        document.addEventListener('click', () => {
-            document.querySelectorAll('.orelhas').forEach(el => {
-                el.style.animation = 'none';
-                setTimeout(() => el.style.animation = 'orelha-vibra 0.8s infinite alternate', 10);
-            });
-        });
     </script>
 </body>
 </html>
