@@ -142,11 +142,12 @@
 </head>
 <body>
     <!-- Música de fundo - Kaikai Kitan (Jujutsu Kaisen Opening 1) -->
-    <audio id="bgMusic" loop autoplay>
-        <source src="https://25918135-jujutsu-kaisen.mp3.pm/song/188569540-opening-full-kaikai-kitan-by-eve/" type="audio/mpeg">
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://audio.com/andru-asera/audio/jujutsu-kaisen-opening-kaikai-kitan-song-of-eve-2020/download" type="audio/mpeg">
+        Seu navegador não suporta áudio.
     </audio>
 
-    <!-- Efeitos sonoros -->
+    <!-- Efeitos sonoros (mantidos) -->
     <audio id="sound1" preload="auto">
         <source src="https://www.myinstants.com/media/sounds/gojo-domain-expansion-60533.mp3" type="audio/mpeg">
     </audio>
@@ -221,8 +222,16 @@
 
     <script>
         const bgMusic = document.getElementById('bgMusic');
-        bgMusic.volume = 0.25;
+        bgMusic.volume = 0.28;   // Volume ajustado
 
+        // Tenta tocar a música automaticamente com interação do usuário (melhor compatibilidade)
+        function tryPlayMusic() {
+            bgMusic.play().catch(err => {
+                console.log("Autoplay bloqueado, aguardando interação...");
+            });
+        }
+
+        // Funções dos cards (mantidas iguais)
         function playSound1(card) {
             const sound = document.getElementById('sound1');
             sound.currentTime = 0;
@@ -256,8 +265,16 @@
             setTimeout(() => card.style.boxShadow = '', 700);
         }
 
+        // Inicia a música ao carregar e também ao clicar em qualquer lugar (melhor chance de funcionar)
         window.onload = () => {
-            bgMusic.play().catch(() => {});
+            tryPlayMusic();
+            
+            // Caso o autoplay seja bloqueado, toca ao primeiro clique na página
+            document.body.addEventListener('click', () => {
+                if (bgMusic.paused) {
+                    tryPlayMusic();
+                }
+            }, { once: true });
         };
     </script>
 </body>
