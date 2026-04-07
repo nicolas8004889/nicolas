@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homem Mais Orelhudo do Mundo 👂🌍</title>
+    <title>HOMEM MAIS ORELHUDO DO MUNDO 👂🌍</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
@@ -12,7 +12,11 @@
             --laranja: #ff8800;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'VT323', monospace;
@@ -21,89 +25,31 @@
             overflow-x: hidden;
         }
 
-        /* FUNDOS */
+        /* FUNDO ÉPICO */
         .background {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://i.imgur.com/5tdoP.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            z-index: -3;
-        }
-
-        .cavalo-meme {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://i.imgur.com/0z3fK8J.jpeg');
-            background-size: cover;
-            opacity: 0.13;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(40,20,0,0.9)),
+                        url('https://i.imgur.com/5tdoP.png') center/cover no-repeat fixed;
             z-index: -2;
-            mix-blend-mode: overlay;
         }
 
         .overlay {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.75), rgba(35,18,0,0.9));
-            z-index: -1;
-        }
-
-        /* NAVEGAÇÃO MELHORADA */
-        nav {
-            position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
-            background: rgba(0,0,0,0.95);
-            border-bottom: 8px solid var(--amarelo);
-            z-index: 1000;
-            padding: 18px 0;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-
-        .nav-btn {
-            background: none;
-            border: 5px solid var(--amarelo);
-            color: var(--amarelo);
-            padding: 14px 28px;
-            font-size: 1.65rem;
-            cursor: pointer;
-            font-family: 'Press Start 2P', cursive;
-            transition: all 0.3s;
-        }
-
-        .nav-btn:hover {
-            background: var(--amarelo);
-            color: #000;
-            transform: scale(1.05);
-        }
-
-        .nav-btn.active {
-            background: var(--amarelo);
-            color: #000;
-        }
-
-        /* CONTEÚDO */
-        .tab-content {
-            display: none;
-            padding-top: 110px;
-        }
-
-        .tab-content.active {
-            display: block;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
         }
 
         /* HERO */
         .hero {
-            height: 92vh;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -113,340 +59,171 @@
 
         .hero h1 {
             font-family: 'Press Start 2P', cursive;
-            font-size: 5.5rem;
+            font-size: 5.8rem;
             line-height: 1.05;
-            text-shadow: 0 0 35px var(--amarelo), 0 0 70px var(--laranja), 0 0 90px #000;
+            text-shadow: 0 0 40px var(--amarelo), 0 0 80px var(--laranja), 0 0 100px #000;
             color: #ffdd88;
             margin-bottom: 20px;
         }
 
         .hero .subtitle {
-            font-size: 3.8rem;
+            font-size: 3.6rem;
             color: #ffcc00;
-            text-shadow: 0 0 40px #ffaa00;
+            text-shadow: 0 0 50px #ffaa00;
         }
 
         .legend {
-            font-size: 2.2rem;
-            background: rgba(255, 204, 0, 0.25);
-            border: 6px solid var(--amarelo);
-            padding: 15px 40px;
+            font-size: 2.4rem;
+            background: rgba(255, 204, 0, 0.3);
+            border: 8px solid var(--amarelo);
+            padding: 20px 50px;
             display: inline-block;
-            margin: 30px 0;
-            box-shadow: 0 0 50px var(--amarelo);
+            margin: 40px 0;
+            box-shadow: 0 0 60px var(--amarelo);
         }
 
-        /* SEÇÕES */
-        section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
+        /* SHORTS SECTION */
+        .shorts-section {
+            padding: 100px 20px;
+            background: rgba(20, 15, 5, 0.95);
         }
 
         h2 {
             font-family: 'Press Start 2P', cursive;
-            font-size: 3.8rem;
+            font-size: 4rem;
             color: var(--amarelo);
             text-align: center;
-            margin-bottom: 50px;
-            text-shadow: 0 0 25px var(--laranja);
+            margin-bottom: 60px;
+            text-shadow: 0 0 30px var(--laranja);
         }
 
-        .card {
-            background: rgba(255, 204, 0, 0.15);
-            border: 8px solid var(--amarelo);
-            padding: 35px;
-            border-radius: 25px;
-            margin: 20px;
-            text-align: center;
+        .shorts-container {
+            display: flex;
+            gap: 25px;
+            overflow-x: auto;
+            padding: 20px 0;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+            scrollbar-color: #ffcc00 #111;
         }
 
-        .orelhas {
-            font-size: 9rem;
-            animation: orelha-vibra 1.4s infinite alternate;
-        }
-
-        @keyframes orelha-vibra {
-            from { transform: rotate(-28deg); }
-            to { transform: rotate(28deg); }
-        }
-
-        /* JOGOS */
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
-        }
-
-        .game-card {
-            background: rgba(255, 204, 0, 0.18);
-            border: 8px solid var(--amarelo);
-            border-radius: 25px;
-            padding: 25px;
-        }
-
-        .game-container {
-            background: #000;
-            border: 6px solid #ffcc00;
-            border-radius: 15px;
-            margin: 20px 0;
+        .shorts-item {
+            flex: 0 0 340px;
+            scroll-snap-align: start;
+            border-radius: 20px;
             overflow: hidden;
+            box-shadow: 0 0 40px rgba(255, 204, 0, 0.6);
         }
 
-        canvas {
-            display: block;
-            margin: 0 auto;
-            image-rendering: pixelated;
+        .shorts-item iframe {
+            width: 100%;
+            height: 560px;
+            border: none;
         }
 
-        .game-title {
-            font-size: 2.2rem;
-            color: var(--amarelo);
-            margin: 15px 0 10px;
+        .shorts-title {
+            text-align: center;
+            padding: 15px;
+            background: #ffcc00;
+            color: #000;
+            font-size: 1.5rem;
+            font-weight: bold;
         }
 
         footer {
             background: #111;
-            padding: 70px 20px;
+            padding: 80px 20px;
             text-align: center;
-            font-size: 1.9rem;
-            border-top: 10px solid var(--amarelo);
+            font-size: 2rem;
+            border-top: 12px solid var(--amarelo);
         }
 
-        .audio-controls {
+        .github {
             position: fixed;
-            top: 85px;
-            right: 30px;
-            z-index: 100;
-            background: rgba(0,0,0,0.85);
-            padding: 14px 26px;
-            border-radius: 50px;
-            border: 5px solid var(--amarelo);
-            font-size: 1.7rem;
+            bottom: 30px;
+            left: 30px;
+            background: #000;
+            color: var(--amarelo);
+            padding: 16px 35px;
+            border: 6px solid var(--amarelo);
+            font-size: 1.5rem;
+            text-decoration: none;
+            z-index: 999;
         }
     </style>
 </head>
 <body>
 
     <div class="background"></div>
-    <div class="cavalo-meme"></div>
     <div class="overlay"></div>
 
-    <!-- NAVEGAÇÃO -->
-    <nav>
-        <div class="nav-container">
-            <button class="nav-btn active" onclick="showTab(0)">Início</button>
-            <button class="nav-btn" onclick="showTab(1)">Músicas</button>
-            <button class="nav-btn" onclick="showTab(2)">Shorts Ciluliro</button>
-            <button class="nav-btn" onclick="showTab(3)">Jogos</button>
+    <!-- HERO -->
+    <section class="hero">
+        <div>
+            <h1>HOMEM MAIS<br>ORELHUDO<br>DO MUNDO</h1>
+            <p class="subtitle">O ser humano com as orelhas mais lendárias do planeta 👂🌍</p>
+            <div class="legend">
+                "As orelhas dele são tão grandes que o vento desvia sozinho!"
+            </div>
         </div>
-    </nav>
+    </section>
 
-    <div class="audio-controls">
-        <button onclick="toggleMainAudio()" id="mainAudioBtn">🔊 ÁUDIO LIGADO</button>
-    </div>
-
-    <!-- ABA INÍCIO -->
-    <div id="tab0" class="tab-content active">
-        <section class="hero">
-            <div>
-                <h1>HOMEM MAIS<br>ORELHUDO<br>DO MUNDO</h1>
-                <p class="subtitle">O maior fenômeno orelhudo da humanidade 👂🌍</p>
-                <div class="legend">
-                    "As orelhas dele são tão grandes que até o vento tem medo de passar!"
-                </div>
-                <p style="font-size: 2.4rem; margin-top: 40px; opacity: 0.9;">
-                    Reconhecido mundialmente como o ser humano com as orelhas mais épicas do planeta.
-                </p>
+    <!-- SHORTS DO TEMA -->
+    <section class="shorts-section">
+        <h2>📱 SHORTS ÉPICOS DO HOMEM MAIS ORELHUDO</h2>
+        
+        <div class="shorts-container">
+            
+            <!-- Vídeo principal que você enviou -->
+            <div class="shorts-item">
+                <iframe src="https://www.youtube.com/embed/gGC0TPp0sZU" allowfullscreen></iframe>
+                <div class="shorts-title">O Homem Mais Orelhudo do Mundo 🔥</div>
             </div>
-        </section>
-    </div>
 
-    <!-- ABA MÚSICAS -->
-    <div id="tab1" class="tab-content">
-        <section>
-            <h2>🎵 MÚSICAS DO MACHIMELLO</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto;">
-                <button class="music-btn" onclick="playMusic(0)" style="padding:28px; font-size:1.9rem;">Alone</button>
-                <button class="music-btn" onclick="playMusic(1)" style="padding:28px; font-size:1.9rem;">Happier</button>
-                <button class="music-btn" onclick="playMusic(2)" style="padding:28px; font-size:1.9rem;">FRIENDS</button>
-                <button class="music-btn" onclick="playMusic(3)" style="padding:28px; font-size:1.9rem;">Silence</button>
+            <!-- Outros shorts relacionados / virais do tema -->
+            <div class="shorts-item">
+                <iframe src="https://www.youtube.com/embed/Vy8V3YJE-TI" allowfullscreen></iframe>
+                <div class="shorts-title">Cilurilo Orelhudo Mode</div>
             </div>
-        </section>
-    </div>
 
-    <!-- ABA SHORTS -->
-    <div id="tab2" class="tab-content">
-        <section>
-            <h2>📱 SHORTS DO CILULIRO</h2>
-            <div style="display: flex; gap: 25px; overflow-x: auto; padding: 20px 0; scroll-snap-type: x mandatory;">
-                <div style="flex: 0 0 340px; scroll-snap-align: start;">
-                    <iframe width="100%" height="520" src="https://www.youtube.com/embed/Vy8V3YJE-TI" allowfullscreen></iframe>
-                </div>
-                <div style="flex: 0 0 340px; scroll-snap-align: start;">
-                    <iframe width="100%" height="520" src="https://www.youtube.com/embed/9n7BgK7xzUA" allowfullscreen></iframe>
-                </div>
-                <div style="flex: 0 0 340px; scroll-snap-align: start;">
-                    <iframe width="100%" height="520" src="https://www.youtube.com/embed/ALZHF5UqnU4" allowfullscreen></iframe>
-                </div>
+            <div class="shorts-item">
+                <iframe src="https://www.youtube.com/embed/9n7BgK7xzUA" allowfullscreen></iframe>
+                <div class="shorts-title">Reação às Orelhas Gigantes</div>
             </div>
-        </section>
-    </div>
 
-    <!-- ABA JOGOS -->
-    <div id="tab3" class="tab-content">
-        <section>
-            <h2>🎮 JOGOS DO CILULIRO</h2>
-            <div class="games-grid">
-
-                <!-- Jogo 1: Clicker -->
-                <div class="game-card">
-                    <div class="game-title">🖱️ CILURILO CLICKER</div>
-                    <div class="game-container">
-                        <canvas id="clickerCanvas" width="380" height="360"></canvas>
-                    </div>
-                    <p style="font-size: 2rem;">Pontos: <span id="score">0</span></p>
-                    <button onclick="resetClicker()" style="margin-top:15px; padding:12px 30px; font-size:1.4rem;">Reiniciar</button>
-                </div>
-
-                <!-- Jogo 2: Suco do Silulo -->
-                <div class="game-card">
-                    <div class="game-title">🥤 SUCO DO SILULO</div>
-                    <div class="game-container">
-                        <canvas id="sucoCanvas" width="380" height="360"></canvas>
-                    </div>
-                    <p style="font-size: 2rem;">Pontos: <span id="sucoScore">0</span></p>
-                    <p style="font-size:1.4rem; margin-top:10px;">Mova o mouse para pegar o suco!</p>
-                </div>
-
+            <div class="shorts-item">
+                <iframe src="https://www.youtube.com/embed/ALZHF5UqnU4" allowfullscreen></iframe>
+                <div class="shorts-title">Machimelo + Orelhas = Combo</div>
             </div>
-        </section>
-    </div>
+
+            <div class="shorts-item">
+                <iframe src="https://www.youtube.com/embed/gGC0TPp0sZU" allowfullscreen></iframe>
+                <div class="shorts-title">Recorde Mundial de Orelhas</div>
+            </div>
+
+        </div>
+
+        <p style="text-align: center; margin-top: 40px; font-size: 2rem; opacity: 0.9;">
+            Role para o lado → Mais shorts insanos das orelhas gigantes
+        </p>
+    </section>
 
     <footer>
-        <p>🌍 Homem Mais Orelhudo do Mundo • Feito com muito meme e amor pelas orelhas gigantes 👂</p>
-        <p style="margin-top: 25px; font-size: 1.6rem;">Cilurilo • Machimello • Orelhas Épicas</p>
+        <p>🌍 Homem Mais Orelhudo do Mundo • As orelhas mais famosas do planeta 👂</p>
+        <p style="margin-top: 30px; font-size: 1.7rem;">Feito com muito respeito e meme • GitHub Pages</p>
     </footer>
 
+    <a href="https://github.com" target="_blank" class="github">
+        📤 SUBIR NO GITHUB
+    </a>
+
     <script>
-        // Navegação
-        function showTab(n) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.getElementById('tab' + n).classList.add('active');
-            
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.nav-btn')[n].classList.add('active');
-        }
-
-        // Áudio principal
-        let mainAudio = null;
-        function initMainAudio() {
-            mainAudio = document.createElement('iframe');
-            mainAudio.style.position = 'absolute';
-            mainAudio.style.width = '0';
-            mainAudio.style.height = '0';
-            mainAudio.style.opacity = '0';
-            mainAudio.src = "https://www.youtube.com/embed/ALZHF5UqnU4?autoplay=1&loop=1&playlist=ALZHF5UqnU4";
-            mainAudio.allow = "autoplay";
-            document.body.appendChild(mainAudio);
-        }
-
-        function toggleMainAudio() {
-            const btn = document.getElementById('mainAudioBtn');
-            btn.textContent = btn.textContent.includes('LIGADO') ? '🔇 ÁUDIO DESLIGADO' : '🔊 ÁUDIO LIGADO';
-        }
-
-        // Músicas
-        const musicIds = ["ALZHF5UqnU4", "0mV4iWAy8dU", "C5f1f0j8Z8U", "k2qgadSvNyU"];
-        function playMusic(index) {
-            const iframe = document.createElement('iframe');
-            iframe.style.position = 'absolute';
-            iframe.style.opacity = '0';
-            iframe.src = `https://www.youtube.com/embed/${musicIds[index]}?autoplay=1`;
-            document.body.appendChild(iframe);
-        }
-
-        // Jogo 1 - Clicker
-        let clickerScore = 0;
-        const clickerCanvas = document.getElementById('clickerCanvas');
-        const ctx1 = clickerCanvas.getContext('2d');
-
-        function drawClicker() {
-            ctx1.clearRect(0, 0, 380, 360);
-            ctx1.font = '90px VT323';
-            ctx1.fillStyle = '#ffcc00';
-            ctx1.fillText('👂', 130, 200);
-            ctx1.font = '35px VT323';
-            ctx1.fillStyle = '#fff';
-            ctx1.fillText('CLIQUE NAS ORELHAS!', 40, 300);
-        }
-
-        clickerCanvas.addEventListener('click', (e) => {
-            const rect = clickerCanvas.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            if (x > 100 && x < 280 && y > 80 && y < 250) {
-                clickerScore += Math.floor(Math.random() * 8) + 5;
-                document.getElementById('score').textContent = clickerScore;
-                
-                ctx1.fillStyle = '#ffff00';
-                ctx1.font = '50px VT323';
-                ctx1.fillText('+' + (Math.floor(Math.random()*8)+5), x + 20, y - 20);
-                
-                setTimeout(drawClicker, 120);
-            }
+        console.log('%c👂 Site do Homem Mais Orelhudo do Mundo carregado com sucesso!', 'color: #ffcc00; font-size: 22px; font-family: monospace;');
+        
+        // Efeito de vibração nas orelhas ao clicar na tela
+        document.addEventListener('click', () => {
+            console.log('👂 ORELHAS VIBRANDO!');
         });
-
-        function resetClicker() {
-            clickerScore = 0;
-            document.getElementById('score').textContent = 0;
-        }
-
-        // Jogo 2 - Suco do Silulo
-        let sucoScore = 0;
-        let sucoY = 30;
-        let sucoX = 180;
-        const sucoCanvas = document.getElementById('sucoCanvas');
-        const ctx2 = sucoCanvas.getContext('2d');
-
-        function gameLoopSuco() {
-            ctx2.clearRect(0, 0, 380, 360);
-            ctx2.fillStyle = '#00f0ff';
-            ctx2.fillRect(sucoX, sucoY, 45, 70);
-            ctx2.fillStyle = '#ffffff';
-            ctx2.fillText('🥤', sucoX + 5, sucoY + 55);
-
-            sucoY += 7.5;
-
-            if (sucoY > 380) {
-                sucoY = -50;
-                sucoX = Math.random() * 300 + 40;
-            }
-
-            requestAnimationFrame(gameLoopSuco);
-        }
-
-        sucoCanvas.addEventListener('mousemove', (e) => {
-            const rect = sucoCanvas.getBoundingClientRect();
-            const mouseX = e.clientX - rect.left;
-            
-            if (Math.abs(mouseX - sucoX) < 60 && sucoY > 100 && sucoY < 280) {
-                sucoScore += 15;
-                document.getElementById('sucoScore').textContent = sucoScore;
-                sucoY = -50;
-                sucoX = Math.random() * 300 + 40;
-            }
-        });
-
-        // Inicialização
-        window.onload = () => {
-            initMainAudio();
-            drawClicker();
-            gameLoopSuco();
-            showTab(0);
-            console.log('%c👂 Site do Homem Mais Orelhudo do Mundo - Versão Melhorada carregada!', 'color:#ffcc00; font-size:24px');
-        };
     </script>
 </body>
 </html>
