@@ -10,11 +10,11 @@
             padding: 0;
             box-sizing: border-box;
         }
-      
+     
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), 
-                        url('https://images.alphacoders.com/134/1340585.jpg') center/cover no-repeat fixed;
+            background: linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.88)),
+                        url('https://4kwallpapers.com/images/wallpapers/yoichi-isagi-blue-3840x2160-20008.jpg') center/cover no-repeat fixed;
             color: #e2e8f0;
             line-height: 1.6;
             overflow-x: hidden;
@@ -111,7 +111,6 @@
             color: #a78bfa;
             font-size: 0.95rem;
         }
-
         /* Efeitos visuais */
         .effect1::after {
             content: '';
@@ -127,7 +126,6 @@
             50% { opacity: 0.8; }
             100% { transform: scale(2); opacity: 0; }
         }
-
         .effect2::after {
             content: '';
             position: absolute;
@@ -143,10 +141,9 @@
     </style>
 </head>
 <body>
-    <!-- Música de fundo - Primeira abertura de Jujutsu Kaisen (Kaikai Kitan) em loop -->
+    <!-- Música de fundo - Kaikai Kitan (Jujutsu Kaisen Opening 1) -->
     <audio id="bgMusic" loop autoplay>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"> 
-        <!-- Substitua o link acima por um link direto real de "Kaikai Kitan" quando encontrar um MP3 público estável -->
+        <source src="https://25918135-jujutsu-kaisen.mp3.pm/song/188569540-opening-full-kaikai-kitan-by-eve/" type="audio/mpeg">
     </audio>
 
     <!-- Efeitos sonoros -->
@@ -168,7 +165,6 @@
             <h1>Tipos de Sistemas Operacionais</h1>
             <p class="subtitle">Entenda os 4 principais tipos de SO</p>
         </header>
-
         <div class="cards">
             <!-- Desktop -->
             <div class="card" onclick="playSound1(this)">
@@ -181,7 +177,6 @@
                     <li>Produtividade, jogos, edição</li>
                 </ul>
             </div>
-
             <!-- Mobile -->
             <div class="card" onclick="playSound2(this)">
                 <div class="icon">📱</div>
@@ -193,7 +188,6 @@
                     <li>Otimização para toque e bateria</li>
                 </ul>
             </div>
-
             <!-- Servidores -->
             <div class="card" onclick="playSound3(this)">
                 <div class="icon">🌐</div>
@@ -205,7 +199,6 @@
                     <li>Foco: estabilidade e segurança</li>
                 </ul>
             </div>
-
             <!-- Embarcados -->
             <div class="card" onclick="playSound4(this)">
                 <div class="icon">🤖</div>
@@ -218,11 +211,9 @@
                 </ul>
             </div>
         </div>
-
         <div style="text-align: center;">
             <a href="index.html" class="btn-voltar">← Voltar para a Mochila</a>
         </div>
-
         <footer>
             <p>Feito por Cristiano Ronaldo</p>
         </footer>
@@ -240,7 +231,6 @@
             card.classList.add('effect1');
             setTimeout(() => card.classList.remove('effect1'), 1600);
         }
-
         function playSound2(card) {
             const sound = document.getElementById('sound2');
             sound.currentTime = 0;
@@ -249,7 +239,6 @@
             card.classList.add('effect2');
             setTimeout(() => card.classList.remove('effect2'), 1000);
         }
-
         function playSound3(card) {
             const sound = document.getElementById('sound3');
             sound.currentTime = 0;
@@ -258,7 +247,6 @@
             card.style.transform = 'scale(1.15)';
             setTimeout(() => card.style.transform = '', 500);
         }
-
         function playSound4(card) {
             const sound = document.getElementById('sound4');
             sound.currentTime = 0;
