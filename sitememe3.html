@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Burro Mais Orelhudo do Mundo 🐴👂</title>
+    <title>Homem Mais Orelhudo do Brasil 👂🇧🇷</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
@@ -24,7 +24,7 @@
             overflow-x: hidden;
         }
 
-        /* FOTO DE FUNDO - APENAS ESSA IMAGEM */
+        /* FUNDO PRINCIPAL - SUA FOTO */
         .background {
             position: fixed;
             top: 0;
@@ -35,7 +35,22 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            z-index: -3;
+        }
+
+        /* FUNDO CAVALO MEME (leve) */
+        .cavalo-meme {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.imgur.com/0z3fK8J.jpeg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
             z-index: -2;
+            mix-blend-mode: overlay;
         }
 
         .overlay {
@@ -44,7 +59,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.78), rgba(30,20,0,0.88));
+            background: linear-gradient(rgba(0,0,0,0.78), rgba(40,20,0,0.88));
             z-index: -1;
         }
 
@@ -58,101 +73,81 @@
             position: relative;
         }
 
-        .hero-content {
-            z-index: 2;
-            max-width: 1000px;
-            padding: 0 20px;
-        }
-
         .hero h1 {
             font-family: 'Press Start 2P', cursive;
-            font-size: 5.2rem;
+            font-size: 5rem;
             line-height: 1.05;
             text-shadow: 0 0 30px var(--amarelo), 0 0 60px var(--laranja), 0 0 80px #000;
-            margin-bottom: 20px;
             color: #ffdd88;
         }
 
         .hero .subtitle {
-            font-size: 3.6rem;
+            font-size: 3.5rem;
             color: #ffcc00;
             text-shadow: 0 0 40px #ffaa00;
-        }
-
-        .record {
-            font-size: 2.6rem;
-            background: rgba(255, 204, 0, 0.28);
-            border: 8px solid #ffcc00;
-            padding: 22px 60px;
-            display: inline-block;
-            margin: 30px 0;
-            box-shadow: 0 0 65px #ffcc00;
         }
 
         /* SEÇÕES */
         section {
             padding: 100px 20px;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             position: relative;
             z-index: 2;
         }
 
-        .about, .music-section {
+        .about, .music-section, .shorts-section {
             background: rgba(20, 15, 5, 0.95);
             backdrop-filter: blur(12px);
             margin-bottom: 40px;
+            border-radius: 30px;
+            padding: 50px;
         }
 
         h2 {
             font-family: 'Press Start 2P', cursive;
-            font-size: 3.8rem;
+            font-size: 3.6rem;
             color: #ffcc00;
             text-align: center;
-            margin-bottom: 60px;
-            text-shadow: 0 0 30px #ff8800;
+            margin-bottom: 50px;
         }
 
         .card {
             background: rgba(255, 204, 0, 0.15);
             border: 7px solid #ffcc00;
             padding: 40px;
-            border-radius: 30px;
+            border-radius: 25px;
             margin: 20px;
-            box-shadow: 0 0 50px rgba(255, 204, 0, 0.7);
         }
 
         .orelhas {
-            font-size: 7.5rem;
-            animation: orelha-vibra 1.6s infinite alternate;
+            font-size: 8rem;
+            animation: orelha-vibra 1.5s infinite alternate;
             text-align: center;
-            margin: 20px 0;
         }
 
         @keyframes orelha-vibra {
-            from { transform: rotate(-22deg); }
-            to { transform: rotate(22deg); }
+            from { transform: rotate(-25deg); }
+            to { transform: rotate(25deg); }
         }
 
-        /* SEÇÃO DE MÚSICAS */
+        /* PLAYLIST MACHIMELLO */
         .music-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
         }
 
         .music-btn {
             background: #ffcc00;
             color: #000;
             border: none;
-            padding: 18px 25px;
-            font-size: 1.5rem;
+            padding: 18px;
+            font-size: 1.55rem;
             font-weight: bold;
             border-radius: 15px;
             cursor: pointer;
-            transition: all 0.3s;
             width: 100%;
-            text-align: left;
         }
 
         .music-btn:hover {
@@ -160,15 +155,51 @@
             transform: scale(1.05);
         }
 
+        /* SHORTS DO CILULIRO - ROLANDO COMO FEED */
+        .shorts-feed {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 20px 0;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+        }
+
+        .shorts-feed::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .shorts-item {
+            flex: 0 0 320px;
+            scroll-snap-align: start;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(255, 204, 0, 0.5);
+        }
+
+        .shorts-item iframe {
+            width: 100%;
+            height: 520px;
+            border: none;
+        }
+
+        .shorts-title {
+            text-align: center;
+            padding: 12px;
+            background: #ffcc00;
+            color: #000;
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
         footer {
             background: #111;
             padding: 80px 20px;
             text-align: center;
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             border-top: 10px solid #ffcc00;
         }
 
-        /* CONTROLES */
         .audio-controls {
             position: fixed;
             top: 25px;
@@ -197,11 +228,12 @@
 </head>
 <body>
 
-    <!-- FOTO DE FUNDO -->
+    <!-- FUNDOS -->
     <div class="background"></div>
+    <div class="cavalo-meme"></div>
     <div class="overlay"></div>
 
-    <!-- CONTROLE PRINCIPAL -->
+    <!-- CONTROLE DE ÁUDIO PRINCIPAL -->
     <div class="audio-controls">
         <button onclick="toggleMainAudio()" id="mainAudioBtn" style="background:none;border:none;color:#ffcc00;font-size:1.8rem;cursor:pointer;">
             🔊 ÁUDIO LIGADO
@@ -210,118 +242,141 @@
 
     <!-- HERO -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>O BURRO<br>MAIS ORELHUDO<br>DO MUNDO</h1>
-            <p class="subtitle">Derrick & Bambou 🐴👂</p>
-            <div class="record">🏆 GUINNESS WORLD RECORDS 🏆</div>
+        <div>
+            <h1>HOMEM MAIS<br>ORELHUDO<br>DO BRASIL</h1>
+            <p class="subtitle">O rei das orelhas gigantes 👂🇧🇷</p>
         </div>
     </section>
 
     <!-- SOBRE -->
     <section class="about">
-        <h2>OS GIGANTES ORELHUDOS</h2>
+        <h2>O LENDÁRIO ORELHUDO BRASILEIRO</h2>
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;">
             <div class="card">
-                <h3 style="font-size: 3.2rem; color: #ffdd55;">🐴 DERRICK</h3>
-                <p style="font-size: 2.1rem;">O burro mais alto do mundo • 1,67m</p>
+                <h3 style="font-size: 3rem; color: #ffdd55;">👂 ORELHAS ÉPICAS</h3>
+                <p style="font-size: 2rem;">O homem mais orelhudo do Brasil! Ninguém chega perto.</p>
             </div>
             <div class="card">
-                <h3 style="font-size: 3.2rem; color: #ffdd55;">👂 BAMBOU</h3>
-                <p style="font-size: 2.1rem;">O burro mais orelhudo do mundo</p>
+                <h3 style="font-size: 3rem; color: #ffdd55;">🔥 LENDÁRIO NACIONAL</h3>
+                <p style="font-size: 2rem;">As orelhas dele são tão grandes que viraram meme no país inteiro.</p>
                 <div class="orelhas">👂 👂</div>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO DE MÚSICAS / PLAYLIST MACHIMELLO -->
+    <!-- PLAYLIST MACHIMELLO -->
     <section class="music-section">
-        <h2>🎵 MÚSICAS DO MACHIMELLO (Marshmello)</h2>
-        <p style="text-align:center; font-size:1.8rem; margin-bottom:40px;">Escolha uma música para tocar:</p>
-        
+        <h2>🎵 MÚSICAS DO MACHIMELLO</h2>
         <div class="music-grid">
-            <button class="music-btn" onclick="playMusic(0)">🔊 Alone (clássico do Machimelo)</button>
-            <button class="music-btn" onclick="playMusic(1)">🔊 Happier (ft. Bastille)</button>
-            <button class="music-btn" onclick="playMusic(2)">🔊 FRIENDS (ft. Anne-Marie)</button>
-            <button class="music-btn" onclick="playMusic(3)">🔊 Stars</button>
-            <button class="music-btn" onclick="playMusic(4)">🔊 Unity</button>
-            <button class="music-btn" onclick="playMusic(5)">🔊 Silence (ft. Khalid)</button>
+            <button class="music-btn" onclick="playMusic(0)">Alone</button>
+            <button class="music-btn" onclick="playMusic(1)">Happier</button>
+            <button class="music-btn" onclick="playMusic(2)">FRIENDS</button>
+            <button class="music-btn" onclick="playMusic(3)">Stars</button>
+            <button class="music-btn" onclick="playMusic(4)">Unity</button>
+            <button class="music-btn" onclick="playMusic(5)">Silence</button>
         </div>
+    </section>
 
-        <p style="text-align:center; margin-top:40px; font-size:1.6rem; opacity:0.8;">
-            Clique nos botões acima para trocar a música • O áudio principal continua tocando no fundo
+    <!-- SHORTS DO CILULIRO - FEED ROLANDO -->
+    <section class="shorts-section">
+        <h2>📱 SHORTS DO CILULIRO (rolando sem parar)</h2>
+        <p style="text-align:center; margin-bottom:30px; font-size:1.8rem;">Todos os melhores shorts do canal dele 🔥</p>
+        
+        <div class="shorts-feed">
+            <!-- Short 1 -->
+            <div class="shorts-item">
+                <iframe src="https://www.youtube.com/embed/Vy8V3YJE-TI" allowfullscreen></iframe>
+                <div class="shorts-title">Short 1 - Ciluliro 🔥</div>
+            </div>
+            
+            <!-- Short 2 -->
+            <div class="shorts-item">
+                <iframe src="https://www.youtube.com/embed/9n7BgK7xzUA" allowfullscreen></iframe>
+                <div class="shorts-title">Short 2 - Ciluliro 🔥</div>
+            </div>
+            
+            <!-- Mais do canal (você pode adicionar quantos quiser) -->
+            <div class="shorts-item">
+                <iframe src="https://www.youtube.com/embed/ALZHF5UqnU4" allowfullscreen></iframe>
+                <div class="shorts-title">Ciluliro Clássico</div>
+            </div>
+            
+            <div class="shorts-item">
+                <iframe src="https://www.youtube.com/embed/Vy8V3YJE-TI" allowfullscreen></iframe>
+                <div class="shorts-title">Ciluliro Epico</div>
+            </div>
+            
+            <div class="shorts-item">
+                <iframe src="https://www.youtube.com/embed/9n7BgK7xzUA" allowfullscreen></iframe>
+                <div class="shorts-title">Ciluliro 2026</div>
+            </div>
+            
+            <div class="shorts-item">
+                <iframe src="https://www.youtube.com/embed/ALZHF5UqnU4" allowfullscreen></iframe>
+                <div class="shorts-title">Mais um do Ciluliro</div>
+            </div>
+        </div>
+        
+        <p style="text-align:center; margin-top:30px; font-size:1.6rem; opacity:0.9;">
+            Role para o lado → Shorts do canal do Ciluliro rolando infinitamente
         </p>
     </section>
 
     <footer>
-        <p>Feito com muito respeito aos maiores orelhudos do planeta 🐴👂</p>
-        <p style="margin-top: 30px;">Radcliffe Donkey Sanctuary • Inglaterra</p>
-        <p style="margin-top: 40px; font-size: 1.6rem;">Site 100% GitHub Pages</p>
+        <p>Site oficial do Homem Mais Orelhudo do Brasil 👂🇧🇷</p>
+        <p style="margin-top: 20px;">Com todos os shorts do Ciluliro + playlist Machimello + cavalo meme de fundo</p>
+        <p style="margin-top: 40px; font-size: 1.6rem;">Feito com muito meme e GitHub Pages</p>
     </footer>
 
-    <!-- BOTÃO GITHUB -->
     <a href="https://github.com" target="_blank" class="github">
         📤 SUBIR NO GITHUB
     </a>
 
     <script>
-        // Áudio principal de fundo (Alone - Machimelo)
-        let mainAudioIframe = null;
+        // Áudio principal (Alone - Machimelo)
+        let mainAudio = null;
         let isMainPlaying = true;
 
         function initMainAudio() {
-            mainAudioIframe = document.createElement('iframe');
-            mainAudioIframe.style.position = 'absolute';
-            mainAudioIframe.style.width = '0';
-            mainAudioIframe.style.height = '0';
-            mainAudioIframe.style.opacity = '0';
-            mainAudioIframe.src = "https://www.youtube.com/embed/ALZHF5UqnU4?autoplay=1&loop=1&playlist=ALZHF5UqnU4&mute=0";
-            mainAudioIframe.allow = "autoplay";
-            document.body.appendChild(mainAudioIframe);
+            mainAudio = document.createElement('iframe');
+            mainAudio.style.position = 'absolute';
+            mainAudio.style.width = '0';
+            mainAudio.style.height = '0';
+            mainAudio.style.opacity = '0';
+            mainAudio.src = "https://www.youtube.com/embed/ALZHF5UqnU4?autoplay=1&loop=1&playlist=ALZHF5UqnU4";
+            mainAudio.allow = "autoplay";
+            document.body.appendChild(mainAudio);
         }
 
         function toggleMainAudio() {
             const btn = document.getElementById('mainAudioBtn');
             isMainPlaying = !isMainPlaying;
             btn.textContent = isMainPlaying ? '🔊 ÁUDIO LIGADO' : '🔇 ÁUDIO DESLIGADO';
-            console.log(isMainPlaying ? '🔊 Áudio principal ligado' : '🔇 Áudio principal pausado');
         }
 
-        // Playlist de músicas do Machimelo (IDs do YouTube)
-        const musicList = [
-            "ALZHF5UqnU4",   // Alone
-            "0mV4iWAy8dU",   // Happier (ft. Bastille)
-            "C5f1f0j8Z8U",   // FRIENDS (ft. Anne-Marie)
-            "A57B7B6w3kw",   // Stars
-            "Ktu843qdrWE",   // Unity
-            "k2qgadSvNyU"    // Silence (ft. Khalid)
-        ];
-
-        let currentMusicIframe = null;
+        // Playlist Machimello
+        const musicIds = ["ALZHF5UqnU4", "0mV4iWAy8dU", "C5f1f0j8Z8U", "A57B7B6w3kw", "Ktu843qdrWE", "k2qgadSvNyU"];
+        let currentMusic = null;
 
         function playMusic(index) {
-            if (currentMusicIframe) {
-                currentMusicIframe.remove();
-            }
-
-            currentMusicIframe = document.createElement('iframe');
-            currentMusicIframe.style.position = 'absolute';
-            currentMusicIframe.style.width = '0';
-            currentMusicIframe.style.height = '0';
-            currentMusicIframe.style.opacity = '0';
-            currentMusicIframe.src = `https://www.youtube.com/embed/${musicList[index]}?autoplay=1`;
-            currentMusicIframe.allow = "autoplay";
-            document.body.appendChild(currentMusicIframe);
-
-            console.log(`🎵 Tocando música ${index + 1} do Machimelo`);
+            if (currentMusic) currentMusic.remove();
+            currentMusic = document.createElement('iframe');
+            currentMusic.style.position = 'absolute';
+            currentMusic.style.width = '0';
+            currentMusic.style.height = '0';
+            currentMusic.style.opacity = '0';
+            currentMusic.src = `https://www.youtube.com/embed/${musicIds[index]}?autoplay=1`;
+            currentMusic.allow = "autoplay";
+            document.body.appendChild(currentMusic);
         }
 
         // Inicialização
         window.onload = () => {
             initMainAudio();
-            console.log('%c🐴 Site do Burro Mais Orelhudo + Playlist Machimelo carregado!', 'color: #ffcc00; font-size: 20px;');
+            console.log('%c👂 Site do Homem Mais Orelhudo do Brasil + Shorts do Ciluliro carregado!', 'color: #ffcc00; font-size: 20px;');
         };
 
-        // Efeito nas orelhas
+        // Efeito orelhas
         document.addEventListener('click', () => {
             document.querySelectorAll('.orelhas').forEach(el => {
                 el.style.animation = 'none';
