@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orelhudo Suco Azul • Site Oficial</title>
+    <title>Burro Mais Orelhudo & Mais Alto do Mundo 🐴👂</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
         :root {
-            --azul-silulo: #00f0ff;
+            --orelha: #ffcc00;
         }
 
         * {
@@ -22,112 +22,72 @@
             color: white;
             background: #0a0a0a;
             overflow-x: hidden;
+            line-height: 1.4;
         }
 
-        /* VIDEO DE FUNDO */
-        .video-background {
+        /* IMAGEM DE FUNDO */
+        .background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            overflow: hidden;
+            background-image: url('https://i.imgur.com/f5sA3.png'); /* Substitua pelo link direto da sua imagem se preferir */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            z-index: -2;
         }
 
-        .video-background video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-        }
-
-        .video-overlay {
+        .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(
-                rgba(10, 10, 25, 0.75),
-                rgba(0, 20, 40, 0.85)
-            );
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(20,10,0,0.85));
             z-index: -1;
         }
 
         /* HERO */
         .hero {
             height: 100vh;
-            min-height: 700px;
-            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            position: relative;
         }
 
         .hero-content {
-            position: relative;
             z-index: 2;
-            max-width: 900px;
-            padding: 0 20px;
+            max-width: 950px;
+            padding: 20px;
         }
 
         .hero h1 {
             font-family: 'Press Start 2P', cursive;
-            font-size: 4.8rem;
-            text-shadow: 
-                0 0 20px var(--azul-silulo),
-                0 0 50px var(--azul-silulo);
-            margin-bottom: 15px;
-            line-height: 1.05;
+            font-size: 4.5rem;
+            text-shadow: 0 0 25px #ffcc00, 0 0 50px #ff8800;
+            margin-bottom: 20px;
+            color: #ffdd55;
         }
 
         .hero .subtitle {
-            font-size: 3rem;
-            color: var(--azul-silulo);
-            text-shadow: 0 0 30px #00f0ff;
-            margin-bottom: 25px;
+            font-size: 3.2rem;
+            color: #ffcc00;
+            text-shadow: 0 0 30px #ffaa00;
+            margin-bottom: 30px;
         }
 
-        /* SUCO FLUTUANTE */
-        .suco-container {
-            position: absolute;
-            bottom: 15%;
-            right: 10%;
-            z-index: 5;
-            animation: suco-float 3.5s ease-in-out infinite;
-            filter: drop-shadow(0 0 40px #00f0ff);
-        }
-
-        @keyframes suco-float {
-            0%, 100% { transform: translateY(0) rotate(-5deg); }
-            50% { transform: translateY(-30px) rotate(12deg); }
-        }
-
-        .suco-svg {
-            width: 240px;
-            height: auto;
-        }
-
-        .suco-label {
-            position: absolute;
-            top: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #000;
-            color: var(--azul-silulo);
-            padding: 10px 30px;
-            font-size: 1.5rem;
-            border: 5px solid var(--azul-silulo);
-            box-shadow: 0 0 30px var(--azul-silulo);
-            white-space: nowrap;
-            z-index: 6;
+        .record {
+            font-size: 2.2rem;
+            background: rgba(255, 204, 0, 0.2);
+            border: 6px solid #ffcc00;
+            padding: 15px 40px;
+            display: inline-block;
+            margin: 20px 0;
+            box-shadow: 0 0 40px #ffcc00;
         }
 
         /* SEÇÕES */
@@ -140,108 +100,86 @@
         }
 
         .about {
-            background: rgba(10, 10, 30, 0.95);
-            backdrop-filter: blur(8px);
+            background: rgba(30, 20, 0, 0.92);
+            backdrop-filter: blur(10px);
         }
 
-        .about h2 {
+        h2 {
             font-family: 'Press Start 2P', cursive;
-            font-size: 3.2rem;
-            color: var(--azul-silulo);
+            font-size: 3.5rem;
+            color: #ffcc00;
             text-align: center;
             margin-bottom: 60px;
+            text-shadow: 0 0 20px #ff8800;
         }
 
         .card {
-            background: rgba(0, 240, 255, 0.08);
-            border: 6px solid var(--azul-silulo);
-            padding: 35px;
-            border-radius: 20px;
+            background: rgba(255, 204, 0, 0.1);
+            border: 6px solid #ffcc00;
+            padding: 40px;
+            border-radius: 25px;
             margin: 25px;
-            box-shadow: 0 0 35px rgba(0, 240, 255, 0.5);
+            box-shadow: 0 0 40px rgba(255, 204, 0, 0.6);
             transition: all 0.4s;
         }
 
         .card:hover {
-            transform: scale(1.08) rotate(2deg);
-            box-shadow: 0 0 60px #00f0ff;
+            transform: scale(1.06) rotate(2deg);
+        }
+
+        .orelhas {
+            font-size: 6rem;
+            animation: orelha-vibra 1.2s infinite alternate;
+        }
+
+        @keyframes orelha-vibra {
+            from { transform: rotate(-15deg); }
+            to { transform: rotate(15deg); }
         }
 
         footer {
-            background: #000;
-            padding: 70px 20px;
+            background: #111;
+            padding: 80px 20px;
             text-align: center;
-            font-size: 1.6rem;
-            border-top: 8px solid var(--azul-silulo);
+            font-size: 1.8rem;
+            border-top: 8px solid #ffcc00;
         }
 
-        /* BOTÃO PARA O SITE DO CILURILO (MOCHILA) */
-        .mochila-btn {
+        .audio-controls {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            z-index: 100;
+            background: rgba(0,0,0,0.75);
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: 4px solid #ffcc00;
+            font-size: 1.5rem;
+        }
+
+        .github {
             position: fixed;
             bottom: 30px;
-            right: 30px;
-            z-index: 999;
-            background: linear-gradient(135deg, #6366f1, #a5b4fc);
-            color: #000;
-            padding: 16px 28px;
-            border-radius: 9999px;
-            font-size: 1.35rem;
-            font-weight: bold;
-            text-decoration: none;
-            box-shadow: 0 0 30px #00f0ff,
-                        0 10px 30px rgba(99, 102, 241, 0.6);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.3s;
-            border: 4px solid #00f0ff;
-        }
-
-        .mochila-btn:hover {
-            transform: scale(1.12) rotate(5deg);
-            box-shadow: 0 0 50px #00f0ff;
-        }
-
-        .github-badge {
-            position: fixed;
-            bottom: 25px;
-            left: 25px;
+            left: 30px;
             background: #000;
-            color: #00f0ff;
-            padding: 12px 25px;
-            border: 4px solid #00f0ff;
-            font-size: 1.3rem;
-            z-index: 999;
+            color: #ffcc00;
+            padding: 14px 28px;
+            border: 4px solid #ffcc00;
+            font-size: 1.4rem;
             text-decoration: none;
-            box-shadow: 0 0 20px #00f0ff;
-        }
-
-        .controls {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
-            background: rgba(0,0,0,0.7);
-            padding: 10px 15px;
-            border-radius: 10px;
-            border: 2px solid #00f0ff;
+            z-index: 99;
         }
     </style>
 </head>
 <body>
 
-    <!-- VIDEO DE FUNDO -->
-    <div class="video-background">
-        <video autoplay muted loop playsinline id="bgVideo">
-            <source src="https://www.youtube.com/embed/r8REfh_cfdw?autoplay=1&mute=1&loop=1&playlist=r8REfh_cfdw" type="video/mp4">
-            Seu navegador não suporta vídeo de fundo.
-        </video>
-        <div class="video-overlay"></div>
-    </div>
+    <!-- FUNDO -->
+    <div class="background"></div>
+    <div class="overlay"></div>
 
-    <!-- CONTROLES DE ÁUDIO -->
-    <div class="controls">
-        <button onclick="toggleAudio()" id="audioBtn" style="background:none; border:none; color:#00f0ff; font-size:1.4rem; cursor:pointer;">
+    <!-- CONTROLE DE ÁUDIO -->
+    <div class="audio-controls">
+        <button onclick="toggleAudio()" id="audioBtn" style="background:none;border:none;color:#ffcc00;font-size:1.6rem;cursor:pointer;">
             🔊 ÁUDIO LIGADO
         </button>
     </div>
@@ -249,71 +187,68 @@
     <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
-            <h1>O MEU AMIGO<br><span style="color:#00f0ff;">ORELHUDO</span></h1>
-            <p class="subtitle">com o Suco do Silulo Azul na mão</p>
-            <p style="font-size: 2.4rem; margin: 30px 0 10px;">e o som do Cirilo rolando de fundo</p>
-        </div>
-
-        <!-- SUCO DO SILULO AZUL -->
-        <div class="suco-container">
-            <div class="suco-label">SUCO DO SILULO AZUL 🥤</div>
-            <svg class="suco-svg" viewBox="0 0 300 420" xmlns="http://www.w3.org/2000/svg">
-                <rect x="70" y="120" width="160" height="220" rx="25" ry="25" fill="#111" stroke="#00f0ff" stroke-width="28"/>
-                <rect x="85" y="150" width="130" height="170" rx="12" ry="12" fill="#00f0ff" opacity="0.92"/>
-                <rect x="98" y="158" width="35" height="145" fill="#ffffff" opacity="0.35"/>
-                <rect x="195" y="125" width="28" height="145" rx="12" fill="#ff00aa" transform="rotate(30 210 125)"/>
-                <circle cx="125" cy="195" r="17" fill="#fff" opacity="0.7"/>
-                <circle cx="175" cy="205" r="19" fill="#fff" opacity="0.65"/>
-                <circle cx="150" cy="115" r="38" fill="#00ffbb"/>
-                <text x="150" y="130" font-size="48" text-anchor="middle" fill="#000">🍹</text>
-            </svg>
+            <h1>O BURRO MAIS ORELHUDO<br>E MAIS ALTO DO MUNDO</h1>
+            <p class="subtitle">Derrick & Bambou 🐴👂</p>
+            <div class="record">
+                🏆 GUINNESS WORLD RECORDS 2026 🏆
+            </div>
+            <p style="font-size: 2.4rem; margin-top: 30px;">
+                Derrick: 1,67m de altura<br>
+                Bambou: Orelhas de 35cm cada!
+            </p>
         </div>
     </section>
 
-    <!-- SOBRE -->
+    <!-- SOBRE OS BURROS -->
     <section class="about">
-        <h2>👂 ORELHUDO + SUCO DO SILULO AZUL = LENDÁRIO</h2>
+        <h2>CONHEÇA OS GIGANTES ORELHUDOS</h2>
         
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-            <div class="card">
-                <h3 style="font-size: 2.6rem; color: #00f0ff;">🎵 ÁUDIO DO CIRILO</h3>
-                <p style="font-size: 1.9rem;">O famoso "sagu do Cirilo liru" tocando sem parar!</p>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+            
+            <!-- Derrick -->
+            <div class="card" style="flex: 1; min-width: 340px;">
+                <h3 style="font-size: 3rem; color: #ffdd55;">🐴 DERRICK</h3>
+                <p style="font-size: 2rem; margin: 20px 0;">O burro mais alto do mundo</p>
+                <p style="font-size: 1.9rem;">1,67 metro de pura altura!</p>
+                <p style="font-size: 1.7rem; margin-top: 25px;">
+                    Um gigante brincalhão que mora no Radcliffe Donkey Sanctuary na Inglaterra. 
+                    Ele é super carinhoso e adora interagir com as pessoas.
+                </p>
+                <div style="font-size: 5rem; margin-top: 30px;">🏆</div>
             </div>
-            <div class="card">
-                <h3 style="font-size: 2.6rem; color: #00f0ff;">🥤 SUCO NA MÃO</h3>
-                <p style="font-size: 1.9rem;">Nunca falta o Suco do Silulo Azul. É tradição!</p>
-            </div>
-            <div class="card">
-                <h3 style="font-size: 2.6rem; color: #00f0ff;">🔥 ENERGIA MÁXIMA</h3>
-                <p style="font-size: 1.9rem;">Orelhas + suco + som do Cirilo = combo imbatível</p>
+
+            <!-- Bambou -->
+            <div class="card" style="flex: 1; min-width: 340px;">
+                <h3 style="font-size: 3rem; color: #ffdd55;">👂 BAMBOU</h3>
+                <p style="font-size: 2rem; margin: 20px 0;">O burro mais orelhudo do mundo</p>
+                <p style="font-size: 1.9rem;">Orelhas de 35 centímetros!</p>
+                <p style="font-size: 1.7rem; margin-top: 25px;">
+                    Suas orelhas são lendárias. Ele adora tomar banho de lama e tem uma audição... questionável (às vezes ignora todo mundo).
+                </p>
+                <div class="orelhas">👂👂</div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>Feito com muito amor, suco azul e o som do Cirilo pro meu amigo Orelhudo 🥤👂</p>
-        <p style="margin-top: 25px;">2026 • GitHub Pages Edition</p>
+        <p>Feito com muito respeito aos maiores orelhudos do planeta 🐴👂</p>
+        <p style="margin-top: 20px; font-size: 2rem;">Radcliffe Donkey Sanctuary • Inglaterra • Guinness 2026</p>
+        <p style="margin-top: 40px;">Site 100% compatível com GitHub Pages</p>
     </footer>
 
-    <!-- BOTÃO PARA O SITE DO CILURILO (MOCHILA ACADÊMICA) -->
-    <a href="site2.html" class="mochila-btn" target="_blank">
-        <span style="font-size: 1.8rem;">🎒</span>
-        IR PARA O SITE DO CILURILO
-    </a>
-
     <!-- BOTÃO GITHUB -->
-    <a href="https://github.com" target="_blank" class="github-badge">
-        📤 FEITO PRO GITHUB
+    <a href="https://github.com" target="_blank" class="github">
+        📤 SUBIR NO GITHUB
     </a>
 
     <script>
-        // Áudio do Cirilo via iframe (YouTube)
+        // Áudio de fundo (YouTube)
         const youtubeEmbed = document.createElement('iframe');
         youtubeEmbed.style.position = 'absolute';
-        youtubeEmbed.style.width = '0';
-        youtubeEmbed.style.height = '0';
+        youtubeEmbed.style.width = '0px';
+        youtubeEmbed.style.height = '0px';
         youtubeEmbed.style.opacity = '0';
-        youtubeEmbed.src = "https://www.youtube.com/embed/r8REfh_cfdw?autoplay=1&loop=1&playlist=r8REfh_cfdw&mute=0";
+        youtubeEmbed.src = "https://www.youtube.com/embed/ALZHF5UqnU4?autoplay=1&loop=1&playlist=ALZHF5UqnU4&mute=0";
         youtubeEmbed.allow = "autoplay";
         document.body.appendChild(youtubeEmbed);
 
@@ -323,15 +258,20 @@
             const btn = document.getElementById('audioBtn');
             isPlaying = !isPlaying;
             btn.textContent = isPlaying ? '🔊 ÁUDIO LIGADO' : '🔇 ÁUDIO DESLIGADO';
-            console.log(isPlaying ? '🔊 Áudio do Cirilo ligado' : '🔇 Áudio do Cirilo pausado');
+            console.log(isPlaying ? '🔊 Áudio tocando' : '🔇 Áudio pausado');
         }
 
-        console.log('%c✅ Site do Orelhudo com link pro Cilurilo carregado!', 'color: #00f0ff; font-size: 20px;');
+        console.log('%c🐴 Site do Burro Mais Orelhudo carregado com sucesso!', 'color: #ffcc00; font-size: 22px; font-family: monospace;');
 
-        // Clique no suco faz ele pular mais forte
-        document.querySelector('.suco-container').addEventListener('click', function() {
-            this.style.animation = 'none';
-            setTimeout(() => this.style.animation = 'suco-float 1.8s ease-in-out infinite', 10);
+        // Clique na tela faz as orelhas "vibrarem" (efeito visual)
+        document.addEventListener('click', () => {
+            const orelhas = document.querySelectorAll('.orelhas');
+            if (orelhas.length) {
+                orelhas.forEach(el => {
+                    el.style.animation = 'none';
+                    setTimeout(() => el.style.animation = 'orelha-vibra 0.6s infinite alternate', 10);
+                });
+            }
         });
     </script>
 </body>
