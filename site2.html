@@ -112,66 +112,66 @@
             font-size: 0.95rem;
         }
 
-        /* Efeitos Jujutsu Kaisen */
-        .domain::after {
+        /* Efeitos visuais */
+        .effect1::after {
             content: '';
             position: absolute;
             inset: 0;
             background: radial-gradient(circle, rgba(192,38,211,0.6) 0%, transparent 70%);
             opacity: 0;
-            animation: domainExpansion 1.5s ease-out;
+            animation: effect1 1.5s ease-out;
             pointer-events: none;
         }
-        @keyframes domainExpansion {
+        @keyframes effect1 {
             0% { transform: scale(0.3); opacity: 0; }
             50% { opacity: 0.8; }
             100% { transform: scale(2); opacity: 0; }
         }
 
-        .hollow::after {
+        .effect2::after {
             content: '';
             position: absolute;
             inset: 0;
             background: linear-gradient(45deg, transparent, #a855f7, transparent);
             opacity: 0;
-            animation: hollowPurple 0.9s ease-out;
+            animation: effect2 0.9s ease-out;
         }
-        @keyframes hollowPurple {
+        @keyframes effect2 {
             0%, 100% { opacity: 0; }
             40% { opacity: 0.75; }
         }
     </style>
 </head>
 <body>
-    <!-- Música de fundo: SPECIALZ (You Are My Special) -->
-    <audio id="bgMusic" loop autoplay volume="0.25">
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"> <!-- Substitua por link real de SPECIALZ se encontrar um direto -->
-        Seu navegador não suporta áudio.
+    <!-- Música de fundo - Primeira abertura de Jujutsu Kaisen (Kaikai Kitan) em loop -->
+    <audio id="bgMusic" loop autoplay>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"> 
+        <!-- Substitua o link acima por um link direto real de "Kaikai Kitan" quando encontrar um MP3 público estável -->
     </audio>
 
-    <!-- Áudios Jujutsu Kaisen -->
-    <audio id="domainSound" preload="auto">
+    <!-- Efeitos sonoros -->
+    <audio id="sound1" preload="auto">
         <source src="https://www.myinstants.com/media/sounds/gojo-domain-expansion-60533.mp3" type="audio/mpeg">
     </audio>
-    <audio id="hollowSound" preload="auto">
+    <audio id="sound2" preload="auto">
         <source src="https://www.myinstants.com/media/sounds/hollow-purple-jjk-60677.mp3" type="audio/mpeg">
     </audio>
-    <audio id="jujutsuSound" preload="auto">
-        <source src="https://www.myinstants.com/media/sounds/jujutsu-kaisen-53691.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="sukunaSound" preload="auto">
+    <audio id="sound3" preload="auto">
         <source src="https://www.myinstants.com/media/sounds/domain-expansion-sukuna-17759.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="sound4" preload="auto">
+        <source src="https://www.myinstants.com/media/sounds/jujutsu-kaisen-53691.mp3" type="audio/mpeg">
     </audio>
 
     <div class="container">
         <header>
             <h1>Tipos de Sistemas Operacionais</h1>
-            <p class="subtitle">Entenda os 4 principais tipos de SO • Jujutsu Kaisen Edition 🔥</p>
+            <p class="subtitle">Entenda os 4 principais tipos de SO</p>
         </header>
 
         <div class="cards">
             <!-- Desktop -->
-            <div class="card" onclick="playDomain(this)">
+            <div class="card" onclick="playSound1(this)">
                 <div class="icon">💻</div>
                 <h2>Desktop</h2>
                 <p class="exemplo">Ex: Microsoft Windows, macOS, Linux</p>
@@ -183,7 +183,7 @@
             </div>
 
             <!-- Mobile -->
-            <div class="card" onclick="playHollow(this)">
+            <div class="card" onclick="playSound2(this)">
                 <div class="icon">📱</div>
                 <h2>Mobile</h2>
                 <p class="exemplo">Ex: Android, iOS</p>
@@ -195,7 +195,7 @@
             </div>
 
             <!-- Servidores -->
-            <div class="card" onclick="playSukuna(this)">
+            <div class="card" onclick="playSound3(this)">
                 <div class="icon">🌐</div>
                 <h2>Servidores</h2>
                 <p class="exemplo">Ex: Linux Server, Windows Server</p>
@@ -207,7 +207,7 @@
             </div>
 
             <!-- Embarcados -->
-            <div class="card" onclick="playJujutsu(this)">
+            <div class="card" onclick="playSound4(this)">
                 <div class="icon">🤖</div>
                 <h2>Embarcados (Embedded)</h2>
                 <p class="exemplo">Ex: TV, carro, micro-ondas</p>
@@ -224,36 +224,34 @@
         </div>
 
         <footer>
-            <p>Feito com ❤️ e muito Cursed Energy • You are my special!</p>
+            <p>Feito por Cristiano Ronaldo</p>
         </footer>
     </div>
 
     <script>
-        // Controle da música de fundo
         const bgMusic = document.getElementById('bgMusic');
-        bgMusic.volume = 0.22; // volume baixo para não atrapalhar
+        bgMusic.volume = 0.25;
 
-        // Funções de som Jujutsu Kaisen
-        function playDomain(card) {
-            const sound = document.getElementById('domainSound');
+        function playSound1(card) {
+            const sound = document.getElementById('sound1');
             sound.currentTime = 0;
             sound.volume = 0.75;
             sound.play().catch(() => {});
-            card.classList.add('domain');
-            setTimeout(() => card.classList.remove('domain'), 1600);
+            card.classList.add('effect1');
+            setTimeout(() => card.classList.remove('effect1'), 1600);
         }
 
-        function playHollow(card) {
-            const sound = document.getElementById('hollowSound');
+        function playSound2(card) {
+            const sound = document.getElementById('sound2');
             sound.currentTime = 0;
             sound.volume = 0.8;
             sound.play().catch(() => {});
-            card.classList.add('hollow');
-            setTimeout(() => card.classList.remove('hollow'), 1000);
+            card.classList.add('effect2');
+            setTimeout(() => card.classList.remove('effect2'), 1000);
         }
 
-        function playSukuna(card) {
-            const sound = document.getElementById('sukunaSound');
+        function playSound3(card) {
+            const sound = document.getElementById('sound3');
             sound.currentTime = 0;
             sound.volume = 0.7;
             sound.play().catch(() => {});
@@ -261,8 +259,8 @@
             setTimeout(() => card.style.transform = '', 500);
         }
 
-        function playJujutsu(card) {
-            const sound = document.getElementById('jujutsuSound');
+        function playSound4(card) {
+            const sound = document.getElementById('sound4');
             sound.currentTime = 0;
             sound.volume = 0.7;
             sound.play().catch(() => {});
@@ -270,10 +268,8 @@
             setTimeout(() => card.style.boxShadow = '', 700);
         }
 
-        // Inicia música ao carregar
         window.onload = () => {
-            console.log("%cYou are my special... Página carregada com Cursed Energy 🔥", "color:#c026d3; font-weight:bold");
-            // bgMusic.play().catch(() => {}); // descomente se quiser autoplay forçado
+            bgMusic.play().catch(() => {});
         };
     </script>
 </body>
