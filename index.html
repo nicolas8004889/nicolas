@@ -1096,50 +1096,97 @@ ta vendo isso, e a quantidade de linhas que tem esse codigo:<!DOCTYPE html>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
             
-            <!-- Aula X -->
-            <a href="site2.html" 
-               class="group glass flex flex-col items-center justify-center p-8 rounded-3xl border border-white/20 hover:border-sky-400 hover:shadow-2xl hover:shadow-sky-500/20 active:scale-95 text-center">
-                <div class="w-16 h-16 mb-5 bg-gradient-to-br from-sky-400 to-blue-500 rounded-3xl flex items-center justify-center text-4xl shadow-inner group-hover:rotate-12">
-                    📚
-                </div>
-                <span class="text-2xl font-semibold">Aula X</span>
-                <span class="text-xs text-sky-300 mt-1">Estudos e Aulas</span>
-            </a>
+          <!-- BOTÃO FLUTUANTE PARA ABRIR OS LINKS -->
+<button onclick="toggleSitesMenu()" 
+        id="main-btn"
+        class="fixed bottom-6 right-6 z-50 w-16 h-16 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-3xl flex items-center justify-center text-3xl shadow-2xl hover:scale-110 active:scale-95 transition-all">
+    <span id="btn-icon">🔗</span>
+</button>
 
-            <!-- Meme 1 -->
-            <a href="sitememe1.html" 
-               class="group glass flex flex-col items-center justify-center p-8 rounded-3xl border border-white/20 hover:border-pink-400 hover:shadow-2xl hover:shadow-pink-500/20 active:scale-95 text-center">
-                <div class="w-16 h-16 mb-5 bg-gradient-to-br from-pink-400 to-rose-500 rounded-3xl flex items-center justify-center text-4xl shadow-inner group-hover:scale-125">
-                    😂
-                </div>
-                <span class="text-2xl font-semibold">Meme 1</span>
-                <span class="text-xs text-pink-300 mt-1">Humor</span>
-            </a>
-
-            <!-- Meme 2 -->
-            <a href="meme2.html" 
-               class="group glass flex flex-col items-center justify-center p-8 rounded-3xl border border-white/20 hover:border-violet-400 hover:shadow-2xl hover:shadow-violet-500/20 active:scale-95 text-center">
-                <div class="w-16 h-16 mb-5 bg-gradient-to-br from-violet-400 to-purple-500 rounded-3xl flex items-center justify-center text-4xl shadow-inner group-hover:rotate-6">
-                    🤣
-                </div>
-                <span class="text-2xl font-semibold">Meme 2</span>
-                <span class="text-xs text-violet-300 mt-1">Humor</span>
-            </a>
-
-            <!-- Braille -->
-            <a href="braille.html" 
-               class="group glass flex flex-col items-center justify-center p-8 rounded-3xl border border-white/20 hover:border-indigo-400 hover:shadow-2xl hover:shadow-indigo-500/20 active:scale-95 text-center">
-                <div class="w-16 h-16 mb-5 bg-gradient-to-br from-indigo-400 to-blue-600 rounded-3xl flex items-center justify-center text-4xl shadow-inner group-hover:scale-110">
-                    ⠃
-                </div>
-                <span class="text-2xl font-semibold">Braille</span>
-                <span class="text-xs text-indigo-300 mt-1">Universo Tátil</span>
-            </a>
-
+<!-- MENU DE BOTÕES DOS SITES (inicia escondido) -->
+<div id="sites-menu" class="hidden fixed bottom-28 right-6 z-50 flex flex-col gap-3">
+    
+    <!-- Aula X -->
+    <a href="site2.html" 
+       class="glass flex items-center gap-4 px-6 py-4 rounded-3xl border border-white/20 hover:border-sky-400 hover:shadow-sky-500/30 group">
+        <div class="w-11 h-11 bg-gradient-to-br from-sky-400 to-blue-500 rounded-2xl flex items-center justify-center text-2xl shadow-inner">
+            📚
         </div>
-
-        <div class="text-center mt-12 text-white/40 text-xs">
-            Mochila Acadêmica • Todos os projetos conectados
+        <div>
+            <span class="block text-lg font-semibold">Aula X</span>
+            <span class="text-xs text-sky-300">Estudos</span>
         </div>
-    </div>
-</footer>
+    </a>
+
+    <!-- Meme 1 -->
+    <a href="sitememe1.html" 
+       class="glass flex items-center gap-4 px-6 py-4 rounded-3xl border border-white/20 hover:border-pink-400 hover:shadow-pink-500/30 group">
+        <div class="w-11 h-11 bg-gradient-to-br from-pink-400 to-rose-500 rounded-2xl flex items-center justify-center text-2xl shadow-inner">
+            😂
+        </div>
+        <div>
+            <span class="block text-lg font-semibold">Meme 1</span>
+            <span class="text-xs text-pink-300">Humor</span>
+        </div>
+    </a>
+
+    <!-- Meme 2 -->
+    <a href="meme2.html" 
+       class="glass flex items-center gap-4 px-6 py-4 rounded-3xl border border-white/20 hover:border-violet-400 hover:shadow-violet-500/30 group">
+        <div class="w-11 h-11 bg-gradient-to-br from-violet-400 to-purple-500 rounded-2xl flex items-center justify-center text-2xl shadow-inner">
+            🤣
+        </div>
+        <div>
+            <span class="block text-lg font-semibold">Meme 2</span>
+            <span class="text-xs text-violet-300">Humor</span>
+        </div>
+    </a>
+
+    <!-- Braille -->
+    <a href="braille.html" 
+       class="glass flex items-center gap-4 px-6 py-4 rounded-3xl border border-white/20 hover:border-indigo-400 hover:shadow-indigo-500/30 group">
+        <div class="w-11 h-11 bg-gradient-to-br from-indigo-400 to-blue-600 rounded-2xl flex items-center justify-center text-2xl shadow-inner">
+            ⠃
+        </div>
+        <div>
+            <span class="block text-lg font-semibold">Braille</span>
+            <span class="text-xs text-indigo-300">Universo Tátil</span>
+        </div>
+    </a>
+
+</div>
+
+<script>
+// Função para abrir e fechar o menu
+function toggleSitesMenu() {
+    const menu = document.getElementById('sites-menu');
+    const icon = document.getElementById('btn-icon');
+    
+    if (menu.classList.contains('hidden')) {
+        // Abrir
+        menu.classList.remove('hidden');
+        menu.classList.add('flex', 'flex-col');
+        icon.textContent = '✕';
+        icon.style.transform = 'rotate(90deg)';
+    } else {
+        // Fechar
+        menu.classList.add('hidden');
+        menu.classList.remove('flex', 'flex-col');
+        icon.textContent = '🔗';
+        icon.style.transform = 'rotate(0deg)';
+    }
+}
+
+// Fechar o menu ao clicar fora dele
+document.addEventListener('click', function(event) {
+    const menu = document.getElementById('sites-menu');
+    const mainBtn = document.getElementById('main-btn');
+    
+    if (!menu.contains(event.target) && !mainBtn.contains(event.target)) {
+        menu.classList.add('hidden');
+        menu.classList.remove('flex', 'flex-col');
+        document.getElementById('btn-icon').textContent = '🔗';
+        document.getElementById('btn-icon').style.transform = 'rotate(0deg)';
+    }
+});
+</script>
