@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Braille • O universo tátil que ilumina a escuridão. Aprenda, explore e sinta o Braille.">
+    <title>BRAILLE • Universo em Pontos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+
+        :root {
+            --braille-dot: #a5b4fc;
+        }
+
+        * {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, transform;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 200ms;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)),
+                        url('https://images.unsplash.com/photo-1464802686167-b939a7066a4a?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3840') center/cover fixed;
+            background-attachment: fixed;
+            color: #f1f5f9;
+            overflow-x: hidden;
+        }
+
+        .title-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Estrelas animadas no fundo */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background: transparent;
+            box-shadow: 
+                50px 80px 0 2px #fff,
+                120px 200px 0 1px #fff,
+                300px 150px 0 3px #fff,
+                450px 300px 0 1px #fff,
+                600px 80px 0 2px #fff,
+                750px 400px 0 1px #fff,
+                900px 120px 0 3px #fff,
+                1100px 350px 0 1px #fff,
+                1300px 90px 0 2px #fff,
+                1500px 280px 0 1px #fff;
+            animation: twinkle 8s infinite alternate ease-in-out;
+            opacity: 0.6;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.4; }
+            100% { opacity: 0.9; }
+        }
+
+        /* Estilo Braille - pontos brilhantes */
+        .braille-cell {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            width: 52px;
+            height: 78px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .dot {
+            width: 18px;
+            height: 18px;
+            background: var(--braille-dot);
+            border-radius: 50%;
+            box-shadow: 0 0 12px #a5b4fc;
+            opacity: 0;
+        }
+
+        .dot.active {
+            opacity: 1;
+            box-shadow: 0 0 20px #c7d2fe, 0 0 30px #6366f1;
+        }
+
+        .hero-braille {
+            font-size: 7rem;
+            line-height: 1;
+            letter-spacing: -12px;
+            filter: drop-shadow(0 0 30px #a5b4fc);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .section-title {
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '⠃⠗⠁⠊⠇⠇⠑';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2rem;
+            opacity: 0.2;
+            letter-spacing: 8px;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- NAV -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="w-11 h-11 bg-gradient-to-br from-indigo-400 to-violet-500 rounded-2xl flex items-center justify-center text-3xl shadow-inner">⠃</div>
+                <h1 class="title-font text-3xl font-bold tracking-[-2px]">BRAILLE</h1>
+                <span class="text-xs font-medium px-3 py-1 bg-white/10 rounded-3xl text-indigo-200">UNIVERSO EM PONTOS</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                <a href="#home" class="hover:text-indigo-300 flex items-center gap-2"><i class="fa-solid fa-house"></i> Início</a>
+                <a href="#historia" class="hover:text-indigo-300">História</a>
+                <a href="#alfabeto" class="hover:text-indigo-300">Alfabeto</a>
+                <a href="#conversor" class="hover:text-indigo-300">Conversor</a>
+                <a href="#curiosidades" class="hover:text-indigo-300">Curiosidades</a>
+            </div>
+
+            <div onclick="window.location.reload()" class="flex items-center gap-x-2 text-xs uppercase tracking-widest cursor-pointer hover:text-indigo-300">
+                <i class="fa-solid fa-rotate"></i>
+                <span>Reiniciar cosmos</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="home" class="min-h-screen flex items-center pt-20 relative">
+        <div class="stars"></div>
+        
+        <div class="max-w-7xl mx-auto px-8 text-center relative z-10">
+            <div class="mb-8 inline-flex items-center gap-3 bg-white/10 text-white text-sm font-medium px-6 py-3 rounded-3xl backdrop-blur-md">
+                <span class="relative flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-indigo-400"></span>
+                </span>
+                6 PONTOS • INFINITAS POSSIBILIDADES
+            </div>
+            
+            <h1 class="hero-braille text-white mb-6 leading-none">⠃⠗⠁⠊⠇⠇⠑</h1>
+            <h2 class="text-6xl md:text-7xl font-bold title-font tracking-[-3px] mb-4">O universo que você pode tocar</h2>
+            <p class="max-w-2xl mx-auto text-xl text-white/80 mb-12">
+                O sistema de leitura e escrita para pessoas cegas e com baixa visão.<br>
+                Um cosmos inteiro feito de apenas <span class="text-indigo-300 font-semibold">6 pontos</span>.
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#alfabeto" 
+                   class="glass px-10 py-5 rounded-3xl font-semibold text-lg flex items-center gap-3 hover:scale-105">
+                    <i class="fa-solid fa-eye-low-vision text-2xl"></i>
+                    VER O ALFABETO
+                </a>
+                <a href="#conversor" 
+                   class="bg-gradient-to-r from-indigo-500 to-violet-600 px-10 py-5 rounded-3xl font-semibold text-lg flex items-center gap-3 hover:scale-105">
+                    <i class="fa-solid fa-keyboard"></i>
+                    CONVERSOR AO VIVO
+                </a>
+            </div>
+
+            <div class="mt-16 text-white/40 text-sm flex items-center justify-center gap-8">
+                <div>⠁ ⠃ ⠉ ⠙ ⠑ ⠋ ⠛ ⠓</div>
+                <div class="h-px w-12 bg-white/30"></div>
+                <div>ESTRELAS QUE FALAM</div>
+                <div class="h-px w-12 bg-white/30"></div>
+                <div>⠊ ⠚ ⠅ ⠇ ⠍ ⠝ ⠕ ⠏</div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/40 text-xs tracking-widest">
+            <div class="mb-2">ROLE PARA EXPLORAR O COSMOS</div>
+            <i class="fa-solid fa-chevron-down animate-bounce text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- HISTÓRIA -->
+    <section id="historia" class="py-24 bg-black/40">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-center mb-16">
+                <span class="text-indigo-300 text-sm font-medium tracking-[2px]">1824 • FRANÇA</span>
+                <h2 class="section-title text-5xl font-bold title-font">A história que mudou o universo</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                <div class="md:col-span-5 glass rounded-3xl p-8">
+                    <div class="text-8xl mb-6">👁️‍🗨️</div>
+                    <p class="text-2xl leading-tight">
+                        Louis Braille, aos 15 anos, criou o sistema após perder a visão em um acidente. 
+                        Inspirado no código militar noturno, ele transformou 6 pontos em um universo de leitura.
+                    </p>
+                    <div class="mt-8 text-xs uppercase flex items-center gap-4">
+                        <div class="flex-1 h-px bg-white/30"></div>
+                        HOJE O BRAILLE É USADO EM MAIS DE 150 PAÍSES
+                        <div class="flex-1 h-px bg-white/30"></div>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-7">
+                    <div class="grid grid-cols-3 gap-6 text-center">
+                        <div class="glass rounded-3xl p-6">
+                            <div class="text-4xl mb-4">1809</div>
+                            <p class="text-sm">Nascimento de Louis Braille</p>
+                        </div>
+                        <div class="glass rounded-3xl p-6">
+                            <div class="text-4xl mb-4">1824</div>
+                            <p class="text-sm">Criação do sistema Braille</p>
+                        </div>
+                        <div class="glass rounded-3xl p-6">
+                            <div class="text-4xl mb-4">2026</div>
+                            <p class="text-sm">Ainda iluminando o mundo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ALFABETO -->
+    <section id="alfabeto" class="py-24">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-center mb-12">
+                <h2 class="section-title text-5xl font-bold title-font">O alfabeto de 6 pontos</h2>
+                <p class="text-white/60">Toque, leia e sinta cada estrela</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <!-- Exemplo de células (pode expandir, mas mostro algumas principais) -->
+                <div class="glass rounded-3xl p-6 text-center">
+                    <div class="braille-cell mx-auto mb-4">
+                        <div class="dot active"></div><div class="dot"></div>
+                        <div class="dot"></div><div class="dot"></div>
+                        <div class="dot"></div><div class="dot"></div>
+                    </div>
+                    <div class="text-3xl font-bold">A</div>
+                    <div class="text-indigo-300 text-sm">⠁</div>
+                </div>
+                
+                <div class="glass rounded-3xl p-6 text-center">
+                    <div class="braille-cell mx-auto mb-4">
+                        <div class="dot active"></div><div class="dot active"></div>
+                        <div class="dot"></div><div class="dot"></div>
+                        <div class="dot"></div><div class="dot"></div>
+                    </div>
+                    <div class="text-3xl font-bold">B</div>
+                    <div class="text-indigo-300 text-sm">⠃</div>
+                </div>
+                
+                <div class="glass rounded-3xl p-6 text-center">
+                    <div class="braille-cell mx-auto mb-4">
+                        <div class="dot"></div><div class="dot active"></div>
+                        <div class="dot active"></div><div class="dot"></div>
+                        <div class="dot"></div><div class="dot"></div>
+                    </div>
+                    <div class="text-3xl font-bold">C</div>
+                    <div class="text-indigo-300 text-sm">⠉</div>
+                </div>
+                
+                <!-- Mais células seriam adicionadas aqui, mas para brevidade deixei o padrão. No GitHub você pode duplicar -->
+                <div class="glass rounded-3xl p-6 text-center">
+                    <div class="braille-cell mx-auto mb-4">
+                        <div class="dot active"></div><div class="dot"></div>
+                        <div class="dot active"></div><div class="dot"></div>
+                        <div class="dot"></div><div class="dot"></div>
+                    </div>
+                    <div class="text-3xl font-bold">D</div>
+                    <div class="text-indigo-300 text-sm">⠙</div>
+                </div>
+                
+                <div class="glass rounded-3xl p-6 text-center">
+                    <div class="braille-cell mx-auto mb-4">
+                        <div class="dot active"></div><div class="dot"></div>
+                        <div class="dot"></div><div class="dot active"></div>
+                        <div class="dot"></div><div class="dot"></div>
+                    </div>
+                    <div class="text-3xl font-bold">E</div>
+                    <div class="text-indigo-300 text-sm">⠑</div>
+                </div>
+                
+                <div class="glass rounded-3xl p-6 text-center">
+                    <div class="braille-cell mx-auto mb-4">
+                        <div class="dot active"></div><div class="dot active"></div>
+                        <div class="dot active"></div><div class="dot"></div>
+                        <div class="dot"></div><div class="dot"></div>
+                    </div>
+                    <div class="text-3xl font-bold">F</div>
+                    <div class="text-indigo-300 text-sm">⠋</div>
+                </div>
+            </div>
+            
+            <p class="text-center text-white/50 mt-12 text-sm">E assim por diante... 63 combinações possíveis com apenas 6 pontos ✨</p>
+        </div>
+    </section>
+
+    <!-- CONVERSOR INTERATIVO -->
+    <section id="conversor" class="py-24 bg-black/50">
+        <div class="max-w-4xl mx-auto px-8">
+            <div class="text-center mb-12">
+                <h2 class="section-title text-5xl font-bold title-font">Conversor Braille em tempo real</h2>
+                <p class="text-white/60">Escreva e veja o universo se formar em pontos</p>
+            </div>
+            
+            <div class="glass rounded-3xl p-8">
+                <textarea id="input-text" rows="3" 
+                          class="w-full bg-transparent text-2xl placeholder:text-white/30 focus:outline-none resize-none"
+                          placeholder="Digite seu texto aqui..."></textarea>
+                
+                <div class="mt-8">
+                    <div class="text-xs uppercase tracking-widest mb-3 text-indigo-300 flex items-center gap-2">
+                        <i class="fa-solid fa-arrow-down"></i>
+                        RESULTADO EM BRAILLE
+                    </div>
+                    <div id="braille-output" class="min-h-[120px] text-5xl font-light leading-relaxed text-indigo-100 font-mono break-words p-6 bg-black/30 rounded-2xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CURIOSIDADES -->
+    <section id="curiosidades" class="py-24">
+        <div class="max-w-7xl mx-auto px-8">
+            <h2 class="text-5xl font-bold title-font text-center mb-16">Curiosidades do cosmos Braille</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass rounded-3xl p-8">
+                    <div class="text-6xl mb-6">🌍</div>
+                    <h3 class="text-2xl font-semibold mb-2">Mais de 150 países</h3>
+                    <p class="text-white/70">O Braille é oficial em praticamente todos os idiomas do planeta.</p>
+                </div>
+                <div class="glass rounded-3xl p-8">
+                    <div class="text-6xl mb-6">📱</div>
+                    <h3 class="text-2xl font-semibold mb-2">Braille em telas</h3>
+                    <p class="text-white/70">Existem displays refreshable que mostram Braille em tempo real em smartphones e tablets.</p>
+                </div>
+                <div class="glass rounded-3xl p-8">
+                    <div class="text-6xl mb-6">🚀</div>
+                    <h3 class="text-2xl font-semibold mb-2">No espaço</h3>
+                    <p class="text-white/70">A NASA já enviou mensagens em Braille para missões espaciais de inclusão.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black/70 border-t border-white/10 py-12">
+        <div class="max-w-7xl mx-auto px-8 text-center">
+            <div class="flex justify-center gap-8 text-4xl mb-8 opacity-30">
+                ⠃ ⠗ ⠁ ⠊ ⠇ ⠇ ⠑
+            </div>
+            <p class="text-white/40 text-sm">
+                Feito com ❤️ e 6 pontos • Tema espacial 4K para celebrar a acessibilidade
+            </p>
+            <p class="text-xs text-white/20 mt-4">
+                Site 100% compatível com GitHub Pages • Basta salvar como <span class="font-mono">index.html</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind script já carregado via CDN
+        function initTailwind() {
+            tailwind.config = {
+                content: [],
+                theme: { extend: {} }
+            }
+        }
+
+        // Conversor Braille
+        const brailleMap = {
+            'a': '⠁', 'b': '⠃', 'c': '⠉', 'd': '⠙', 'e': '⠑', 'f': '⠋', 'g': '⠛', 'h': '⠓',
+            'i': '⠊', 'j': '⠚', 'k': '⠅', 'l': '⠇', 'm': '⠍', 'n': '⠝', 'o': '⠕', 'p': '⠏',
+            'q': '⠟', 'r': '⠗', 's': '⠎', 't': '⠞', 'u': '⠥', 'v': '⠧', 'w': '⠺', 'x': '⠭',
+            'y': '⠽', 'z': '⠵', ' ': '⠀', '1': '⠼⠁', '2': '⠼⠃', '3': '⠼⠉', '4': '⠼⠙',
+            '5': '⠼⠑', '6': '⠼⠋', '7': '⠼⠛', '8': '⠼⠓', '9': '⠼⠊', '0': '⠼⠚'
+        };
+
+        function convertToBraille(text) {
+            return text.toLowerCase().split('').map(char => brailleMap[char] || '⠿').join('');
+        }
+
+        document.getElementById('input-text').addEventListener('input', function() {
+            const text = this.value;
+            const output = document.getElementById('braille-output');
+            output.textContent = convertToBraille(text) || '⠃⠗⠁⠊⠇⠇⠑';
+        });
+
+        // Inicialização
+        window.onload = function() {
+            initTailwind();
+            console.log('%c🌌 Site Braille carregado com sucesso! Universo de pontos ativado.', 'background:#6366f1;color:#fff;padding:4px 8px;border-radius:4px');
+        };
+    </script>
+</body>
+</html>
