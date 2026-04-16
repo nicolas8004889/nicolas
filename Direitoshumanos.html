@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚖️ Direitos Humanos • Mochila Acadêmica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap');
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .title-font { font-family: 'Poppins', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(20px); }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- HEADER SIMPLES -->
+    <header class="border-b border-white/10 bg-black/60 backdrop-blur-2xl fixed w-full z-50">
+        <div class="max-w-6xl mx-auto px-8 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-4">
+                <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center text-3xl shadow-xl">
+                    ⚖️
+                </div>
+                <div>
+                    <h1 class="title-font text-3xl font-bold">Direitos Humanos</h1>
+                    <p class="text-emerald-300 text-sm">Cidadania e Justiça Social</p>
+                </div>
+            </div>
+            
+            <!-- Botão Voltar -->
+            <a href="index.html" 
+               class="flex items-center gap-x-2 px-6 py-3 bg-white/10 hover:bg-white/20 rounded-3xl text-sm font-medium transition-all">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Voltar para a Mochila</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="pt-28 pb-20 max-w-6xl mx-auto px-8">
+        
+        <!-- Imagem principal -->
+        <div class="rounded-3xl overflow-hidden shadow-2xl mb-12">
+            <img src="https://picsum.photos/id/1015/1200/600" 
+                 alt="Direitos Humanos - Igualdade e Justiça" 
+                 class="w-full h-auto object-cover">
+        </div>
+
+        <!-- Título e texto de autoria -->
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-5xl font-bold title-font mb-6 leading-tight">
+                Todos nascemos livres e iguais em dignidade e direitos
+            </h2>
+            
+            <div class="prose prose-invert prose-lg max-w-none">
+                <p class="text-white/90 leading-relaxed">
+                    Os direitos humanos não são um favor concedido por governos ou leis — eles são inerentes a cada ser humano desde o momento em que nascemos. 
+                    Independente de cor, gênero, religião, origem ou orientação, todo indivíduo merece viver com liberdade, segurança e respeito.
+                </p>
+                
+                <p class="text-white/90 leading-relaxed">
+                    <strong>Texto de minha autoria:</strong><br>
+                    Em um mundo cada vez mais conectado, os direitos humanos representam o compromisso coletivo de que ninguém deve ser deixado para trás. 
+                    Eles são o escudo contra a injustiça, a voz dos silenciados e a base para uma sociedade mais justa e fraterna. 
+                    Defender os direitos humanos não é apenas uma obrigação moral — é a única forma de construirmos um futuro onde a dignidade humana seja realmente inegociável.
+                </p>
+
+                <h3 class="text-2xl font-semibold mt-10 mb-4">Principais Direitos (Declaração Universal)</h3>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-white/80">
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> Direito à vida, liberdade e segurança pessoal</li>
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> Proibição da tortura e tratamento degradante</li>
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> Igualdade perante a lei</li>
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> Liberdade de pensamento, consciência e religião</li>
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> Direito à educação e ao trabalho digno</li>
+                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> Direito a um padrão de vida adequado (saúde, alimentação e moradia)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Caixa de diálogo / Comentários -->
+        <div class="mt-16 max-w-4xl mx-auto glass rounded-3xl p-8 border border-white/10">
+            <h3 class="text-2xl font-semibold mb-6 flex items-center gap-x-3">
+                <i class="fa-solid fa-comment-dots text-emerald-400"></i>
+                Deixe seu comentário
+            </h3>
+            
+            <textarea id="comentario" rows="5"
+                class="w-full bg-white/5 border border-white/20 rounded-3xl px-6 py-5 text-white placeholder:text-white/40 focus:border-emerald-400 outline-none resize-y"
+                placeholder="O que você acha sobre os direitos humanos? Compartilhe sua opinião..."></textarea>
+            
+            <div class="flex justify-end mt-4">
+                <button onclick="enviarComentario()" 
+                        class="px-10 py-4 bg-emerald-500 hover:bg-emerald-600 rounded-3xl font-semibold flex items-center gap-x-2 transition-all">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Enviar Comentário
+                </button>
+            </div>
+
+            <!-- Lista de comentários (simulada) -->
+            <div id="lista-comentarios" class="mt-10 space-y-6 text-sm">
+                <!-- Comentários aparecerão aqui via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer simples -->
+    <footer class="bg-black/70 py-8 text-center text-white/50 text-sm">
+        <p>Feito com respeito e consciência • Mochila Acadêmica v2.0</p>
+    </footer>
+
+    <script>
+        // Função para enviar comentário (armazena no localStorage)
+        function enviarComentario() {
+            const texto = document.getElementById('comentario').value.trim();
+            if (!texto) return alert("Escreva algo antes de enviar!");
+
+            let comentarios = JSON.parse(localStorage.getItem('comentariosDH') || '[]');
+            comentarios.unshift({
+                texto: texto,
+                data: new Date().toLocaleString('pt-BR', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })
+            });
+            localStorage.setItem('comentariosDH', JSON.stringify(comentarios));
+            
+            document.getElementById('comentario').value = '';
+            carregarComentarios();
+            
+            alert("✅ Comentário enviado com sucesso!");
+        }
+
+        // Carregar comentários salvos
+        function carregarComentarios() {
+            const container = document.getElementById('lista-comentarios');
+            let comentarios = JSON.parse(localStorage.getItem('comentariosDH') || '[]');
+            
+            container.innerHTML = '';
+            if (comentarios.length === 0) {
+                container.innerHTML = `<p class="text-white/40 text-center py-8">Ainda não há comentários. Seja o primeiro!</p>`;
+                return;
+            }
+
+            comentarios.forEach(c => {
+                const div = document.createElement('div');
+                div.className = 'glass rounded-2xl p-5 border border-white/10';
+                div.innerHTML = `
+                    <p class="leading-relaxed">${c.texto}</p>
+                    <p class="text-xs text-emerald-300 mt-3">${c.data}</p>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Inicializa comentários ao carregar
+        window.onload = () => {
+            carregarComentarios();
+        };
+    </script>
+</body>
+</html>
