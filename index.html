@@ -1224,48 +1224,4 @@ APROVEITANDO MELHORE A POSIÇÃO A ONDE FICA OS OUTROS BOTÕES PARA ENTAR NOS OU
                 <span class="text-xs text-indigo-300">Universo Tátil</span>
             </div>
         </a>
-
-        <!-- BOTÃO PROFISSIONAL PARA DIREITOS HUMANOS -->
-        <a href="direitoshumanos.html" 
-           class="glass flex items-center gap-4 px-6 py-4 rounded-3xl border border-white/20 hover:border-emerald-400 hover:shadow-emerald-500/50 group transition-all bg-emerald-500/10">
-            <div class="w-12 h-12 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-2xl flex items-center justify-center text-3xl shadow-inner ring-2 ring-emerald-400/30">⚖️</div>
-            <div>
-                <span class="block text-lg font-semibold text-emerald-100">Direitos Humanos</span>
-                <span class="text-xs text-emerald-300">Cidadania e Justiça Social</span>
-            </div>
-        </a>
-    </div>
-
-    <script>
-        // Função para abrir e fechar o menu (adicione isso no final do seu <script>)
-        function toggleSitesMenu() {
-            const menu = document.getElementById('sites-menu');
-            const icon = document.getElementById('btn-icon');
-            
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                menu.classList.add('flex', 'flex-col');
-                icon.textContent = '✕';
-                icon.style.transform = 'rotate(90deg)';
-            } else {
-                menu.classList.add('hidden');
-                menu.classList.remove('flex', 'flex-col');
-                icon.textContent = '🔗';
-                icon.style.transform = 'rotate(0deg)';
-            }
-        }
-
-        // Fechar ao clicar fora
-        document.addEventListener('click', function(event) {
-            const menu = document.getElementById('sites-menu');
-            const mainBtn = document.getElementById('main-btn');
-            if (!menu.contains(event.target) && !mainBtn.contains(event.target)) {
-                menu.classList.add('hidden');
-                menu.classList.remove('flex', 'flex-col');
-                document.getElementById('btn-icon').textContent = '🔗';
-                document.getElementById('btn-icon').style.transform = 'rotate(0deg)';
-            }
-        });
-    </script>
-</body>
-</html>
+        
