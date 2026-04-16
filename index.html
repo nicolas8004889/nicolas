@@ -1183,100 +1183,89 @@ document.addEventListener('click', function(event) {
 });
 </script>
 APROVEITANDO MELHORE A POSIÇÃO A ONDE FICA OS OUTROS BOTÕES PARA ENTAR NOS OUTROS SITES, MANDE COMPLETO COM ISSO QUE PEDIR, N DEIXE NADA FALTAR DO ORIGINAL.
-            <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚖️ Direitos Humanos • Mochila Acadêmica</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap');
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
-            color: white;
-            min-height: 100vh;
-        }
-        .title-font { font-family: 'Poppins', sans-serif; }
-        .glass { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(20px); }
-    </style>
-</head>
-<body>
+    <!-- ====================== MENU DE ABAS PROFISSIONAL ====================== -->
+    <button onclick="toggleSitesMenu()" 
+            id="main-btn"
+            class="fixed bottom-6 right-6 z-50 w-16 h-16 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-3xl flex items-center justify-center text-3xl shadow-2xl hover:scale-110 active:scale-95 transition-all border border-white/20">
+        <span id="btn-icon">🔗</span>
+    </button>
 
-    <header class="border-b border-white/10 bg-black/70 backdrop-blur-2xl fixed w-full z-50">
-        <div class="max-w-6xl mx-auto px-8 py-5 flex items-center justify-between">
-            <div class="flex items-center gap-x-4">
-                <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center text-3xl shadow-xl">⚖️</div>
-                <div>
-                    <h1 class="title-font text-3xl font-bold">Direitos Humanos</h1>
-                    <p class="text-emerald-300 text-sm">Cidadania, Dignidade e Justiça</p>
-                </div>
+    <!-- MENU DE ABAS (melhorado e profissional) -->
+    <div id="sites-menu" class="hidden fixed bottom-28 right-6 z-50 flex flex-col gap-3 w-80">
+
+        <a href="site2.html" class="glass flex items-center gap-4 px-6 py-4 rounded-3xl border border-white/20 hover:border-sky-400 hover:shadow-sky-500/40 group transition-all">
+            <div class="w-12 h-12 bg-gradient-to-br from-sky-400 to-blue-500 rounded-2xl flex items-center justify-center text-3xl shadow-inner">📚</div>
+            <div>
+                <span class="block text-lg font-semibold">Aula X</span>
+                <span class="text-xs text-sky-300">Estudos</span>
             </div>
-            <a href="index.html" class="flex items-center gap-x-3 px-7 py-3.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-3xl text-sm font-medium">
-                <i class="fa-solid fa-arrow-left"></i>
-                <span>Voltar para a Mochila</span>
-            </a>
-        </div>
-    </header>
+        </a>
 
-    <div class="pt-28 pb-20 max-w-6xl mx-auto px-8">
-        <div class="rounded-3xl overflow-hidden shadow-2xl mb-12">
-            <img src="https://picsum.photos/id/1015/1200/600" alt="Direitos Humanos" class="w-full h-auto">
-        </div>
-
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-5xl font-bold title-font mb-8">Todos nascemos livres e iguais em dignidade e direitos</h2>
-            
-            <div class="prose prose-invert prose-lg">
-                <p>Os direitos humanos são universais, inalienáveis e indivisíveis. Eles pertencem a todas as pessoas, independentemente de raça, gênero, religião ou origem.</p>
-                
-                <p><strong>Texto de minha autoria:</strong><br>
-                Defender os direitos humanos não é apenas uma obrigação moral — é a única forma de construirmos um mundo onde a dignidade de cada ser humano seja realmente respeitada. Quando um direito é violado, toda a humanidade perde um pouco de sua essência.</p>
+        <a href="sitememe1.html" class="glass flex items-center gap-4 px-6 py-4 rounded-3xl border border-white/20 hover:border-pink-400 hover:shadow-pink-500/40 group transition-all">
+            <div class="w-12 h-12 bg-gradient-to-br from-pink-400 to-rose-500 rounded-2xl flex items-center justify-center text-3xl shadow-inner">😂</div>
+            <div>
+                <span class="block text-lg font-semibold">Meme 1</span>
+                <span class="text-xs text-pink-300">Humor</span>
             </div>
-        </div>
+        </a>
 
-        <!-- Caixa de comentários -->
-        <div class="mt-16 max-w-4xl mx-auto glass rounded-3xl p-8">
-            <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3"><i class="fa-solid fa-comment-dots text-emerald-400"></i> Deixe seu comentário</h3>
-            <textarea id="comentario" rows="5" class="w-full bg-white/5 border border-white/20 rounded-3xl px-6 py-5 text-white placeholder:text-white/40 focus:border-emerald-400 outline-none" placeholder="O que você pensa sobre os direitos humanos?"></textarea>
-            <div class="flex justify-end mt-4">
-                <button onclick="enviarComentario()" class="px-10 py-4 bg-emerald-500 hover:bg-emerald-600 rounded-3xl font-semibold">Enviar Comentário</button>
+        <a href="meme2.html" class="glass flex items-center gap-4 px-6 py-4 rounded-3xl border border-white/20 hover:border-violet-400 hover:shadow-violet-500/40 group transition-all">
+            <div class="w-12 h-12 bg-gradient-to-br from-violet-400 to-purple-500 rounded-2xl flex items-center justify-center text-3xl shadow-inner">🤣</div>
+            <div>
+                <span class="block text-lg font-semibold">Meme 2</span>
+                <span class="text-xs text-violet-300">Humor</span>
             </div>
-            <div id="lista-comentarios" class="mt-10 space-y-6"></div>
-        </div>
+        </a>
+
+        <a href="braille.html" class="glass flex items-center gap-4 px-6 py-4 rounded-3xl border border-white/20 hover:border-indigo-400 hover:shadow-indigo-500/40 group transition-all">
+            <div class="w-12 h-12 bg-gradient-to-br from-indigo-400 to-blue-600 rounded-2xl flex items-center justify-center text-3xl shadow-inner">⠃</div>
+            <div>
+                <span class="block text-lg font-semibold">Braille</span>
+                <span class="text-xs text-indigo-300">Universo Tátil</span>
+            </div>
+        </a>
+
+        <!-- BOTÃO PROFISSIONAL PARA DIREITOS HUMANOS -->
+        <a href="direitoshumanos.html" 
+           class="glass flex items-center gap-4 px-6 py-4 rounded-3xl border border-white/20 hover:border-emerald-400 hover:shadow-emerald-500/50 group transition-all bg-emerald-500/10">
+            <div class="w-12 h-12 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-2xl flex items-center justify-center text-3xl shadow-inner ring-2 ring-emerald-400/30">⚖️</div>
+            <div>
+                <span class="block text-lg font-semibold text-emerald-100">Direitos Humanos</span>
+                <span class="text-xs text-emerald-300">Cidadania e Justiça Social</span>
+            </div>
+        </a>
     </div>
 
     <script>
-        function enviarComentario() {
-            const texto = document.getElementById('comentario').value.trim();
-            if (!texto) return alert("Escreva algo antes de enviar!");
+        // Função para abrir e fechar o menu (adicione isso no final do seu <script>)
+        function toggleSitesMenu() {
+            const menu = document.getElementById('sites-menu');
+            const icon = document.getElementById('btn-icon');
             
-            let comentarios = JSON.parse(localStorage.getItem('comentariosDH') || '[]');
-            comentarios.unshift({ texto, data: new Date().toLocaleString('pt-BR') });
-            localStorage.setItem('comentariosDH', JSON.stringify(comentarios));
-            document.getElementById('comentario').value = '';
-            carregarComentarios();
-        }
-
-        function carregarComentarios() {
-            const container = document.getElementById('lista-comentarios');
-            let comentarios = JSON.parse(localStorage.getItem('comentariosDH') || '[]');
-            container.innerHTML = '';
-            if (comentarios.length === 0) {
-                container.innerHTML = '<p class="text-white/40 text-center py-8">Seja o primeiro a comentar...</p>';
-                return;
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex', 'flex-col');
+                icon.textContent = '✕';
+                icon.style.transform = 'rotate(90deg)';
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex', 'flex-col');
+                icon.textContent = '🔗';
+                icon.style.transform = 'rotate(0deg)';
             }
-            comentarios.forEach(c => {
-                const div = document.createElement('div');
-                div.className = 'glass rounded-2xl p-6';
-                div.innerHTML = `<p>${c.texto}</p><p class="text-xs text-emerald-300 mt-3">${c.data}</p>`;
-                container.appendChild(div);
-            });
         }
 
-        window.onload = carregarComentarios;
+        // Fechar ao clicar fora
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('sites-menu');
+            const mainBtn = document.getElementById('main-btn');
+            if (!menu.contains(event.target) && !mainBtn.contains(event.target)) {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex', 'flex-col');
+                document.getElementById('btn-icon').textContent = '🔗';
+                document.getElementById('btn-icon').style.transform = 'rotate(0deg)';
+            }
+        });
     </script>
 </body>
 </html>
