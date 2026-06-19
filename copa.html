@@ -1,0 +1,2171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copa do Mundo FIFA 2026 🏆</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #FFD700;
+  --gold2: #FFA500;
+  --dark: #0a0a0f;
+  --dark2: #12121a;
+  --dark3: #1a1a28;
+  --dark4: #22223a;
+  --green: #00c853;
+  --red: #ff1744;
+  --blue: #2979ff;
+  --white: #f0f0f0;
+  --gray: #888;
+  --brazil-green: #009c3b;
+  --brazil-yellow: #ffdf00;
+  --brazil-blue: #002776;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--dark);
+  color:var(--white);
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--dark2);}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(10,10,15,0.95);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,215,0,0.2);
+  padding:0 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  height:60px;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;
+  font-family:'Oswald',sans-serif;font-size:1.3rem;
+  color:var(--gold);letter-spacing:2px;
+}
+.nav-logo span{font-size:1.8rem;}
+.nav-links{display:flex;gap:0.5rem;}
+.nav-links a{
+  color:rgba(240,240,240,0.7);
+  text-decoration:none;
+  font-size:0.8rem;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  padding:6px 12px;
+  border-radius:4px;
+  transition:all 0.3s;
+  font-weight:500;
+}
+.nav-links a:hover,.nav-links a.active{
+  color:var(--gold);
+  background:rgba(255,215,0,0.1);
+}
+
+/* HERO */
+#hero{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  overflow:hidden;
+  padding-top:60px;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 30%, rgba(255,215,0,0.08) 0%, transparent 60%),
+             radial-gradient(ellipse at 20% 80%, rgba(0,200,83,0.05) 0%, transparent 40%),
+             radial-gradient(ellipse at 80% 70%, rgba(41,121,255,0.05) 0%, transparent 40%);
+}
+.hero-particles{position:absolute;inset:0;pointer-events:none;}
+.particle{
+  position:absolute;
+  width:3px;height:3px;
+  background:var(--gold);
+  border-radius:50%;
+  opacity:0;
+  animation:float var(--d) linear var(--delay) infinite;
+}
+@keyframes float{
+  0%{transform:translateY(100vh) scale(0);opacity:0;}
+  10%{opacity:0.8;}
+  90%{opacity:0.3;}
+  100%{transform:translateY(-20px) scale(1);opacity:0;}
+}
+.hero-content{
+  text-align:center;
+  z-index:2;
+  position:relative;
+}
+.hero-eyebrow{
+  font-size:0.75rem;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:1.5rem;
+  opacity:0;
+  animation:fadeUp 0.8s ease 0.3s forwards;
+}
+.hero-trophy{
+  font-size:6rem;
+  margin-bottom:1rem;
+  animation:trophy-bounce 0.8s ease 0.1s both;
+  filter:drop-shadow(0 0 40px rgba(255,215,0,0.4));
+}
+@keyframes trophy-bounce{
+  0%{transform:scale(0) rotate(-20deg);opacity:0;}
+  70%{transform:scale(1.1) rotate(5deg);}
+  100%{transform:scale(1) rotate(0);opacity:1;}
+}
+.hero-title{
+  font-family:'Oswald',sans-serif;
+  font-size:clamp(3rem,8vw,7rem);
+  font-weight:700;
+  line-height:0.9;
+  letter-spacing:-2px;
+  margin-bottom:1rem;
+  opacity:0;
+  animation:fadeUp 0.8s ease 0.5s forwards;
+}
+.hero-title .line1{display:block;color:var(--white);}
+.hero-title .line2{
+  display:block;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-title .line3{display:block;color:var(--white);font-size:0.6em;}
+.hero-sub{
+  font-size:1.1rem;color:var(--gray);
+  margin-bottom:3rem;
+  opacity:0;
+  animation:fadeUp 0.8s ease 0.7s forwards;
+}
+.hero-stats{
+  display:flex;gap:3rem;justify-content:center;
+  opacity:0;animation:fadeUp 0.8s ease 0.9s forwards;
+  flex-wrap:wrap;
+}
+.hero-stat{text-align:center;}
+.hero-stat .num{
+  font-family:'Oswald',sans-serif;
+  font-size:2.5rem;font-weight:700;
+  color:var(--gold);
+  display:block;
+}
+.hero-stat .lbl{font-size:0.75rem;color:var(--gray);letter-spacing:2px;text-transform:uppercase;}
+.hero-scroll{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  opacity:0;animation:fadeUp 1s ease 1.5s forwards;
+}
+.hero-scroll span{font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--gray);}
+.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scroll-pulse 1.5s ease infinite;}
+@keyframes scroll-pulse{0%,100%{opacity:0.3;transform:scaleY(0.8);}50%{opacity:1;transform:scaleY(1);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+
+/* SECTIONS */
+section{padding:5rem 2rem;}
+.container{max-width:1200px;margin:0 auto;}
+.section-header{
+  text-align:center;margin-bottom:3rem;
+}
+.section-eyebrow{
+  font-size:0.7rem;letter-spacing:4px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:0.5rem;display:block;
+}
+.section-title{
+  font-family:'Oswald',sans-serif;
+  font-size:clamp(2rem,5vw,3.5rem);
+  font-weight:700;line-height:1;
+}
+
+/* LIVE BANNER */
+.live-banner{
+  background:linear-gradient(135deg,rgba(255,23,68,0.15),rgba(255,23,68,0.05));
+  border:1px solid rgba(255,23,68,0.3);
+  border-radius:12px;
+  padding:1rem 1.5rem;
+  display:flex;align-items:center;gap:1rem;
+  margin-bottom:2rem;
+}
+.live-dot{
+  width:10px;height:10px;background:var(--red);border-radius:50%;
+  animation:pulse-red 1s ease infinite;
+  flex-shrink:0;
+}
+@keyframes pulse-red{0%,100%{box-shadow:0 0 0 0 rgba(255,23,68,0.4);}50%{box-shadow:0 0 0 8px rgba(255,23,68,0);}}
+.live-text{font-size:0.85rem;color:var(--white);}
+.live-text strong{color:var(--red);}
+
+/* GAMES GRID */
+.games-grid{display:grid;gap:1rem;}
+.game-card{
+  background:var(--dark3);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:12px;
+  padding:1.25rem 1.5rem;
+  display:flex;align-items:center;gap:1rem;
+  transition:all 0.3s;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+}
+.game-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,transparent,rgba(255,215,0,0.03));
+  opacity:0;transition:opacity 0.3s;
+}
+.game-card:hover{border-color:rgba(255,215,0,0.3);transform:translateY(-2px);}
+.game-card:hover::before{opacity:1;}
+.game-card.result{border-left:3px solid var(--brazil-green);}
+.game-card.today{border-left:3px solid var(--gold);background:linear-gradient(135deg,var(--dark3),rgba(255,215,0,0.04));}
+.game-card.upcoming{border-left:3px solid rgba(255,255,255,0.1);}
+
+.game-flag{font-size:2rem;width:40px;text-align:center;flex-shrink:0;}
+.game-team-name{font-size:0.85rem;font-weight:600;text-align:center;flex:1;}
+.game-score{
+  font-family:'Oswald',sans-serif;font-size:1.8rem;font-weight:700;
+  min-width:80px;text-align:center;color:var(--gold);
+}
+.game-score.upcoming-score{font-size:1rem;color:var(--gray);font-family:'Inter',sans-serif;}
+.game-meta{font-size:0.7rem;color:var(--gray);margin-top:2px;}
+.game-badge{
+  position:absolute;top:10px;right:10px;
+  font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;
+  padding:3px 8px;border-radius:20px;
+  background:rgba(255,215,0,0.15);color:var(--gold);
+  border:1px solid rgba(255,215,0,0.3);
+}
+.game-badge.live-badge{background:rgba(255,23,68,0.15);color:var(--red);border-color:rgba(255,23,68,0.3);}
+
+/* GROUPS */
+.groups-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;}
+.group-card{
+  background:var(--dark3);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:12px;overflow:hidden;
+}
+.group-header{
+  background:linear-gradient(135deg,rgba(255,215,0,0.15),rgba(255,215,0,0.05));
+  border-bottom:1px solid rgba(255,215,0,0.2);
+  padding:0.75rem 1rem;
+  font-family:'Oswald',sans-serif;
+  font-size:1.1rem;letter-spacing:2px;color:var(--gold);
+}
+.group-table{width:100%;border-collapse:collapse;}
+.group-table th{
+  font-size:0.65rem;letter-spacing:1px;text-transform:uppercase;
+  color:var(--gray);padding:6px 8px;text-align:center;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.group-table th:first-child{text-align:left;}
+.group-table td{padding:8px;font-size:0.82rem;text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);}
+.group-table td:first-child{text-align:left;display:flex;align-items:center;gap:6px;}
+.group-table tr:last-child td{border-bottom:none;}
+.group-table tr.qualified td{color:var(--green);}
+.pos-badge{
+  width:18px;height:18px;border-radius:4px;
+  font-size:0.65rem;font-weight:600;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,0.08);
+  flex-shrink:0;
+}
+.pos-badge.q{background:rgba(0,200,83,0.2);color:var(--green);}
+.pts{font-weight:700;color:var(--gold);}
+
+/* SQUADS */
+#squads{background:var(--dark2);}
+.squad-selector{
+  display:flex;gap:0.75rem;flex-wrap:wrap;justify-content:center;margin-bottom:2rem;
+}
+.squad-btn{
+  background:var(--dark3);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:8px;padding:8px 16px;
+  font-size:0.8rem;font-weight:600;
+  cursor:pointer;transition:all 0.3s;
+  color:var(--white);font-family:'Inter',sans-serif;
+  display:flex;align-items:center;gap:6px;
+}
+.squad-btn:hover{border-color:rgba(255,215,0,0.4);color:var(--gold);}
+.squad-btn.active{
+  background:linear-gradient(135deg,rgba(255,215,0,0.2),rgba(255,215,0,0.05));
+  border-color:var(--gold);color:var(--gold);
+}
+.squad-display{display:none;}
+.squad-display.active{display:block;animation:fadeIn 0.4s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+.pitch-container{
+  background:var(--dark3);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:16px;
+  overflow:hidden;
+  margin-bottom:2rem;
+}
+.pitch-header{
+  padding:1rem 1.5rem;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.pitch-title{font-family:'Oswald',sans-serif;font-size:1.3rem;letter-spacing:2px;}
+.formation-badge{
+  background:rgba(255,215,0,0.1);
+  border:1px solid rgba(255,215,0,0.2);
+  color:var(--gold);font-size:0.8rem;
+  padding:4px 12px;border-radius:20px;
+  font-weight:600;
+}
+.pitch{
+  background:linear-gradient(180deg,
+    #1a5c1a 0%, #1e6b1e 8.33%, #1a5c1a 8.33%,
+    #1a5c1a 16.66%, #1e6b1e 16.66%, #1a5c1a 25%,
+    #1a5c1a 33.33%, #1e6b1e 33.33%, #1a5c1a 41.66%,
+    #1a5c1a 50%, #1e6b1e 50%, #1a5c1a 58.33%,
+    #1a5c1a 66.66%, #1e6b1e 66.66%, #1a5c1a 75%,
+    #1a5c1a 83.33%, #1e6b1e 83.33%, #1a5c1a 100%
+  );
+  position:relative;padding:2rem 1rem;min-height:500px;
+}
+.pitch::before{
+  content:'';position:absolute;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  width:120px;height:120px;
+  border:2px solid rgba(255,255,255,0.2);
+  border-radius:50%;
+}
+.pitch::after{
+  content:'';position:absolute;
+  top:50%;left:5%;right:5%;
+  height:1px;background:rgba(255,255,255,0.2);
+}
+.pitch-row{
+  display:flex;justify-content:center;gap:1rem;
+  margin-bottom:1.5rem;
+  position:relative;z-index:1;
+}
+.player-token{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  cursor:pointer;
+  transition:transform 0.3s;
+}
+.player-token:hover{transform:scale(1.1);}
+.player-avatar{
+  width:52px;height:52px;border-radius:50%;
+  border:3px solid rgba(255,215,0,0.6);
+  overflow:hidden;position:relative;
+  background:var(--dark4);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Oswald',sans-serif;font-size:1rem;font-weight:700;
+  color:var(--gold);
+}
+.player-avatar img{width:100%;height:100%;object-fit:cover;}
+.player-num{
+  position:absolute;bottom:-4px;right:-4px;
+  width:18px;height:18px;
+  background:var(--gold);color:var(--dark);
+  border-radius:50%;font-size:0.6rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+.player-name-tag{
+  font-size:0.65rem;font-weight:600;
+  background:rgba(0,0,0,0.7);
+  padding:2px 6px;border-radius:4px;
+  white-space:nowrap;text-align:center;
+  max-width:70px;overflow:hidden;text-overflow:ellipsis;
+}
+.player-pos-tag{
+  font-size:0.55rem;color:var(--gray);letter-spacing:1px;text-transform:uppercase;
+}
+
+/* PLAYERS LIST */
+.players-list{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;
+}
+.player-card{
+  background:var(--dark3);border:1px solid rgba(255,255,255,0.06);
+  border-radius:10px;padding:1rem;
+  display:flex;align-items:center;gap:1rem;
+  transition:all 0.3s;
+}
+.player-card:hover{border-color:rgba(255,215,0,0.3);transform:translateY(-2px);}
+.player-card-avatar{
+  width:50px;height:50px;border-radius:50%;
+  background:var(--dark4);border:2px solid rgba(255,215,0,0.4);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Oswald',sans-serif;font-size:1.1rem;font-weight:700;
+  color:var(--gold);flex-shrink:0;overflow:hidden;
+}
+.player-card-avatar img{width:100%;height:100%;object-fit:cover;}
+.player-card-info{flex:1;min-width:0;}
+.player-card-name{font-weight:600;font-size:0.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.player-card-details{font-size:0.75rem;color:var(--gray);margin-top:2px;}
+.player-card-pos{
+  font-size:0.65rem;letter-spacing:1px;text-transform:uppercase;
+  padding:2px 8px;border-radius:12px;
+  font-weight:600;margin-top:4px;display:inline-block;
+}
+.pos-gk{background:rgba(255,215,0,0.15);color:var(--gold);}
+.pos-def{background:rgba(41,121,255,0.15);color:#5c9fff;}
+.pos-mid{background:rgba(0,200,83,0.15);color:var(--green);}
+.pos-fwd{background:rgba(255,23,68,0.15);color:#ff6b8a;}
+
+/* SIMULATOR */
+#simulator{background:var(--dark);}
+.sim-container{
+  background:var(--dark3);
+  border:1px solid rgba(255,215,0,0.15);
+  border-radius:20px;overflow:hidden;
+}
+.sim-header{
+  background:linear-gradient(135deg,rgba(255,215,0,0.1),rgba(255,215,0,0.03));
+  border-bottom:1px solid rgba(255,215,0,0.15);
+  padding:1.5rem;display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+}
+.sim-title{font-family:'Oswald',sans-serif;font-size:1.5rem;letter-spacing:2px;color:var(--gold);}
+.sim-controls{display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;}
+.sim-select{
+  background:var(--dark4);
+  border:1px solid rgba(255,255,255,0.1);
+  color:var(--white);padding:8px 14px;border-radius:8px;
+  font-size:0.85rem;font-family:'Inter',sans-serif;
+  cursor:pointer;
+}
+.sim-btn{
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--dark);font-weight:700;
+  border:none;padding:10px 24px;border-radius:8px;
+  font-family:'Oswald',sans-serif;font-size:1rem;letter-spacing:1px;
+  cursor:pointer;transition:all 0.3s;
+}
+.sim-btn:hover{transform:scale(1.05);box-shadow:0 5px 20px rgba(255,215,0,0.3);}
+.sim-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
+
+.sim-scoreboard{
+  padding:2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;flex-wrap:wrap;
+}
+.sim-team{text-align:center;flex:1;}
+.sim-team-flag{font-size:4rem;display:block;margin-bottom:0.5rem;}
+.sim-team-name{font-family:'Oswald',sans-serif;font-size:1.2rem;letter-spacing:1px;}
+.sim-score-display{
+  text-align:center;min-width:120px;
+}
+.sim-score{
+  font-family:'Oswald',sans-serif;
+  font-size:4rem;font-weight:700;
+  color:var(--gold);
+  letter-spacing:-2px;
+}
+.sim-time{
+  font-size:0.9rem;color:var(--gray);
+  display:flex;align-items:center;gap:6px;justify-content:center;
+  margin-top:4px;
+}
+.time-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse-green 1s ease infinite;}
+@keyframes pulse-green{0%,100%{opacity:1;}50%{opacity:0.3;}}
+
+.sim-progress{
+  height:4px;background:rgba(255,255,255,0.05);
+  position:relative;overflow:hidden;
+}
+.sim-progress-fill{
+  height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));
+  transition:width 0.5s ease;
+}
+
+.sim-log{
+  height:300px;overflow-y:auto;
+  padding:1rem 1.5rem;
+  border-top:1px solid rgba(255,255,255,0.05);
+}
+.sim-log::-webkit-scrollbar{width:4px;}
+.sim-log::-webkit-scrollbar-thumb{background:rgba(255,215,0,0.3);}
+
+.log-entry{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  font-size:0.85rem;
+  animation:log-appear 0.3s ease;
+}
+@keyframes log-appear{from{opacity:0;transform:translateX(-10px);}to{opacity:1;transform:translateX(0);}}
+.log-min{
+  font-family:'Oswald',sans-serif;font-size:0.9rem;
+  color:var(--gold);min-width:40px;
+  font-weight:600;
+}
+.log-icon{font-size:1rem;flex-shrink:0;}
+.log-text{color:rgba(240,240,240,0.85);line-height:1.4;}
+.log-text strong{color:var(--white);}
+.log-entry.goal-entry{
+  background:rgba(255,215,0,0.07);
+  border-radius:6px;padding:8px 10px;margin:4px 0;
+  border-bottom:none;border-left:3px solid var(--gold);
+}
+.log-entry.card-yellow .log-icon::after{content:'🟨';}
+.log-entry.card-red .log-icon::after{content:'🟥';}
+
+.sim-stats{
+  display:grid;grid-template-columns:1fr auto 1fr;gap:0.5rem;align-items:center;
+  padding:1rem 1.5rem;
+  border-top:1px solid rgba(255,255,255,0.05);
+}
+.stat-bar-container{display:flex;align-items:center;gap:8px;}
+.stat-bar-container.right{flex-direction:row-reverse;}
+.stat-val{font-family:'Oswald',sans-serif;font-size:1rem;font-weight:700;min-width:35px;text-align:center;}
+.stat-bar{height:6px;background:rgba(255,255,255,0.08);border-radius:3px;flex:1;overflow:hidden;}
+.stat-fill{height:100%;background:linear-gradient(90deg,var(--brazil-green),var(--brazil-yellow));border-radius:3px;transition:width 0.8s ease;}
+.stat-fill.right-fill{background:linear-gradient(270deg,#e74c3c,#c0392b);}
+.stat-label{font-size:0.7rem;color:var(--gray);letter-spacing:1px;text-align:center;grid-column:2;}
+
+/* HISTORY */
+#history{background:var(--dark2);}
+.history-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;
+}
+.history-card{
+  background:var(--dark3);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:12px;overflow:hidden;
+  transition:all 0.3s;
+}
+.history-card:hover{border-color:rgba(255,215,0,0.2);transform:translateY(-4px);}
+.history-card-img{
+  height:120px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:4rem;
+  background:linear-gradient(135deg,rgba(255,215,0,0.1),rgba(255,215,0,0.02));
+}
+.history-card-body{padding:1rem 1.25rem;}
+.history-year{
+  font-family:'Oswald',sans-serif;font-size:1.5rem;color:var(--gold);
+  margin-bottom:0.25rem;
+}
+.history-winner{font-weight:600;margin-bottom:0.25rem;}
+.history-detail{font-size:0.8rem;color:var(--gray);}
+.history-final{
+  margin-top:0.5rem;
+  padding-top:0.5rem;
+  border-top:1px solid rgba(255,255,255,0.05);
+  font-size:0.8rem;color:rgba(240,240,240,0.7);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .hero-stats{gap:1.5rem;}
+  .sim-scoreboard{flex-direction:column;text-align:center;}
+}
+
+/* TABS */
+.tab-container{margin-bottom:2rem;}
+.tabs{display:flex;gap:0.5rem;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:0;}
+.tab{
+  padding:10px 20px;font-size:0.85rem;font-weight:600;
+  cursor:pointer;border-radius:8px 8px 0 0;
+  color:var(--gray);transition:all 0.3s;
+  border:1px solid transparent;border-bottom:none;
+  letter-spacing:0.5px;
+}
+.tab:hover{color:var(--white);}
+.tab.active{
+  color:var(--gold);border-color:rgba(255,215,0,0.2);
+  background:linear-gradient(to bottom,rgba(255,215,0,0.08),transparent);
+}
+.tab-content{display:none;padding-top:1.5rem;}
+.tab-content.active{display:block;animation:fadeIn 0.3s ease;}
+
+/* NOTIFICATION TOAST */
+.toast{
+  position:fixed;bottom:2rem;right:2rem;z-index:9999;
+  background:var(--dark3);
+  border:1px solid rgba(255,215,0,0.4);
+  border-radius:12px;padding:1rem 1.5rem;
+  font-size:0.9rem;max-width:300px;
+  transform:translateX(120%);
+  transition:transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);
+}
+.toast.show{transform:translateX(0);}
+.toast-title{font-weight:700;color:var(--gold);margin-bottom:4px;}
+
+/* GOAL ANIMATION */
+.goal-overlay{
+  position:fixed;inset:0;z-index:9998;
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;opacity:0;
+  transition:opacity 0.3s;
+}
+.goal-overlay.show{opacity:1;}
+.goal-text{
+  font-family:'Oswald',sans-serif;
+  font-size:10rem;font-weight:700;
+  color:var(--gold);
+  text-shadow:0 0 80px rgba(255,215,0,0.6);
+  animation:goal-anim 2s ease forwards;
+}
+@keyframes goal-anim{
+  0%{transform:scale(0) rotate(-10deg);opacity:0;}
+  20%{transform:scale(1.2) rotate(5deg);opacity:1;}
+  40%{transform:scale(1) rotate(0);opacity:1;}
+  80%{transform:scale(1) rotate(0);opacity:1;}
+  100%{transform:scale(1.5) rotate(0);opacity:0;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span>🏆</span>
+    <span>COPA 2026</span>
+  </div>
+  <div class="nav-links">
+    <a href="#hero" class="active">Início</a>
+    <a href="#jogos">Jogos</a>
+    <a href="#grupos">Grupos</a>
+    <a href="#squads">Escalações</a>
+    <a href="#simulator">Simulador</a>
+    <a href="#history">História</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">🇺🇸 🇨🇦 🇲🇽 • EUA • Canadá • México</p>
+    <div class="hero-trophy">🏆</div>
+    <h1 class="hero-title">
+      <span class="line1">COPA DO MUNDO</span>
+      <span class="line2">FIFA 2026</span>
+      <span class="line3">O Hexacampeonato está chegando</span>
+    </h1>
+    <p class="hero-sub">48 seleções • 104 jogos • 3 países • 11 junho – 19 julho 2026</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="num" data-count="48">0</span><span class="lbl">Seleções</span></div>
+      <div class="hero-stat"><span class="num" data-count="104">0</span><span class="lbl">Jogos</span></div>
+      <div class="hero-stat"><span class="num" data-count="16">0</span><span class="lbl">Estádios</span></div>
+      <div class="hero-stat"><span class="num" data-count="39">0</span><span class="lbl">Dias</span></div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- JOGOS -->
+<section id="jogos">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">📅 Calendário</span>
+      <h2 class="section-title">Jogos & Resultados</h2>
+    </div>
+
+    <div class="tab-container">
+      <div class="tabs">
+        <div class="tab active" onclick="switchTab('tab-resultados','jogos')">Resultados</div>
+        <div class="tab" onclick="switchTab('tab-hoje','jogos')">Hoje (19/06)</div>
+        <div class="tab" onclick="switchTab('tab-proximos','jogos')">Próximos</div>
+      </div>
+
+      <!-- RESULTADOS -->
+      <div class="tab-content active" id="tab-resultados">
+        <div class="games-grid">
+
+          <!-- 11 junho -->
+          <div style="padding:0.5rem 0;"><span style="font-size:0.7rem;letter-spacing:3px;color:var(--gray);text-transform:uppercase;">11 de Junho · Rodada 1</span></div>
+          <div class="game-card result" onclick="showGameDetail('mex-zaf')">
+            <div class="game-flag">🇲🇽</div>
+            <div><div class="game-team-name">México</div><div class="game-meta">Grupo A</div></div>
+            <div class="game-score">2 – 1</div>
+            <div><div class="game-team-name">África do Sul</div><div class="game-meta">Grupo A</div></div>
+            <div class="game-badge">FIM</div>
+          </div>
+
+          <div style="padding:0.5rem 0;"><span style="font-size:0.7rem;letter-spacing:3px;color:var(--gray);text-transform:uppercase;">12 de Junho · Rodada 1</span></div>
+          <div class="game-card result">
+            <div class="game-flag">🇨🇦</div>
+            <div><div class="game-team-name">Canadá</div><div class="game-meta">Grupo B</div></div>
+            <div class="game-score">1 – 1</div>
+            <div><div class="game-team-name">Itália</div><div class="game-meta">Grupo B</div></div>
+            <div class="game-badge">FIM</div>
+          </div>
+          <div class="game-card result">
+            <div class="game-flag">🇺🇸</div>
+            <div><div class="game-team-name">EUA</div><div class="game-meta">Grupo D</div></div>
+            <div class="game-score">4 – 1</div>
+            <div><div class="game-team-name">Paraguai</div><div class="game-meta">Grupo D</div></div>
+            <div class="game-badge">FIM</div>
+          </div>
+
+          <div style="padding:0.5rem 0;"><span style="font-size:0.7rem;letter-spacing:3px;color:var(--gray);text-transform:uppercase;">13 de Junho · Rodada 1</span></div>
+          <div class="game-card result" style="border-left-color:var(--brazil-yellow);">
+            <div class="game-flag">🇧🇷</div>
+            <div><div class="game-team-name">Brasil</div><div class="game-meta">Grupo C</div></div>
+            <div class="game-score" style="color:#ffdf00;">1 – 1</div>
+            <div><div class="game-team-name">Marrocos</div><div class="game-meta">Grupo C</div></div>
+            <div class="game-badge" style="border-color:rgba(0,156,59,0.4);color:var(--brazil-green);background:rgba(0,156,59,0.1);">FIM</div>
+          </div>
+          <div class="game-card result">
+            <div class="game-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</div>
+            <div><div class="game-team-name">Escócia</div><div class="game-meta">Grupo C</div></div>
+            <div class="game-score">1 – 0</div>
+            <div><div class="game-team-name">Haiti</div><div class="game-meta">Grupo C</div></div>
+            <div class="game-badge">FIM</div>
+          </div>
+
+          <div style="padding:0.5rem 0;"><span style="font-size:0.7rem;letter-spacing:3px;color:var(--gray);text-transform:uppercase;">14 de Junho · Rodada 1</span></div>
+          <div class="game-card result">
+            <div class="game-flag">🇩🇪</div>
+            <div><div class="game-team-name">Alemanha</div><div class="game-meta">Grupo E</div></div>
+            <div class="game-score">3 – 0</div>
+            <div><div class="game-team-name">Curaçao</div><div class="game-meta">Grupo E</div></div>
+            <div class="game-badge">FIM</div>
+          </div>
+          <div class="game-card result">
+            <div class="game-flag">🇳🇱</div>
+            <div><div class="game-team-name">Holanda</div><div class="game-meta">Grupo F</div></div>
+            <div class="game-score">2 – 1</div>
+            <div><div class="game-team-name">Japão</div><div class="game-meta">Grupo F</div></div>
+            <div class="game-badge">FIM</div>
+          </div>
+
+          <div style="padding:0.5rem 0;"><span style="font-size:0.7rem;letter-spacing:3px;color:var(--gray);text-transform:uppercase;">15 de Junho · Rodada 1</span></div>
+          <div class="game-card result">
+            <div class="game-flag">🇪🇸</div>
+            <div><div class="game-team-name">Espanha</div><div class="game-meta">Grupo G</div></div>
+            <div class="game-score">3 – 1</div>
+            <div><div class="game-team-name">Cabo Verde</div><div class="game-meta">Grupo G</div></div>
+            <div class="game-badge">FIM</div>
+          </div>
+          <div class="game-card result">
+            <div class="game-flag">🇫🇷</div>
+            <div><div class="game-team-name">França</div><div class="game-meta">Grupo H</div></div>
+            <div class="game-score">2 – 0</div>
+            <div><div class="game-team-name">Iraque</div><div class="game-meta">Grupo H</div></div>
+            <div class="game-badge">FIM</div>
+          </div>
+
+          <div style="padding:0.5rem 0;"><span style="font-size:0.7rem;letter-spacing:3px;color:var(--gray);text-transform:uppercase;">16-17 de Junho · Rodada 1</span></div>
+          <div class="game-card result">
+            <div class="game-flag">🇦🇷</div>
+            <div><div class="game-team-name">Argentina</div><div class="game-meta">Grupo I</div></div>
+            <div class="game-score">2 – 0</div>
+            <div><div class="game-team-name">Áustria</div><div class="game-meta">Grupo I</div></div>
+            <div class="game-badge">FIM</div>
+          </div>
+          <div class="game-card result">
+            <div class="game-flag">🇵🇹</div>
+            <div><div class="game-team-name">Portugal</div><div class="game-meta">Grupo J</div></div>
+            <div class="game-score">4 – 0</div>
+            <div><div class="game-team-name">Namíbia</div><div class="game-meta">Grupo J</div></div>
+            <div class="game-badge">FIM</div>
+          </div>
+          <div class="game-card result">
+            <div class="game-flag">🇧🇪</div>
+            <div><div class="game-team-name">Bélgica</div><div class="game-meta">Grupo K</div></div>
+            <div class="game-score">2 – 1</div>
+            <div><div class="game-team-name">Irã</div><div class="game-meta">Grupo K</div></div>
+            <div class="game-badge">FIM</div>
+          </div>
+          <div class="game-card result">
+            <div class="game-flag">🇺🇾</div>
+            <div><div class="game-team-name">Uruguai</div><div class="game-meta">Grupo L</div></div>
+            <div class="game-score">3 – 0</div>
+            <div><div class="game-team-name">Cabo Verde</div><div class="game-meta">Grupo L</div></div>
+            <div class="game-badge">FIM</div>
+          </div>
+
+          <div style="padding:0.5rem 0;"><span style="font-size:0.7rem;letter-spacing:3px;color:var(--gray);text-transform:uppercase;">18 de Junho · Rodada 2</span></div>
+          <div class="game-card result">
+            <div class="game-flag">🇰🇷</div>
+            <div><div class="game-team-name">Coreia do Sul</div><div class="game-meta">Grupo A</div></div>
+            <div class="game-score">1 – 0</div>
+            <div><div class="game-team-name">Dinamarca</div><div class="game-meta">Grupo A</div></div>
+            <div class="game-badge">FIM</div>
+          </div>
+          <div class="game-card result">
+            <div class="game-flag">🇦🇺</div>
+            <div><div class="game-team-name">Austrália</div><div class="game-meta">Grupo D</div></div>
+            <div class="game-score">0 – 0</div>
+            <div><div class="game-team-name">Turquia</div><div class="game-meta">Grupo D</div></div>
+            <div class="game-badge">FIM</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOJE -->
+      <div class="tab-content" id="tab-hoje">
+        <div class="live-banner">
+          <div class="live-dot"></div>
+          <div class="live-text"><strong>AO VIVO HOJE</strong> – 19 de Junho • Rodada 2 da Fase de Grupos</div>
+        </div>
+        <div class="games-grid">
+          <div class="game-card today" onclick="launchSim('mexico','coreiadosul')">
+            <div class="game-flag">🇲🇽</div>
+            <div><div class="game-team-name">México</div><div class="game-meta">Grupo A • 16h BRT</div></div>
+            <div class="game-score upcoming-score">vs</div>
+            <div><div class="game-team-name">Coreia do Sul</div><div class="game-meta">Guadalajara</div></div>
+            <div class="game-badge" style="background:rgba(0,200,83,0.15);color:var(--green);border-color:rgba(0,200,83,0.3);">SIMULAR ▶</div>
+          </div>
+          <div class="game-card today" onclick="launchSim('eua','australia')">
+            <div class="game-flag">🇺🇸</div>
+            <div><div class="game-team-name">EUA</div><div class="game-meta">Grupo D • 19h BRT</div></div>
+            <div class="game-score upcoming-score">vs</div>
+            <div><div class="game-team-name">Austrália</div><div class="game-meta">Houston</div></div>
+            <div class="game-badge" style="background:rgba(0,200,83,0.15);color:var(--green);border-color:rgba(0,200,83,0.3);">SIMULAR ▶</div>
+          </div>
+        </div>
+        <p style="text-align:center;color:var(--gray);font-size:0.8rem;margin-top:1.5rem;">💡 Clique em "Simular" para ver como o jogo vai se desenvolver em tempo real!</p>
+      </div>
+
+      <!-- PRÓXIMOS -->
+      <div class="tab-content" id="tab-proximos">
+        <div class="games-grid">
+          <div style="padding:0.5rem 0;"><span style="font-size:0.7rem;letter-spacing:3px;color:var(--gray);text-transform:uppercase;">20 de Junho</span></div>
+          <div class="game-card upcoming" onclick="launchSim('brasil','haiti')">
+            <div class="game-flag">🇧🇷</div>
+            <div><div class="game-team-name">Brasil</div><div class="game-meta">Grupo C • 21h30 BRT</div></div>
+            <div class="game-score upcoming-score">vs</div>
+            <div><div class="game-team-name">Haiti</div><div class="game-meta">Filadélfia</div></div>
+            <div class="game-badge" style="background:rgba(0,200,83,0.15);color:var(--green);border-color:rgba(0,200,83,0.3);">SIMULAR ▶</div>
+          </div>
+          <div class="game-card upcoming">
+            <div class="game-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</div>
+            <div><div class="game-team-name">Escócia</div><div class="game-meta">Grupo C • 16h BRT</div></div>
+            <div class="game-score upcoming-score">vs</div>
+            <div><div class="game-team-name">Marrocos</div><div class="game-meta">Boston</div></div>
+            <div class="game-badge">EM BREVE</div>
+          </div>
+          <div class="game-card upcoming">
+            <div class="game-flag">🇩🇪</div>
+            <div><div class="game-team-name">Alemanha</div><div class="game-meta">Grupo E • 19h BRT</div></div>
+            <div class="game-score upcoming-score">vs</div>
+            <div><div class="game-team-name">Costa do Marfim</div><div class="game-meta">Atlanta</div></div>
+            <div class="game-badge">EM BREVE</div>
+          </div>
+
+          <div style="padding:0.5rem 0;"><span style="font-size:0.7rem;letter-spacing:3px;color:var(--gray);text-transform:uppercase;">21 de Junho</span></div>
+          <div class="game-card upcoming">
+            <div class="game-flag">🇪🇸</div>
+            <div><div class="game-team-name">Espanha</div><div class="game-meta">Grupo G</div></div>
+            <div class="game-score upcoming-score">vs</div>
+            <div><div class="game-team-name">Arábia Saudita</div><div class="game-meta">Dallas</div></div>
+            <div class="game-badge">EM BREVE</div>
+          </div>
+          <div class="game-card upcoming">
+            <div class="game-flag">🇫🇷</div>
+            <div><div class="game-team-name">França</div><div class="game-meta">Grupo H</div></div>
+            <div class="game-score upcoming-score">vs</div>
+            <div><div class="game-team-name">Bélgica</div><div class="game-meta">Miami</div></div>
+            <div class="game-badge">EM BREVE</div>
+          </div>
+
+          <div style="padding:0.5rem 0;"><span style="font-size:0.7rem;letter-spacing:3px;color:var(--gray);text-transform:uppercase;">22 de Junho</span></div>
+          <div class="game-card upcoming">
+            <div class="game-flag">🇦🇷</div>
+            <div><div class="game-team-name">Argentina</div><div class="game-meta">Grupo I</div></div>
+            <div class="game-score upcoming-score">vs</div>
+            <div><div class="game-team-name">Áustria</div><div class="game-meta">Los Angeles</div></div>
+            <div class="game-badge">EM BREVE</div>
+          </div>
+
+          <div style="padding:0.5rem 0;"><span style="font-size:0.7rem;letter-spacing:3px;color:var(--gray);text-transform:uppercase;">24 de Junho · Rodada 3</span></div>
+          <div class="game-card upcoming" style="border-left-color:var(--brazil-yellow);">
+            <div class="game-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</div>
+            <div><div class="game-team-name">Escócia</div><div class="game-meta">Grupo C • 19h BRT</div></div>
+            <div class="game-score upcoming-score">vs</div>
+            <div><div class="game-team-name">Brasil 🇧🇷</div><div class="game-meta">Miami • Hard Rock</div></div>
+            <div class="game-badge" style="border-color:rgba(255,223,0,0.4);color:var(--brazil-yellow);background:rgba(255,223,0,0.1);">BRASIL</div>
+          </div>
+
+          <div style="padding:0.5rem 0;"><span style="font-size:0.7rem;letter-spacing:3px;color:var(--gray);text-transform:uppercase;">Final · 19 de Julho</span></div>
+          <div class="game-card" style="border-left-color:var(--gold);border:1px solid rgba(255,215,0,0.2);">
+            <div class="game-flag">❓</div>
+            <div><div class="game-team-name">A definir</div><div class="game-meta">Final</div></div>
+            <div class="game-score upcoming-score">🏆</div>
+            <div><div class="game-team-name">A definir</div><div class="game-meta">MetLife Stadium</div></div>
+            <div class="game-badge">GRANDE FINAL</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRUPOS -->
+<section id="grupos" style="background:var(--dark2);">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">⚽ Classificação</span>
+      <h2 class="section-title">Grupos & Classificação</h2>
+    </div>
+    <div class="groups-grid">
+
+      <!-- GRUPO A -->
+      <div class="group-card">
+        <div class="group-header">GRUPO A</div>
+        <table class="group-table">
+          <thead><tr><th>Seleção</th><th>J</th><th>V</th><th>SG</th><th>Pts</th></tr></thead>
+          <tbody>
+            <tr class="qualified"><td><span class="pos-badge q">1</span>🇲🇽 México</td><td>2</td><td>1</td><td>+1</td><td class="pts">4</td></tr>
+            <tr class="qualified"><td><span class="pos-badge q">2</span>🇰🇷 Coreia Sul</td><td>2</td><td>1</td><td>+1</td><td class="pts">3</td></tr>
+            <tr><td><span class="pos-badge">3</span>🇿🇦 África do Sul</td><td>2</td><td>0</td><td>-1</td><td class="pts">1</td></tr>
+            <tr><td><span class="pos-badge">4</span>🇩🇰 Dinamarca</td><td>2</td><td>0</td><td>-1</td><td class="pts">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- GRUPO B -->
+      <div class="group-card">
+        <div class="group-header">GRUPO B</div>
+        <table class="group-table">
+          <thead><tr><th>Seleção</th><th>J</th><th>V</th><th>SG</th><th>Pts</th></tr></thead>
+          <tbody>
+            <tr class="qualified"><td><span class="pos-badge q">1</span>🇮🇹 Itália</td><td>1</td><td>0</td><td>0</td><td class="pts">1</td></tr>
+            <tr class="qualified"><td><span class="pos-badge q">2</span>🇨🇦 Canadá</td><td>1</td><td>0</td><td>0</td><td class="pts">1</td></tr>
+            <tr><td><span class="pos-badge">3</span>🏳️ Irlanda do Norte</td><td>1</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+            <tr><td><span class="pos-badge">4</span>🇧🇦 Bósnia</td><td>1</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- GRUPO C (Brasil!) -->
+      <div class="group-card" style="border-color:rgba(255,223,0,0.25);">
+        <div class="group-header" style="border-bottom-color:rgba(255,223,0,0.3);background:linear-gradient(135deg,rgba(0,156,59,0.2),rgba(0,156,59,0.05));">
+          GRUPO C 🇧🇷
+        </div>
+        <table class="group-table">
+          <thead><tr><th>Seleção</th><th>J</th><th>V</th><th>SG</th><th>Pts</th></tr></thead>
+          <tbody>
+            <tr class="qualified"><td><span class="pos-badge q">1</span>🏴󠁧󠁢󠁳󠁣󠁴󠁿 Escócia</td><td>1</td><td>1</td><td>+1</td><td class="pts">3</td></tr>
+            <tr class="qualified"><td><span class="pos-badge q">2</span>🇧🇷 Brasil</td><td>1</td><td>0</td><td>0</td><td class="pts" style="color:var(--brazil-yellow);">1</td></tr>
+            <tr><td><span class="pos-badge">3</span>🇲🇦 Marrocos</td><td>1</td><td>0</td><td>0</td><td class="pts">1</td></tr>
+            <tr><td><span class="pos-badge">4</span>🇭🇹 Haiti</td><td>1</td><td>0</td><td>-1</td><td class="pts">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- GRUPO D -->
+      <div class="group-card">
+        <div class="group-header">GRUPO D</div>
+        <table class="group-table">
+          <thead><tr><th>Seleção</th><th>J</th><th>V</th><th>SG</th><th>Pts</th></tr></thead>
+          <tbody>
+            <tr class="qualified"><td><span class="pos-badge q">1</span>🇺🇸 EUA</td><td>1</td><td>1</td><td>+3</td><td class="pts">3</td></tr>
+            <tr class="qualified"><td><span class="pos-badge q">2</span>🇹🇷 Turquia</td><td>1</td><td>0</td><td>0</td><td class="pts">1</td></tr>
+            <tr><td><span class="pos-badge">3</span>🇦🇺 Austrália</td><td>1</td><td>0</td><td>0</td><td class="pts">1</td></tr>
+            <tr><td><span class="pos-badge">4</span>🇵🇾 Paraguai</td><td>1</td><td>0</td><td>-3</td><td class="pts">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- GRUPO E -->
+      <div class="group-card">
+        <div class="group-header">GRUPO E</div>
+        <table class="group-table">
+          <thead><tr><th>Seleção</th><th>J</th><th>V</th><th>SG</th><th>Pts</th></tr></thead>
+          <tbody>
+            <tr class="qualified"><td><span class="pos-badge q">1</span>🇩🇪 Alemanha</td><td>1</td><td>1</td><td>+3</td><td class="pts">3</td></tr>
+            <tr class="qualified"><td><span class="pos-badge q">2</span>🇨🇮 Costa do Marfim</td><td>1</td><td>0</td><td>0</td><td class="pts">1</td></tr>
+            <tr><td><span class="pos-badge">3</span>🇪🇨 Equador</td><td>1</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+            <tr><td><span class="pos-badge">4</span>🏳️ Curaçao</td><td>1</td><td>0</td><td>-3</td><td class="pts">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- GRUPO F -->
+      <div class="group-card">
+        <div class="group-header">GRUPO F</div>
+        <table class="group-table">
+          <thead><tr><th>Seleção</th><th>J</th><th>V</th><th>SG</th><th>Pts</th></tr></thead>
+          <tbody>
+            <tr class="qualified"><td><span class="pos-badge q">1</span>🇳🇱 Holanda</td><td>1</td><td>1</td><td>+1</td><td class="pts">3</td></tr>
+            <tr class="qualified"><td><span class="pos-badge q">2</span>🇯🇵 Japão</td><td>1</td><td>0</td><td>-1</td><td class="pts">0</td></tr>
+            <tr><td><span class="pos-badge">3</span>🇸🇪 Suécia</td><td>1</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+            <tr><td><span class="pos-badge">4</span>🇹🇳 Tunísia</td><td>1</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- GRUPO G -->
+      <div class="group-card">
+        <div class="group-header">GRUPO G</div>
+        <table class="group-table">
+          <thead><tr><th>Seleção</th><th>J</th><th>V</th><th>SG</th><th>Pts</th></tr></thead>
+          <tbody>
+            <tr class="qualified"><td><span class="pos-badge q">1</span>🇪🇸 Espanha</td><td>1</td><td>1</td><td>+2</td><td class="pts">3</td></tr>
+            <tr class="qualified"><td><span class="pos-badge q">2</span>🇸🇦 Arábia Saudita</td><td>1</td><td>0</td><td>-1</td><td class="pts">0</td></tr>
+            <tr><td><span class="pos-badge">3</span>🇳🇴 Noruega</td><td>1</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+            <tr><td><span class="pos-badge">4</span>🇨🇻 Cabo Verde</td><td>1</td><td>0</td><td>-1</td><td class="pts">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- GRUPO H -->
+      <div class="group-card">
+        <div class="group-header">GRUPO H</div>
+        <table class="group-table">
+          <thead><tr><th>Seleção</th><th>J</th><th>V</th><th>SG</th><th>Pts</th></tr></thead>
+          <tbody>
+            <tr class="qualified"><td><span class="pos-badge q">1</span>🇫🇷 França</td><td>1</td><td>1</td><td>+2</td><td class="pts">3</td></tr>
+            <tr class="qualified"><td><span class="pos-badge q">2</span>🇧🇪 Bélgica</td><td>1</td><td>1</td><td>+1</td><td class="pts">3</td></tr>
+            <tr><td><span class="pos-badge">3</span>🇮🇷 Irã</td><td>1</td><td>0</td><td>-1</td><td class="pts">0</td></tr>
+            <tr><td><span class="pos-badge">4</span>🇮🇶 Iraque</td><td>1</td><td>0</td><td>-2</td><td class="pts">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- GRUPO I -->
+      <div class="group-card">
+        <div class="group-header">GRUPO I</div>
+        <table class="group-table">
+          <thead><tr><th>Seleção</th><th>J</th><th>V</th><th>SG</th><th>Pts</th></tr></thead>
+          <tbody>
+            <tr class="qualified"><td><span class="pos-badge q">1</span>🇦🇷 Argentina</td><td>1</td><td>1</td><td>+2</td><td class="pts">3</td></tr>
+            <tr class="qualified"><td><span class="pos-badge q">2</span>🇺🇾 Uruguai</td><td>1</td><td>1</td><td>+3</td><td class="pts">3</td></tr>
+            <tr><td><span class="pos-badge">3</span>🇦🇹 Áustria</td><td>1</td><td>0</td><td>-2</td><td class="pts">0</td></tr>
+            <tr><td><span class="pos-badge">4</span>🇳🇿 Nova Zelândia</td><td>1</td><td>0</td><td>-3</td><td class="pts">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- GRUPO J -->
+      <div class="group-card">
+        <div class="group-header">GRUPO J</div>
+        <table class="group-table">
+          <thead><tr><th>Seleção</th><th>J</th><th>V</th><th>SG</th><th>Pts</th></tr></thead>
+          <tbody>
+            <tr class="qualified"><td><span class="pos-badge q">1</span>🇵🇹 Portugal</td><td>1</td><td>1</td><td>+4</td><td class="pts">3</td></tr>
+            <tr class="qualified"><td><span class="pos-badge q">2</span>🇵🇱 Polônia</td><td>1</td><td>0</td><td>0</td><td class="pts">1</td></tr>
+            <tr><td><span class="pos-badge">3</span>🇸🇳 Senegal</td><td>1</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+            <tr><td><span class="pos-badge">4</span>🇳🇦 Namíbia</td><td>1</td><td>0</td><td>-4</td><td class="pts">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESCALAÇÕES -->
+<section id="squads">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">👕 Elencos</span>
+      <h2 class="section-title">Escalações & Jogadores</h2>
+    </div>
+
+    <div class="squad-selector">
+      <button class="squad-btn active" onclick="showSquad('brasil')">🇧🇷 Brasil</button>
+      <button class="squad-btn" onclick="showSquad('argentina')">🇦🇷 Argentina</button>
+      <button class="squad-btn" onclick="showSquad('franca')">🇫🇷 França</button>
+      <button class="squad-btn" onclick="showSquad('alemanha')">🇩🇪 Alemanha</button>
+      <button class="squad-btn" onclick="showSquad('espanha')">🇪🇸 Espanha</button>
+      <button class="squad-btn" onclick="showSquad('portugal')">🇵🇹 Portugal</button>
+      <button class="squad-btn" onclick="showSquad('marrocos')">🇲🇦 Marrocos</button>
+      <button class="squad-btn" onclick="showSquad('inglaterra')">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra</button>
+    </div>
+
+    <!-- BRASIL -->
+    <div class="squad-display active" id="squad-brasil">
+      <div class="pitch-container">
+        <div class="pitch-header">
+          <div>
+            <div class="pitch-title">🇧🇷 SELEÇÃO BRASILEIRA</div>
+            <div style="font-size:0.8rem;color:var(--gray);margin-top:4px;">Técnico: Carlo Ancelotti • 26 convocados</div>
+          </div>
+          <div class="formation-badge">4-3-3</div>
+        </div>
+        <div class="pitch">
+          <!-- GK -->
+          <div class="pitch-row">
+            <div class="player-token">
+              <div class="player-avatar" style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-color:rgba(255,215,0,0.8);">AL<div class="player-num">1</div></div>
+              <div class="player-name-tag">Alisson</div>
+              <div class="player-pos-tag">GK</div>
+            </div>
+          </div>
+          <!-- DEF -->
+          <div class="pitch-row">
+            <div class="player-token">
+              <div class="player-avatar" style="background:linear-gradient(135deg,#0d3b6e,#1565c0);">DS<div class="player-num">16</div></div>
+              <div class="player-name-tag">D. Santos</div>
+              <div class="player-pos-tag">LD</div>
+            </div>
+            <div class="player-token">
+              <div class="player-avatar" style="background:linear-gradient(135deg,#0d3b6e,#1565c0);">BR<div class="player-num">14</div></div>
+              <div class="player-name-tag">Bremer</div>
+              <div class="player-pos-tag">ZAG</div>
+            </div>
+            <div class="player-token">
+              <div class="player-avatar" style="background:linear-gradient(135deg,#0d3b6e,#1565c0);">MQ<div class="player-num">4</div></div>
+              <div class="player-name-tag">Marquinhos</div>
+              <div class="player-pos-tag">ZAG</div>
+            </div>
+            <div class="player-token">
+              <div class="player-avatar" style="background:linear-gradient(135deg,#0d3b6e,#1565c0);">IB<div class="player-num">24</div></div>
+              <div class="player-name-tag">Ibañez</div>
+              <div class="player-pos-tag">LE</div>
+            </div>
+          </div>
+          <!-- MID -->
+          <div class="pitch-row">
+            <div class="player-token">
+              <div class="player-avatar" style="background:linear-gradient(135deg,#1b5e20,#2e7d32);">CS<div class="player-num">5</div></div>
+              <div class="player-name-tag">Casemiro</div>
+              <div class="player-pos-tag">VOL</div>
+            </div>
+            <div class="player-token">
+              <div class="player-avatar" style="background:linear-gradient(135deg,#1b5e20,#2e7d32);">BG<div class="player-num">8</div></div>
+              <div class="player-name-tag">B. Guimarães</div>
+              <div class="player-pos-tag">MCD</div>
+            </div>
+            <div class="player-token">
+              <div class="player-avatar" style="background:linear-gradient(135deg,#1b5e20,#2e7d32);">LP<div class="player-num">20</div></div>
+              <div class="player-name-tag">L. Paquetá</div>
+              <div class="player-pos-tag">MEI</div>
+            </div>
+          </div>
+          <!-- FWD -->
+          <div class="pitch-row">
+            <div class="player-token">
+              <div class="player-avatar" style="background:linear-gradient(135deg,#b71c1c,#c62828);">RA<div class="player-num">11</div></div>
+              <div class="player-name-tag">Raphinha</div>
+              <div class="player-pos-tag">PD</div>
+            </div>
+            <div class="player-token">
+              <div class="player-avatar" style="background:linear-gradient(135deg,#b71c1c,#c62828);border-color:rgba(255,215,0,1);">IT<div class="player-num">25</div></div>
+              <div class="player-name-tag">Igor Thiago</div>
+              <div class="player-pos-tag">CA</div>
+            </div>
+            <div class="player-token">
+              <div class="player-avatar" style="background:linear-gradient(135deg,#b71c1c,#c62828);border-color:rgba(255,215,0,1);">VJ<div class="player-num">7</div></div>
+              <div class="player-name-tag">Vini Jr.</div>
+              <div class="player-pos-tag">PE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lista completa jogadores Brasil -->
+      <div style="margin-bottom:1.5rem;">
+        <div style="display:flex;gap:1rem;align-items:center;margin-bottom:1rem;flex-wrap:wrap;">
+          <h3 style="font-family:'Oswald',sans-serif;font-size:1.2rem;letter-spacing:1px;">Elenco Completo</h3>
+          <span style="font-size:0.75rem;color:var(--gray);">26 jogadores convocados por Carlo Ancelotti</span>
+        </div>
+        <div class="players-list">
+          <!-- GOLEIROS -->
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(255,215,0,0.6);">AL</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Alisson Becker</div>
+              <div class="player-card-details">Liverpool • 33 anos</div>
+              <span class="player-card-pos pos-gk">Goleiro</span>
+            </div>
+          </div>
+          <div class="player-card">
+            <div class="player-card-avatar">WE</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Weverton</div>
+              <div class="player-card-details">Grêmio • 36 anos</div>
+              <span class="player-card-pos pos-gk">Goleiro</span>
+            </div>
+          </div>
+          <div class="player-card">
+            <div class="player-card-avatar">ED</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Ederson</div>
+              <div class="player-card-details">Fenerbahçe • 31 anos</div>
+              <span class="player-card-pos pos-gk">Goleiro</span>
+            </div>
+          </div>
+          <!-- DEFENSORES -->
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(92,159,255,0.6);">MQ</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Marquinhos (C)</div>
+              <div class="player-card-details">PSG • 31 anos</div>
+              <span class="player-card-pos pos-def">Zagueiro</span>
+            </div>
+          </div>
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(92,159,255,0.6);">GM</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Gabriel Magalhães</div>
+              <div class="player-card-details">Arsenal • 27 anos</div>
+              <span class="player-card-pos pos-def">Zagueiro</span>
+            </div>
+          </div>
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(92,159,255,0.6);">BR</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Bremer</div>
+              <div class="player-card-details">Juventus • 28 anos</div>
+              <span class="player-card-pos pos-def">Zagueiro</span>
+            </div>
+          </div>
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(92,159,255,0.6);">LP</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Léo Pereira</div>
+              <div class="player-card-details">Flamengo • 28 anos</div>
+              <span class="player-card-pos pos-def">Zagueiro</span>
+            </div>
+          </div>
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(92,159,255,0.6);">DA</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Danilo</div>
+              <div class="player-card-details">Flamengo • 33 anos</div>
+              <span class="player-card-pos pos-def">Lateral D</span>
+            </div>
+          </div>
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(92,159,255,0.6);">AS</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Alex Sandro</div>
+              <div class="player-card-details">Flamengo • 34 anos</div>
+              <span class="player-card-pos pos-def">Lateral E</span>
+            </div>
+          </div>
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(92,159,255,0.6);">DS</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Douglas Santos</div>
+              <div class="player-card-details">Zenit • 30 anos</div>
+              <span class="player-card-pos pos-def">Lateral E</span>
+            </div>
+          </div>
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(92,159,255,0.6);">IB</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Ibañez</div>
+              <div class="player-card-details">Al-Ahli • 27 anos</div>
+              <span class="player-card-pos pos-def">Zagueiro/Lat</span>
+            </div>
+          </div>
+          <!-- MEIAS -->
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(0,200,83,0.6);">CS</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Casemiro</div>
+              <div class="player-card-details">Manchester United • 34 anos</div>
+              <span class="player-card-pos pos-mid">Volante</span>
+            </div>
+          </div>
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(0,200,83,0.6);">BG</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Bruno Guimarães</div>
+              <div class="player-card-details">Newcastle • 27 anos</div>
+              <span class="player-card-pos pos-mid">Meia</span>
+            </div>
+          </div>
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(0,200,83,0.6);">LP</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Lucas Paquetá</div>
+              <div class="player-card-details">Flamengo • 27 anos</div>
+              <span class="player-card-pos pos-mid">Meia</span>
+            </div>
+          </div>
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(0,200,83,0.6);">FB</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Fabinho</div>
+              <div class="player-card-details">Al-Ittihad • 31 anos</div>
+              <span class="player-card-pos pos-mid">Volante</span>
+            </div>
+          </div>
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(0,200,83,0.6);">DAS</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Danilo Santos</div>
+              <div class="player-card-details">Botafogo • 23 anos</div>
+              <span class="player-card-pos pos-mid">Volante</span>
+            </div>
+          </div>
+          <!-- ATACANTES -->
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">VJ</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Vinicius Jr. ⭐</div>
+              <div class="player-card-details">Real Madrid • 24 anos</div>
+              <span class="player-card-pos pos-fwd">Atacante</span>
+            </div>
+          </div>
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">RA</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Raphinha</div>
+              <div class="player-card-details">Barcelona • 28 anos</div>
+              <span class="player-card-pos pos-fwd">Atacante</span>
+            </div>
+          </div>
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(255,215,0,0.9);background:linear-gradient(135deg,#1a1a28,#22223a);">NE</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Neymar Jr. 🌟</div>
+              <div class="player-card-details">Santos • 34 anos</div>
+              <span class="player-card-pos pos-fwd">Meia/Ata</span>
+            </div>
+          </div>
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">EN</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Endrick ⚡</div>
+              <div class="player-card-details">Real Madrid • 18 anos</div>
+              <span class="player-card-pos pos-fwd">Atacante</span>
+            </div>
+          </div>
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">IT</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Igor Thiago</div>
+              <div class="player-card-details">29 anos</div>
+              <span class="player-card-pos pos-fwd">Atacante</span>
+            </div>
+          </div>
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">GM</div>
+            <div class="player-card-info">
+              <div class="player-card-name">G. Martinelli</div>
+              <div class="player-card-details">Arsenal • 23 anos</div>
+              <span class="player-card-pos pos-fwd">Atacante</span>
+            </div>
+          </div>
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">MC</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Matheus Cunha</div>
+              <div class="player-card-details">Wolverhampton • 26 anos</div>
+              <span class="player-card-pos pos-fwd">Atacante</span>
+            </div>
+          </div>
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">LH</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Luiz Henrique</div>
+              <div class="player-card-details">Zenit • 23 anos</div>
+              <span class="player-card-pos pos-fwd">Atacante</span>
+            </div>
+          </div>
+          <div class="player-card">
+            <div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">RY</div>
+            <div class="player-card-info">
+              <div class="player-card-name">Rayan</div>
+              <div class="player-card-details">19 anos</div>
+              <span class="player-card-pos pos-fwd">Atacante</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARGENTINA -->
+    <div class="squad-display" id="squad-argentina">
+      <div class="pitch-container">
+        <div class="pitch-header">
+          <div><div class="pitch-title">🇦🇷 ARGENTINA</div><div style="font-size:0.8rem;color:var(--gray);margin-top:4px;">Técnico: Lionel Scaloni • Campeã do Mundo 2022</div></div>
+          <div class="formation-badge">4-3-3</div>
+        </div>
+        <div class="pitch">
+          <div class="pitch-row"><div class="player-token"><div class="player-avatar">EM<div class="player-num">23</div></div><div class="player-name-tag">E. Martínez</div><div class="player-pos-tag">GK</div></div></div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">MF<div class="player-num">2</div></div><div class="player-name-tag">Molina</div><div class="player-pos-tag">LD</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">OR<div class="player-num">17</div></div><div class="player-name-tag">Otamendi</div><div class="player-pos-tag">ZAG</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">LL<div class="player-num">5</div></div><div class="player-name-tag">L. Martínez</div><div class="player-pos-tag">ZAG</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">TA<div class="player-num">8</div></div><div class="player-name-tag">Tagliafico</div><div class="player-pos-tag">LE</div></div>
+          </div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#2e7d32;">MC<div class="player-num">25</div></div><div class="player-name-tag">Mac Allister</div><div class="player-pos-tag">MCD</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#2e7d32;">EN<div class="player-num">24</div></div><div class="player-name-tag">Enzo Fernández</div><div class="player-pos-tag">MEI</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#2e7d32;">DM<div class="player-num">20</div></div><div class="player-name-tag">De Paul</div><div class="player-pos-tag">MEI</div></div>
+          </div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#b71c1c;">DM<div class="player-num">22</div></div><div class="player-name-tag">Di María</div><div class="player-pos-tag">PD</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#b71c1c;border-color:rgba(255,215,0,0.9);">LA<div class="player-num">10</div></div><div class="player-name-tag">Lautaro M.</div><div class="player-pos-tag">CA</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#b71c1c;">JA<div class="player-num">11</div></div><div class="player-name-tag">J. Álvarez</div><div class="player-pos-tag">PE</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="players-list">
+        <div class="player-card"><div class="player-card-avatar">EM</div><div class="player-card-info"><div class="player-card-name">Emiliano Martínez</div><div class="player-card-details">Aston Villa • 33 anos</div><span class="player-card-pos pos-gk">Goleiro</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(92,159,255,0.6);">OR</div><div class="player-card-info"><div class="player-card-name">Otamendi</div><div class="player-card-details">Benfica • 37 anos</div><span class="player-card-pos pos-def">Zagueiro</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(92,159,255,0.6);">LL</div><div class="player-card-info"><div class="player-card-name">L. Martínez</div><div class="player-card-details">Inter Milan • 27 anos</div><span class="player-card-pos pos-def">Zagueiro</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(0,200,83,0.6);">MC</div><div class="player-card-info"><div class="player-card-name">Mac Allister</div><div class="player-card-details">Liverpool • 26 anos</div><span class="player-card-pos pos-mid">Meia</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(0,200,83,0.6);">EN</div><div class="player-card-info"><div class="player-card-name">Enzo Fernández</div><div class="player-card-details">Chelsea • 24 anos</div><span class="player-card-pos pos-mid">Meia</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">LA</div><div class="player-card-info"><div class="player-card-name">Lautaro Martínez ⭐</div><div class="player-card-details">Inter Milan • 27 anos</div><span class="player-card-pos pos-fwd">Atacante</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">JA</div><div class="player-card-info"><div class="player-card-name">Julián Álvarez</div><div class="player-card-details">Atlético Madrid • 24 anos</div><span class="player-card-pos pos-fwd">Atacante</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">DM</div><div class="player-card-info"><div class="player-card-name">Di María</div><div class="player-card-details">Benfica • 37 anos</div><span class="player-card-pos pos-fwd">Atacante</span></div></div>
+      </div>
+    </div>
+
+    <!-- FRANCA -->
+    <div class="squad-display" id="squad-franca">
+      <div class="pitch-container">
+        <div class="pitch-header">
+          <div><div class="pitch-title">🇫🇷 SELEÇÃO FRANCESA</div><div style="font-size:0.8rem;color:var(--gray);margin-top:4px;">Técnico: Didier Deschamps</div></div>
+          <div class="formation-badge">4-2-3-1</div>
+        </div>
+        <div class="pitch">
+          <div class="pitch-row"><div class="player-token"><div class="player-avatar">MY<div class="player-num">1</div></div><div class="player-name-tag">Maignan</div><div class="player-pos-tag">GK</div></div></div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">PD<div class="player-num">2</div></div><div class="player-name-tag">Pavard</div><div class="player-pos-tag">LD</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">SY<div class="player-num">5</div></div><div class="player-name-tag">Saliba</div><div class="player-pos-tag">ZAG</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">UD<div class="player-num">4</div></div><div class="player-name-tag">Upamecano</div><div class="player-pos-tag">ZAG</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">TH<div class="player-num">3</div></div><div class="player-name-tag">T. Hernández</div><div class="player-pos-tag">LE</div></div>
+          </div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#2e7d32;">CA<div class="player-num">6</div></div><div class="player-name-tag">Camavinga</div><div class="player-pos-tag">MCD</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#2e7d32;">TC<div class="player-num">8</div></div><div class="player-name-tag">Tchouaméni</div><div class="player-pos-tag">MCD</div></div>
+          </div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#b71c1c;">DR<div class="player-num">16</div></div><div class="player-name-tag">Dembélé</div><div class="player-pos-tag">PD</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#b71c1c;">GM<div class="player-num">7</div></div><div class="player-name-tag">Griezmann</div><div class="player-pos-tag">MEI</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#b71c1c;">TH<div class="player-num">11</div></div><div class="player-name-tag">Thuram</div><div class="player-pos-tag">PE</div></div>
+          </div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#880e4f;border-color:rgba(255,215,0,0.9);">KM<div class="player-num">10</div></div><div class="player-name-tag">Mbappé ⭐</div><div class="player-pos-tag">CA</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="players-list">
+        <div class="player-card"><div class="player-card-avatar">MY</div><div class="player-card-info"><div class="player-card-name">Maignan</div><div class="player-card-details">AC Milan • 29 anos</div><span class="player-card-pos pos-gk">Goleiro</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(92,159,255,0.6);">SY</div><div class="player-card-info"><div class="player-card-name">William Saliba</div><div class="player-card-details">Arsenal • 24 anos</div><span class="player-card-pos pos-def">Zagueiro</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(0,200,83,0.6);">CA</div><div class="player-card-info"><div class="player-card-name">Camavinga</div><div class="player-card-details">Real Madrid • 22 anos</div><span class="player-card-pos pos-mid">Meia</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">KM</div><div class="player-card-info"><div class="player-card-name">Kylian Mbappé ⭐</div><div class="player-card-details">Real Madrid • 27 anos</div><span class="player-card-pos pos-fwd">Atacante</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">GM</div><div class="player-card-info"><div class="player-card-name">Griezmann</div><div class="player-card-details">Atlético Madrid • 35 anos</div><span class="player-card-pos pos-fwd">Meia/Ata</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">OD</div><div class="player-card-info"><div class="player-card-name">Dembélé</div><div class="player-card-details">PSG • 28 anos</div><span class="player-card-pos pos-fwd">Atacante</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">MT</div><div class="player-card-info"><div class="player-card-name">Marcus Thuram</div><div class="player-card-details">Inter Milan • 27 anos</div><span class="player-card-pos pos-fwd">Atacante</span></div></div>
+      </div>
+    </div>
+
+    <!-- ALEMANHA, ESPANHA, PORTUGAL, MARROCOS, INGLATERRA - resumo -->
+    <div class="squad-display" id="squad-alemanha">
+      <div class="pitch-container">
+        <div class="pitch-header">
+          <div><div class="pitch-title">🇩🇪 SELEÇÃO ALEMÃ</div><div style="font-size:0.8rem;color:var(--gray);margin-top:4px;">Técnico: Julian Nagelsmann</div></div>
+          <div class="formation-badge">4-2-3-1</div>
+        </div>
+        <div class="pitch">
+          <div class="pitch-row"><div class="player-token"><div class="player-avatar">NT<div class="player-num">1</div></div><div class="player-name-tag">Neuer</div><div class="player-pos-tag">GK</div></div></div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">KL<div class="player-num">5</div></div><div class="player-name-tag">Kimmich</div><div class="player-pos-tag">LD</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">AD<div class="player-num">4</div></div><div class="player-name-tag">A. Rüdiger</div><div class="player-pos-tag">ZAG</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">TH<div class="player-num">6</div></div><div class="player-name-tag">Tah</div><div class="player-pos-tag">ZAG</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">MD<div class="player-num">19</div></div><div class="player-name-tag">Mittelstädt</div><div class="player-pos-tag">LE</div></div>
+          </div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#2e7d32;">GK<div class="player-num">8</div></div><div class="player-name-tag">Groß</div><div class="player-pos-tag">MCD</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#2e7d32;">AM<div class="player-num">21</div></div><div class="player-name-tag">Andrich</div><div class="player-pos-tag">MCD</div></div>
+          </div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#b71c1c;">JG<div class="player-num">10</div></div><div class="player-name-tag">Musiala</div><div class="player-pos-tag">MEI</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#b71c1c;">FW<div class="player-num">11</div></div><div class="player-name-tag">Wirtz ⭐</div><div class="player-pos-tag">MEI</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#b71c1c;">GN<div class="player-num">7</div></div><div class="player-name-tag">Gnabry</div><div class="player-pos-tag">PE</div></div>
+          </div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#880e4f;border-color:rgba(255,215,0,0.9);">KH<div class="player-num">9</div></div><div class="player-name-tag">Havertz</div><div class="player-pos-tag">CA</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="players-list">
+        <div class="player-card"><div class="player-card-avatar">NT</div><div class="player-card-info"><div class="player-card-name">Manuel Neuer</div><div class="player-card-details">Bayern Munich • 39 anos</div><span class="player-card-pos pos-gk">Goleiro</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(92,159,255,0.6);">AR</div><div class="player-card-info"><div class="player-card-name">Antonio Rüdiger</div><div class="player-card-details">Real Madrid • 32 anos</div><span class="player-card-pos pos-def">Zagueiro</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(92,159,255,0.6);">KL</div><div class="player-card-info"><div class="player-card-name">Joshua Kimmich</div><div class="player-card-details">Bayern Munich • 30 anos</div><span class="player-card-pos pos-mid">Lateral/Meia</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(0,200,83,0.6);">JM</div><div class="player-card-info"><div class="player-card-name">Jamal Musiala ⭐</div><div class="player-card-details">Bayern Munich • 22 anos</div><span class="player-card-pos pos-mid">Meia</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(0,200,83,0.6);">FW</div><div class="player-card-info"><div class="player-card-name">Florian Wirtz ⭐</div><div class="player-card-details">Leverkusen • 22 anos</div><span class="player-card-pos pos-mid">Meia</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">KH</div><div class="player-card-info"><div class="player-card-name">Kai Havertz</div><div class="player-card-details">Arsenal • 26 anos</div><span class="player-card-pos pos-fwd">Atacante</span></div></div>
+      </div>
+    </div>
+
+    <div class="squad-display" id="squad-espanha">
+      <div class="pitch-container">
+        <div class="pitch-header">
+          <div><div class="pitch-title">🇪🇸 SELEÇÃO ESPANHOLA</div><div style="font-size:0.8rem;color:var(--gray);margin-top:4px;">Técnico: Luis de la Fuente • Campeã Eurocopa 2024</div></div>
+          <div class="formation-badge">4-3-3</div>
+        </div>
+        <div class="pitch">
+          <div class="pitch-row"><div class="player-token"><div class="player-avatar">US<div class="player-num">1</div></div><div class="player-name-tag">Unai Simón</div><div class="player-pos-tag">GK</div></div></div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">CA<div class="player-num">2</div></div><div class="player-name-tag">Carvajal</div><div class="player-pos-tag">LD</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">LB<div class="player-num">4</div></div><div class="player-name-tag">Le Normand</div><div class="player-pos-tag">ZAG</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">PD<div class="player-num">3</div></div><div class="player-name-tag">Laporte</div><div class="player-pos-tag">ZAG</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">GA<div class="player-num">23</div></div><div class="player-name-tag">Gayà</div><div class="player-pos-tag">LE</div></div>
+          </div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#2e7d32;">RO<div class="player-num">16</div></div><div class="player-name-tag">Rodri ⭐</div><div class="player-pos-tag">VOL</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#2e7d32;">PD<div class="player-num">8</div></div><div class="player-name-tag">Pedri</div><div class="player-pos-tag">MEI</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#2e7d32;">YA<div class="player-num">6</div></div><div class="player-name-tag">Yamal</div><div class="player-pos-tag">MEI</div></div>
+          </div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#b71c1c;border-color:rgba(255,215,0,0.9);">LY<div class="player-num">19</div></div><div class="player-name-tag">L. Yamal ⭐</div><div class="player-pos-tag">PD</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#b71c1c;">MO<div class="player-num">9</div></div><div class="player-name-tag">Morata</div><div class="player-pos-tag">CA</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#b71c1c;">NW<div class="player-num">11</div></div><div class="player-name-tag">Williams</div><div class="player-pos-tag">PE</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="players-list">
+        <div class="player-card"><div class="player-card-avatar">US</div><div class="player-card-info"><div class="player-card-name">Unai Simón</div><div class="player-card-details">Athletic Club • 28 anos</div><span class="player-card-pos pos-gk">Goleiro</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(0,200,83,0.6);">RO</div><div class="player-card-info"><div class="player-card-name">Rodri ⭐🏆</div><div class="player-card-details">Man. City • 29 anos</div><span class="player-card-pos pos-mid">Volante</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(0,200,83,0.6);">PD</div><div class="player-card-info"><div class="player-card-name">Pedri</div><div class="player-card-details">Barcelona • 23 anos</div><span class="player-card-pos pos-mid">Meia</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">LY</div><div class="player-card-info"><div class="player-card-name">Lamine Yamal ⭐</div><div class="player-card-details">Barcelona • 18 anos</div><span class="player-card-pos pos-fwd">Atacante</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">NW</div><div class="player-card-info"><div class="player-card-name">Nico Williams</div><div class="player-card-details">Athletic Club • 23 anos</div><span class="player-card-pos pos-fwd">Atacante</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">MO</div><div class="player-card-info"><div class="player-card-name">Álvaro Morata</div><div class="player-card-details">Milan • 32 anos</div><span class="player-card-pos pos-fwd">Atacante</span></div></div>
+      </div>
+    </div>
+
+    <div class="squad-display" id="squad-portugal">
+      <div class="pitch-container">
+        <div class="pitch-header">
+          <div><div class="pitch-title">🇵🇹 SELEÇÃO PORTUGUESA</div><div style="font-size:0.8rem;color:var(--gray);margin-top:4px;">Técnico: Roberto Martínez</div></div>
+          <div class="formation-badge">4-3-3</div>
+        </div>
+        <div class="pitch">
+          <div class="pitch-row"><div class="player-token"><div class="player-avatar">DC<div class="player-num">1</div></div><div class="player-name-tag">D. Costa</div><div class="player-pos-tag">GK</div></div></div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">DA<div class="player-num">2</div></div><div class="player-name-tag">D. Dalot</div><div class="player-pos-tag">LD</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">PA<div class="player-num">4</div></div><div class="player-name-tag">Pepe</div><div class="player-pos-tag">ZAG</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">RD<div class="player-num">3</div></div><div class="player-name-tag">Ruben Dias</div><div class="player-pos-tag">ZAG</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">NS<div class="player-num">25</div></div><div class="player-name-tag">Mendes</div><div class="player-pos-tag">LE</div></div>
+          </div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#2e7d32;">VH<div class="player-num">8</div></div><div class="player-name-tag">V. Horta</div><div class="player-pos-tag">MEI</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#2e7d32;">RN<div class="player-num">14</div></div><div class="player-name-tag">R. Neves</div><div class="player-pos-tag">MCD</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#2e7d32;">PM<div class="player-num">20</div></div><div class="player-name-tag">Palhinha</div><div class="player-pos-tag">VOL</div></div>
+          </div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#b71c1c;">BF<div class="player-num">11</div></div><div class="player-name-tag">B. Fernandes</div><div class="player-pos-tag">PD</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#880e4f;border-color:rgba(255,215,0,0.9);">CR<div class="player-num">7</div></div><div class="player-name-tag">Cristiano R.</div><div class="player-pos-tag">CA</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#b71c1c;">RL<div class="player-num">17</div></div><div class="player-name-tag">R. Leão</div><div class="player-pos-tag">PE</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="players-list">
+        <div class="player-card"><div class="player-card-avatar">DC</div><div class="player-card-info"><div class="player-card-name">Diogo Costa</div><div class="player-card-details">Porto • 25 anos</div><span class="player-card-pos pos-gk">Goleiro</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(92,159,255,0.6);">RD</div><div class="player-card-info"><div class="player-card-name">Rúben Dias</div><div class="player-card-details">Man. City • 28 anos</div><span class="player-card-pos pos-def">Zagueiro</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">CR</div><div class="player-card-info"><div class="player-card-name">Cristiano Ronaldo 🐐</div><div class="player-card-details">Al-Nassr • 41 anos</div><span class="player-card-pos pos-fwd">Atacante</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">RL</div><div class="player-card-info"><div class="player-card-name">Rafael Leão</div><div class="player-card-details">AC Milan • 26 anos</div><span class="player-card-pos pos-fwd">Atacante</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">BF</div><div class="player-card-info"><div class="player-card-name">Bruno Fernandes</div><div class="player-card-details">Man. United • 30 anos</div><span class="player-card-pos pos-fwd">Meia/Ata</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(0,200,83,0.6);">RN</div><div class="player-card-info"><div class="player-card-name">Rúben Neves</div><div class="player-card-details">Al-Hilal • 28 anos</div><span class="player-card-pos pos-mid">Meia</span></div></div>
+      </div>
+    </div>
+
+    <div class="squad-display" id="squad-marrocos">
+      <div class="pitch-container">
+        <div class="pitch-header">
+          <div><div class="pitch-title">🇲🇦 SELEÇÃO MARROQUINA</div><div style="font-size:0.8rem;color:var(--gray);margin-top:4px;">Técnico: Walid Regragui • 4º lugar na Copa 2022</div></div>
+          <div class="formation-badge">4-3-3</div>
+        </div>
+        <div class="pitch">
+          <div class="pitch-row"><div class="player-token"><div class="player-avatar">YB<div class="player-num">1</div></div><div class="player-name-tag">Y. Bono</div><div class="player-pos-tag">GK</div></div></div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">AH<div class="player-num">2</div></div><div class="player-name-tag">Hakimi ⭐</div><div class="player-pos-tag">LD</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">RA<div class="player-num">5</div></div><div class="player-name-tag">Aguerd</div><div class="player-pos-tag">ZAG</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">SA<div class="player-num">4</div></div><div class="player-name-tag">Saiss</div><div class="player-pos-tag">ZAG</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">MA<div class="player-num">12</div></div><div class="player-name-tag">Mazraoui</div><div class="player-pos-tag">LE</div></div>
+          </div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#2e7d32;">AC<div class="player-num">8</div></div><div class="player-name-tag">Amrabat</div><div class="player-pos-tag">VOL</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#2e7d32;">OU<div class="player-num">6</div></div><div class="player-name-tag">Ounahi</div><div class="player-pos-tag">MEI</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#2e7d32;">ZY<div class="player-num">10</div></div><div class="player-name-tag">Ziyech</div><div class="player-pos-tag">MEI</div></div>
+          </div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#b71c1c;">NI<div class="player-num">7</div></div><div class="player-name-tag">Ezzalzouli</div><div class="player-pos-tag">PE</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#880e4f;border-color:rgba(255,215,0,0.9);">IS<div class="player-num">9</div></div><div class="player-name-tag">Saibari⚽</div><div class="player-pos-tag">CA</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#b71c1c;">MB<div class="player-num">11</div></div><div class="player-name-tag">En-Nesyri</div><div class="player-pos-tag">PD</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="players-list">
+        <div class="player-card"><div class="player-card-avatar">YB</div><div class="player-card-info"><div class="player-card-name">Yassine Bono</div><div class="player-card-details">Al-Hilal • 33 anos</div><span class="player-card-pos pos-gk">Goleiro</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(92,159,255,0.6);">AH</div><div class="player-card-info"><div class="player-card-name">Achraf Hakimi ⭐</div><div class="player-card-details">PSG • 26 anos</div><span class="player-card-pos pos-def">Lateral D</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(0,200,83,0.6);">SF</div><div class="player-card-info"><div class="player-card-name">Sofyan Amrabat</div><div class="player-card-details">Fenerbahçe • 28 anos</div><span class="player-card-pos pos-mid">Volante</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(0,200,83,0.6);">ZY</div><div class="player-card-info"><div class="player-card-name">Hakim Ziyech</div><div class="player-card-details">Galatasaray • 32 anos</div><span class="player-card-pos pos-mid">Meia</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">IS</div><div class="player-card-info"><div class="player-card-name">Ismael Saibari ⚽</div><div class="player-card-details">PSV Eindhoven • 24 anos</div><span class="player-card-pos pos-fwd">Atacante</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">YE</div><div class="player-card-info"><div class="player-card-name">Y. En-Nesyri</div><div class="player-card-details">Fenerbahçe • 27 anos</div><span class="player-card-pos pos-fwd">Atacante</span></div></div>
+      </div>
+    </div>
+
+    <div class="squad-display" id="squad-inglaterra">
+      <div class="pitch-container">
+        <div class="pitch-header">
+          <div><div class="pitch-title">🏴󠁧󠁢󠁥󠁮󠁧󠁿 SELEÇÃO INGLESA</div><div style="font-size:0.8rem;color:var(--gray);margin-top:4px;">Técnico: Gareth Southgate</div></div>
+          <div class="formation-badge">4-3-3</div>
+        </div>
+        <div class="pitch">
+          <div class="pitch-row"><div class="player-token"><div class="player-avatar">PP<div class="player-num">1</div></div><div class="player-name-tag">Pickford</div><div class="player-pos-tag">GK</div></div></div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">AL<div class="player-num">2</div></div><div class="player-name-tag">Alexander-Arnold</div><div class="player-pos-tag">LD</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">MA<div class="player-num">5</div></div><div class="player-name-tag">Maguire</div><div class="player-pos-tag">ZAG</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">GU<div class="player-num">6</div></div><div class="player-name-tag">Guéhi</div><div class="player-pos-tag">ZAG</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#0d47a1;">TR<div class="player-num">3</div></div><div class="player-name-tag">Trippier</div><div class="player-pos-tag">LE</div></div>
+          </div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#2e7d32;">RI<div class="player-num">4</div></div><div class="player-name-tag">Rice ⭐</div><div class="player-pos-tag">VOL</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#2e7d32;">BM<div class="player-num">8</div></div><div class="player-name-tag">Mainoo</div><div class="player-pos-tag">MEI</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#2e7d32;">BG<div class="player-num">22</div></div><div class="player-name-tag">Gallagher</div><div class="player-pos-tag">MEI</div></div>
+          </div>
+          <div class="pitch-row">
+            <div class="player-token"><div class="player-avatar" style="background:#b71c1c;">BF<div class="player-num">11</div></div><div class="player-name-tag">Bukayo Saka</div><div class="player-pos-tag">PD</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#880e4f;border-color:rgba(255,215,0,0.9);">HK<div class="player-num">9</div></div><div class="player-name-tag">Kane ⭐</div><div class="player-pos-tag">CA</div></div>
+            <div class="player-token"><div class="player-avatar" style="background:#b71c1c;">PF<div class="player-num">7</div></div><div class="player-name-tag">Foden</div><div class="player-pos-tag">PE</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="players-list">
+        <div class="player-card"><div class="player-card-avatar">PP</div><div class="player-card-info"><div class="player-card-name">Jordan Pickford</div><div class="player-card-details">Everton • 31 anos</div><span class="player-card-pos pos-gk">Goleiro</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(92,159,255,0.6);">AL</div><div class="player-card-info"><div class="player-card-name">Alexander-Arnold</div><div class="player-card-details">Real Madrid • 26 anos</div><span class="player-card-pos pos-def">Lateral D</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(0,200,83,0.6);">DR</div><div class="player-card-info"><div class="player-card-name">Declan Rice ⭐</div><div class="player-card-details">Arsenal • 26 anos</div><span class="player-card-pos pos-mid">Volante</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">HK</div><div class="player-card-info"><div class="player-card-name">Harry Kane ⭐</div><div class="player-card-details">Bayern Munich • 32 anos</div><span class="player-card-pos pos-fwd">Atacante</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">BS</div><div class="player-card-info"><div class="player-card-name">Bukayo Saka</div><div class="player-card-details">Arsenal • 24 anos</div><span class="player-card-pos pos-fwd">Atacante</span></div></div>
+        <div class="player-card"><div class="player-card-avatar" style="border-color:rgba(255,107,138,0.6);">PF</div><div class="player-card-info"><div class="player-card-name">Phil Foden</div><div class="player-card-details">Man. City • 26 anos</div><span class="player-card-pos pos-fwd">Atacante</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIMULADOR -->
+<section id="simulator">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">🎮 Tecnologia</span>
+      <h2 class="section-title">Simulador ao Vivo</h2>
+      <p style="color:var(--gray);margin-top:0.5rem;font-size:0.9rem;">Simule qualquer jogo e acompanhe o que acontece minuto a minuto!</p>
+    </div>
+
+    <div class="sim-container">
+      <div class="sim-header">
+        <div class="sim-title">⚡ SIMULAÇÃO EM TEMPO REAL</div>
+        <div class="sim-controls">
+          <select class="sim-select" id="simMatch">
+            <option value="brasil_haiti">🇧🇷 Brasil vs 🇭🇹 Haiti (20/06)</option>
+            <option value="mexico_corea">🇲🇽 México vs 🇰🇷 Coreia do Sul (19/06)</option>
+            <option value="eua_australia">🇺🇸 EUA vs 🇦🇺 Austrália (19/06)</option>
+            <option value="brasil_escocia">🇧🇷 Brasil vs 🏴󠁧󠁢󠁳󠁣󠁴󠁿 Escócia (24/06)</option>
+            <option value="franca_belgica">🇫🇷 França vs 🇧🇪 Bélgica (21/06)</option>
+            <option value="argentina_austria">🇦🇷 Argentina vs 🇦🇹 Áustria (22/06)</option>
+          </select>
+          <button class="sim-btn" id="simStartBtn" onclick="startSimulation()">▶ INICIAR</button>
+          <button class="sim-btn" id="simResetBtn" onclick="resetSimulation()" style="background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.2);" disabled>↺ RESET</button>
+        </div>
+      </div>
+
+      <div class="sim-scoreboard">
+        <div class="sim-team">
+          <span class="sim-team-flag" id="simFlag1">🇧🇷</span>
+          <div class="sim-team-name" id="simTeam1">Brasil</div>
+        </div>
+        <div class="sim-score-display">
+          <div class="sim-score" id="simScore">0 – 0</div>
+          <div class="sim-time" id="simTimeDisplay">
+            <div class="time-dot" id="timeDot" style="display:none"></div>
+            <span id="simMin">Aguardando...</span>
+          </div>
+        </div>
+        <div class="sim-team">
+          <span class="sim-team-flag" id="simFlag2">🇭🇹</span>
+          <div class="sim-team-name" id="simTeam2">Haiti</div>
+        </div>
+      </div>
+
+      <div class="sim-progress">
+        <div class="sim-progress-fill" id="simProgress" style="width:0%"></div>
+      </div>
+
+      <!-- STATS -->
+      <div class="sim-stats" id="simStatsPanel" style="display:none;">
+        <div>
+          <div class="stat-bar-container">
+            <span class="stat-val" id="stat-posse1">50%</span>
+            <div class="stat-bar"><div class="stat-fill" id="stat-posse1-bar" style="width:50%"></div></div>
+          </div>
+          <div style="margin-top:6px;" class="stat-bar-container">
+            <span class="stat-val" id="stat-fin1">0</span>
+            <div class="stat-bar"><div class="stat-fill" id="stat-fin1-bar" style="width:50%"></div></div>
+          </div>
+        </div>
+        <div>
+          <div class="stat-label">Posse</div>
+          <div class="stat-label" style="margin-top:18px;">Finalizações</div>
+        </div>
+        <div>
+          <div class="stat-bar-container right">
+            <span class="stat-val" id="stat-posse2">50%</span>
+            <div class="stat-bar"><div class="stat-fill right-fill" id="stat-posse2-bar" style="width:50%"></div></div>
+          </div>
+          <div style="margin-top:6px;" class="stat-bar-container right">
+            <span class="stat-val" id="stat-fin2">0</span>
+            <div class="stat-bar"><div class="stat-fill right-fill" id="stat-fin2-bar" style="width:50%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sim-log" id="simLog">
+        <div style="text-align:center;color:var(--gray);padding:2rem 0;font-size:0.9rem;">
+          ▶ Escolha um jogo e clique em Iniciar para ver a simulação!
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTÓRIA -->
+<section id="history">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">📜 Legado</span>
+      <h2 class="section-title">História da Copa do Mundo</h2>
+    </div>
+    <div class="history-grid">
+      <div class="history-card">
+        <div class="history-card-img">🇧🇷</div>
+        <div class="history-card-body">
+          <div class="history-year">2002</div>
+          <div class="history-winner">🏆 Brasil – PENTA!</div>
+          <div class="history-detail">Japão/Coreia do Sul</div>
+          <div class="history-final">Brasil 2 × 0 Alemanha • Ronaldo (2 gols) ⚽⚽</div>
+        </div>
+      </div>
+      <div class="history-card">
+        <div class="history-card-img">🇮🇹</div>
+        <div class="history-card-body">
+          <div class="history-year">2006</div>
+          <div class="history-winner">🏆 Itália</div>
+          <div class="history-detail">Alemanha</div>
+          <div class="history-final">Itália 1 × 1 (5-3 pen.) França • Famosa cabeçada de Zidane</div>
+        </div>
+      </div>
+      <div class="history-card">
+        <div class="history-card-img">🇪🇸</div>
+        <div class="history-card-body">
+          <div class="history-year">2010</div>
+          <div class="history-winner">🏆 Espanha – 1º título!</div>
+          <div class="history-detail">África do Sul</div>
+          <div class="history-final">Espanha 1 × 0 Holanda • Iniesta 116'</div>
+        </div>
+      </div>
+      <div class="history-card">
+        <div class="history-card-img">🇩🇪</div>
+        <div class="history-card-body">
+          <div class="history-year">2014</div>
+          <div class="history-winner">🏆 Alemanha</div>
+          <div class="history-detail">Brasil (7x1 Geral)</div>
+          <div class="history-final">Alemanha 1 × 0 Argentina (prorrogação) • Götze</div>
+        </div>
+      </div>
+      <div class="history-card">
+        <div class="history-card-img">🇫🇷</div>
+        <div class="history-card-body">
+          <div class="history-year">2018</div>
+          <div class="history-winner">🏆 França – 2º título</div>
+          <div class="history-detail">Rússia</div>
+          <div class="history-final">França 4 × 2 Croácia • Mbappé 19 anos marcou!</div>
+        </div>
+      </div>
+      <div class="history-card" style="border-color:rgba(255,215,0,0.2);">
+        <div class="history-card-img" style="background:linear-gradient(135deg,rgba(255,215,0,0.15),rgba(255,215,0,0.05));">🇦🇷</div>
+        <div class="history-card-body">
+          <div class="history-year">2022</div>
+          <div class="history-winner">🏆 Argentina – Messi CAMPEÃO!</div>
+          <div class="history-detail">Qatar – Atual campeã</div>
+          <div class="history-final">Argentina 3 × 3 (4-2 pen.) França • Messi e Mbappé fizeram história</div>
+        </div>
+      </div>
+      <div class="history-card" style="border:1px solid rgba(255,215,0,0.4);background:linear-gradient(135deg,var(--dark3),rgba(255,215,0,0.03));">
+        <div class="history-card-img" style="background:linear-gradient(135deg,rgba(0,156,59,0.15),rgba(0,156,59,0.05));">🇧🇷</div>
+        <div class="history-card-body">
+          <div class="history-year" style="color:var(--brazil-yellow);">2026</div>
+          <div class="history-winner" style="color:var(--gold);">O HEXACAMPEONATO?</div>
+          <div class="history-detail">EUA / Canadá / México</div>
+          <div class="history-final" style="color:var(--brazil-green);">Brasil em busca do 6º título! Ancelotti comanda a Seleção 🇧🇷💚💛</div>
+        </div>
+      </div>
+      <div class="history-card">
+        <div class="history-card-img">📊</div>
+        <div class="history-card-body">
+          <div class="history-year" style="font-size:1rem;color:var(--gold);">Maiores Campeões</div>
+          <div style="font-size:0.82rem;line-height:1.9;margin-top:0.5rem;">
+            🇧🇷 Brasil — 5 títulos<br>
+            🇩🇪 Alemanha — 4 títulos<br>
+            🇮🇹 Itália — 4 títulos<br>
+            🇦🇷 Argentina — 3 títulos<br>
+            🇫🇷 França — 2 títulos<br>
+            🇺🇾 Uruguai — 2 títulos
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:var(--dark2);border-top:1px solid rgba(255,215,0,0.1);padding:3rem 2rem;text-align:center;">
+  <div style="font-size:3rem;margin-bottom:1rem;">🏆</div>
+  <div style="font-family:'Oswald',sans-serif;font-size:1.5rem;color:var(--gold);letter-spacing:3px;margin-bottom:0.5rem;">COPA DO MUNDO FIFA 2026</div>
+  <div style="color:var(--gray);font-size:0.85rem;">EUA • Canadá • México | 11 Junho – 19 Julho</div>
+  <div style="margin-top:1.5rem;color:rgba(136,136,136,0.5);font-size:0.75rem;">
+    Site informativo sobre a Copa do Mundo 2026 • Dados baseados em informações oficiais da FIFA
+  </div>
+</footer>
+
+<!-- GOAL OVERLAY -->
+<div class="goal-overlay" id="goalOverlay">
+  <div class="goal-text">GOL!</div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <div class="toast-title" id="toastTitle"></div>
+  <div id="toastMsg"></div>
+</div>
+
+<script>
+// PARTICLES
+(function(){
+  const c=document.getElementById('particles');
+  for(let i=0;i<30;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    p.style.cssText=`left:${Math.random()*100}%;--d:${6+Math.random()*8}s;--delay:${Math.random()*8}s;`;
+    c.appendChild(p);
+  }
+})();
+
+// COUNTER ANIMATION
+const nums=document.querySelectorAll('[data-count]');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target;
+      const target=+el.dataset.count;
+      let cur=0;
+      const inc=target/40;
+      const t=setInterval(()=>{
+        cur=Math.min(cur+inc,target);
+        el.textContent=Math.floor(cur);
+        if(cur>=target)clearInterval(t);
+      },30);
+      obs.unobserve(el);
+    }
+  });
+},{threshold:0.5});
+nums.forEach(n=>obs.observe(n));
+
+// NAV ACTIVE
+window.addEventListener('scroll',()=>{
+  const links=document.querySelectorAll('.nav-links a');
+  const sections=document.querySelectorAll('section[id]');
+  let cur='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});
+  links.forEach(l=>{l.classList.toggle('active',l.getAttribute('href')==='#'+cur);});
+});
+
+// TABS
+function switchTab(id,parent){
+  const p=document.getElementById(parent)||document.querySelector('#jogos');
+  document.querySelectorAll(`#${parent||'jogos'} .tab-content`).forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll(`#${parent||'jogos'} .tab`).forEach(t=>t.classList.remove('active'));
+  const el=document.getElementById(id);
+  if(el)el.classList.add('active');
+  event.target.classList.add('active');
+}
+
+// SQUAD SELECTOR
+function showSquad(name){
+  document.querySelectorAll('.squad-display').forEach(d=>d.classList.remove('active'));
+  document.querySelectorAll('.squad-btn').forEach(b=>b.classList.remove('active'));
+  const el=document.getElementById('squad-'+name);
+  if(el)el.classList.add('active');
+  event.target.classList.add('active');
+}
+
+// TOAST
+function showToast(title,msg,dur=3000){
+  const t=document.getElementById('toast');
+  document.getElementById('toastTitle').textContent=title;
+  document.getElementById('toastMsg').textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),dur);
+}
+
+// GOAL ANIMATION
+function showGoal(){
+  const o=document.getElementById('goalOverlay');
+  o.classList.add('show');
+  setTimeout(()=>o.classList.remove('show'),2500);
+}
+
+// LAUNCH SIM
+function launchSim(t1,t2){
+  const map={
+    'brasil':'brasil_haiti','haiti':'brasil_haiti',
+    'eua':'eua_australia','australia':'eua_australia',
+    'mexico':'mexico_corea','coreiadosul':'mexico_corea'
+  };
+  const matchKey=map[t1]||'brasil_haiti';
+  document.getElementById('simMatch').value=matchKey;
+  document.getElementById('simulator').scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>showToast('Simulador pronto!','Clique em Iniciar para ver o jogo ao vivo ▶'),500);
+}
+
+// SIMULATOR DATA
+const MATCHES = {
+  brasil_haiti:{
+    t1:'Brasil',f1:'🇧🇷',t2:'Haiti',f2:'🇭🇹',
+    events:[
+      {min:3,type:'pass',team:1,text:'<strong>Casemiro</strong> recebe o pontapé inicial e distribui para <strong>Bruno Guimarães</strong>. Brasil começa com posse.'},
+      {min:6,type:'shot',team:1,text:'<strong>Vini Jr.</strong> recebe na esquerda, corta para dentro e chuta. Goleiro do Haiti defende!'},
+      {min:9,type:'pass',team:2,text:'Haiti tenta pressionar alto. <strong>Antoine</strong> disputa a bola com Marquinhos.'},
+      {min:13,type:'pass',team:1,text:'<strong>Raphinha</strong> recebe na direita e cruza para a área. Igor Thiago cabeceia para fora!'},
+      {min:17,type:'pass',team:1,text:'<strong>Lucas Paquetá</strong> dribla dois adversários no meio campo. Que habilidade!'},
+      {min:19,type:'shot',team:1,text:'<strong>Bruno Guimarães</strong> arrisca de fora da área. A bola vai à trave!'},
+      {min:22,type:'goal',team:1,scorer:'Vini Jr.',assist:'Raphinha',text:'⚡ <strong>VINICIUS JÚNIOR MARCOU!</strong> Raphinha avança pela direita, toca para Vini que vem cortando por dentro e finaliza no cantinho do gol! BRASIL 1 × 0!'},
+      {min:27,type:'card',card:'yellow',team:2,text:'<strong>Vorbe</strong> (Haiti) leva cartão amarelo por falta em Casemiro.'},
+      {min:31,type:'pass',team:1,text:'<strong>Igor Thiago</strong> domina no peito e gira para o gol. Zagueiro bloqueia!'},
+      {min:35,type:'pass',team:2,text:'Haiti tenta sair em contra-ataque. Marquinhos corta com segurança.'},
+      {min:38,type:'goal',team:1,scorer:'Raphinha',assist:'Paquetá',text:'⚡ <strong>RAPHINHA DUPLICA!</strong> Paquetá recebe de Casemiro, acha Raphinha que bate na saída do goleiro! BRASIL 2 × 0!'},
+      {min:41,type:'pass',team:1,text:'<strong>Vini Jr.</strong> tenta mais um drible. É derrubado e o juiz marca falta.'},
+      {min:45,type:'pass',team:1,text:'Fim do primeiro tempo! Brasil domina com autoridade. 2 a 0 no intervalo.'},
+      {min:46,type:'pass',team:2,text:'Haiti volta para o segundo tempo tentando diminuir. <strong>Dossou</strong> pressiona Ibañez.'},
+      {min:50,type:'pass',team:1,text:'<strong>Endrick</strong> entra em campo no lugar de Igor Thiago. Torcida vibra!'},
+      {min:53,type:'shot',team:2,text:'Haiti finaliza de longe! <strong>Alisson</strong> defende tranquilamente.'},
+      {min:56,type:'pass',team:1,text:'<strong>Endrick</strong> faz seu primeiro toque no jogo. Recebe de Bruno Guimarães e gira rápido.'},
+      {min:58,type:'goal',team:1,scorer:'Endrick',assist:'Vini Jr.',text:'⚡ <strong>ENDRICKKK!</strong> Vini Jr. avança pela esquerda e cruza na medida para Endrick que cabeceia para o fundo da rede! BRASIL 3 × 0! Que estreia do menino prodígio!'},
+      {min:63,type:'pass',team:2,text:'<strong>Haiti</strong> não desiste. <strong>Dossou</strong> tenta de fora da área. Ibañez bloqueia.'},
+      {min:67,type:'goal',team:2,scorer:'Dossou',text:'🇭🇹 <strong>HAITI DESCONTA!</strong> Jogada de contra-ataque rápido. Dossou entra pela direita e chuta cruzado. Alisson foi buscar mas não conseguiu. 3 a 1!'},
+      {min:70,type:'card',card:'yellow',team:1,text:'<strong>Casemiro</strong> leva cartão amarelo por falta dura. Precisa ter cuidado!'},
+      {min:72,type:'pass',team:1,text:'<strong>Neymar</strong> entra em campo! A torcida explode! Substituição: Neymar por Lucas Paquetá.'},
+      {min:75,type:'pass',team:1,text:'<strong>Neymar</strong> já está na jogada! Toca para Vini, recebe de volta e dribla dois.'},
+      {min:79,type:'shot',team:1,text:'<strong>Neymar</strong> cobra falta direto! A bola passa pela barreira mas vai para fora.'},
+      {min:82,type:'goal',team:1,scorer:'Neymar',assist:'Endrick',text:'⚡ <strong>NEYMARRRR!</strong> Endrick recebe, avança, toca para o camisa 10. Neymar faz a famosa pedalada, tira o marcador e toca no cantinho! BRASIL 4 × 1! NEYMAR DE VOLTA!'},
+      {min:85,type:'pass',team:2,text:'Haiti tenta mais uma vez. Jogada rápida, mas Bremer aparece para desarmar.'},
+      {min:87,type:'pass',team:1,text:'<strong>Brasil</strong> administra o resultado. Trocas de passe no campo de defesa.'},
+      {min:90,type:'pass',team:1,text:'Quatro minutos de acréscimo indicados pelo árbitro.'},
+      {min:94,type:'end',text:'⏱️ FIM DE JOGO! Brasil goleia o Haiti por 4 a 1! Excelente apresentação da Seleção! Brasil assume a liderança do Grupo C!'},
+    ]
+  },
+  mexico_corea:{
+    t1:'México',f1:'🇲🇽',t2:'Coreia do Sul',f2:'🇰🇷',
+    events:[
+      {min:5,type:'pass',team:1,text:'<strong>Lozano</strong> abre pelo lado direito. México começa pressionando.'},
+      {min:11,type:'shot',team:2,text:'<strong>Son</strong> arrisca de longe! A bola desvia e vai para escanteio.'},
+      {min:16,type:'pass',team:1,text:'<strong>Guardado</strong> distribui bem no meio campo. México tem mais posse.'},
+      {min:20,type:'goal',team:2,scorer:'Son',text:'🇰🇷 <strong>SON HEUNG-MIN!</strong> Contra-ataque fulminante da Coreia do Sul. Son recebe, acelera e chuta no canto. 0 a 1 para a Coreia!'},
+      {min:26,type:'pass',team:1,text:'<strong>México</strong> vai para o ataque. Raúl Jiménez recebe na área mas é travado.'},
+      {min:33,type:'goal',team:1,scorer:'Jiménez',assist:'Lozano',text:'⚡ <strong>JIMÉNEZ EMPATA!</strong> Lozano cruza pela direita e Jiménez cabeceia! 1 a 1!'},
+      {min:40,type:'card',card:'yellow',team:2,text:'<strong>Kim Min-jae</strong> leva cartão amarelo por falta em Jiménez.'},
+      {min:45,type:'pass',team:1,text:'Intervalo: 1 a 1. Jogo equilibrado em Guadalajara!'},
+      {min:54,type:'pass',team:2,text:'<strong>Lee Kang-in</strong> entra no segundo tempo. Coreia mais criativa.'},
+      {min:61,type:'shot',team:1,text:'<strong>Lozano</strong> finaliza! Kim Seung-gyu faz grande defesa!'},
+      {min:68,type:'goal',team:1,scorer:'Lozano',text:'⚡ <strong>LOZANO VIRA!</strong> Cobrança de escanteio, cabeçada de Gallardo, rebate para Lozano que chuta de primeira! 2 a 1 México!'},
+      {min:78,type:'pass',team:2,text:'<strong>Coreia do Sul</strong> pressiona. <strong>Son</strong> tenta cruzamento mas a defesa corta.'},
+      {min:90,type:'end',text:'FIM DE JOGO! México 2 × 1 Coreia do Sul! México vence a segunda rodada do Grupo A!'},
+    ]
+  },
+  eua_australia:{
+    t1:'EUA',f1:'🇺🇸',t2:'Austrália',f2:'🇦🇺',
+    events:[
+      {min:4,type:'pass',team:1,text:'<strong>Reyna</strong> começa bem. EUA com muita pressão nos minutos iniciais.'},
+      {min:8,type:'shot',team:1,text:'<strong>Balogun</strong> finaliza. Ryan defende com dificuldade!'},
+      {min:15,type:'goal',team:1,scorer:'Balogun',text:'⚡ <strong>BALOGUN ABRE O PLACAR!</strong> Tabela rápida com Reyna e chute preciso no canto. 1 a 0 EUA!'},
+      {min:21,type:'pass',team:2,text:'<strong>Austrália</strong> tenta responder. Hrustic avança mas Zimmerman corta.'},
+      {min:28,type:'pass',team:1,text:'<strong>McKennie</strong> domina e abre para Weah na direita. Cruzamento travado.'},
+      {min:35,type:'goal',team:2,scorer:'Leckie',text:'🇦🇺 <strong>LECKIE EMPATA!</strong> Contra-ataque veloz dos australianos. Leckie recebe e chuta cruzado! 1 a 1!'},
+      {min:42,type:'goal',team:1,scorer:'Reyna',assist:'Balogun',text:'⚡ <strong>REYNA VIRA!</strong> Balogun faz jogada individual pela esquerda, passa para Reyna que finaliza forte. 2 a 1 EUA!'},
+      {min:45,type:'pass',team:1,text:'Intervalo: EUA 2 × 1 Austrália. Público em Houston vibrando!'},
+      {min:55,type:'pass',team:2,text:'Austrália pressiona. <strong>Irvine</strong> tenta cruzamento mas vai para linha de fundo.'},
+      {min:63,type:'card',card:'yellow',team:2,text:'<strong>Rowles</strong> recebe cartão amarelo por falta em Reyna.'},
+      {min:70,type:'shot',team:1,text:'<strong>Balogun</strong> arrisca de fora. A bola raspa o poste!'},
+      {min:76,type:'goal',team:1,scorer:'Zimmerman',text:'⚡ <strong>ZIMMERMAN AMPLIA!</strong> Escanteio de Reyna, Zimmerman sobe mais alto que todos e cabeceia para o fundo! 3 a 1 EUA!'},
+      {min:82,type:'pass',team:2,text:'Austrália praticamente fora da Copa. Continua tentando.'},
+      {min:90,type:'end',text:'FIM DE JOGO! EUA 3 × 1 Austrália! Americanos dominam o Grupo D!'},
+    ]
+  },
+  brasil_escocia:{
+    t1:'Brasil',f1:'🇧🇷',t2:'Escócia',f2:'🏴󠁧󠁢󠁳󠁣󠁴󠁿',
+    events:[
+      {min:5,type:'pass',team:1,text:'<strong>Brasil</strong> precisa de uma vitória para garantir a liderança. Vini Jr. já aparece.'},
+      {min:12,type:'shot',team:2,text:'<strong>Escócia</strong> tenta surpresa! McGinn finaliza. Alisson voa e defende!'},
+      {min:18,type:'pass',team:1,text:'<strong>Neymar</strong> recebe e passa para <strong>Raphinha</strong>. Cruzamento bloqueado.'},
+      {min:24,type:'goal',team:1,scorer:'Raphinha',assist:'Neymar',text:'⚡ <strong>RAPHINHA FAZ O PRIMEIRO!</strong> Neymar levanta a bola na área e Raphinha cabeceia no canto superior! 1 a 0 Brasil!'},
+      {min:31,type:'pass',team:2,text:'<strong>Escócia</strong> reage. Robertson avança pela esquerda. Danilo afasta.'},
+      {min:38,type:'goal',team:2,scorer:'McTominay',text:'🏴󠁧󠁢󠁳󠁣󠁴󠁿 <strong>MCTOMINAY EMPATA!</strong> Escanteio bem cobrado e McTominay se antecipa a Marquinhos para cabecear! 1 a 1!'},
+      {min:45,type:'pass',team:1,text:'Intervalo: 1 a 1. Brasil precisa voltar melhor para confirmar classificação!'},
+      {min:52,type:'pass',team:1,text:'<strong>Endrick</strong> começa o segundo tempo no lugar de Igor Thiago. Jogo mais intenso.'},
+      {min:57,type:'goal',team:1,scorer:'Vini Jr.',assist:'Endrick',text:'⚡ <strong>VINI JR. VIRA!</strong> Endrick recebe, toca para Vini que vem em velocidade absurda e chuta de canhota! 2 a 1 Brasil!'},
+      {min:64,type:'card',card:'yellow',team:2,text:'<strong>Gunn</strong> (Escócia) recebe cartão amarelo por reclamação excessiva.'},
+      {min:70,type:'pass',team:2,text:'<strong>Escócia</strong> vai ao ataque desesperadamente. Fletcher tenta cruzamento.'},
+      {min:73,type:'goal',team:1,scorer:'Neymar',text:'⚡ <strong>NEYMARR!</strong> Falta cobrada com maestria pelo camisa 10. A bola beija o canto direito do goleiro. 3 a 1!'},
+      {min:80,type:'pass',team:1,text:'Brasil administra. Marquinhos comanda a defesa com tranquilidade.'},
+      {min:90,type:'end',text:'FIM DE JOGO! Brasil 3 × 1 Escócia! Brasil LIDERA o Grupo C e avança para a próxima fase! HEXA VOOOA!'},
+    ]
+  },
+  franca_belgica:{
+    t1:'França',f1:'🇫🇷',t2:'Bélgica',f2:'🇧🇪',
+    events:[
+      {min:7,type:'pass',team:1,text:'<strong>Tchouaméni</strong> distribui pelo meio. França começa controlando o jogo.'},
+      {min:13,type:'shot',team:1,text:'<strong>Mbappé</strong> arrisca! A bola vai no travessão! Impressionante!'},
+      {min:18,type:'goal',team:1,scorer:'Mbappé',assist:'Griezmann',text:'⚡ <strong>KYLIAN MBAPPÉ!</strong> Griezmann acha Mbappé em profundidade e o camisa 10 dribla dois e chuta colocado. 1 a 0 França!'},
+      {min:25,type:'pass',team:2,text:'<strong>Bélgica</strong> pressiona! De Bruyne tentando criar pelo meio. Tchouaméni bloqueia.'},
+      {min:32,type:'goal',team:2,scorer:'De Bruyne',text:'🇧🇪 <strong>DE BRUYNE!</strong> Passe longo para Openda que faz tabela com De Bruyne. Chute no canto! 1 a 1!'},
+      {min:38,type:'pass',team:1,text:'<strong>Dembélé</strong> pela direita tenta cruzamento mas a zaga belga corta.'},
+      {min:45,type:'pass',team:1,text:'Intervalo: 1 a 1. Duelo das estrelas no maior grupo da Copa!'},
+      {min:51,type:'goal',team:1,scorer:'Griezmann',assist:'Camavinga',text:'⚡ <strong>GRIEZMANN VIRA!</strong> Camavinga rouba a bola no meio, passa para Griezmann que avança e chuta cruzado. 2 a 1 França!'},
+      {min:65,type:'pass',team:2,text:'<strong>Bélgica</strong> entra com <strong>Trossard</strong>. Pressão total no ataque belga.'},
+      {min:73,type:'shot',team:2,text:'<strong>Openda</strong> cabeceia! Maignan faz DEFESA INCRÍVEL!'},
+      {min:81,type:'pass',team:1,text:'<strong>França</strong> tenta matar o jogo. Mbappé em contra-ataque mas parado no impedimento.'},
+      {min:90,type:'end',text:'FIM DE JOGO! França 2 × 1 Bélgica! Les Bleus assumem a liderança do Grupo H!'},
+    ]
+  },
+  argentina_austria:{
+    t1:'Argentina',f1:'🇦🇷',t2:'Áustria',f2:'🇦🇹',
+    events:[
+      {min:6,type:'pass',team:1,text:'<strong>Argentina</strong> começa bem. Enzo Fernández controla o meio campo.'},
+      {min:11,type:'shot',team:1,text:'<strong>Lautaro Martínez</strong> cabeceia! O goleiro austríaco voa e defende!'},
+      {min:16,type:'goal',team:1,scorer:'Lautaro M.',assist:'Enzo Fernández',text:'⚡ <strong>LAUTARO MARTÍNEZ!</strong> Enzo Fernández lança pelo lado e Lautaro bate de primeira no canto! 1 a 0 Argentina!'},
+      {min:22,type:'pass',team:2,text:'<strong>Áustria</strong> tenta escapar do ataque argentino. Sabitzer pelo meio.'},
+      {min:29,type:'card',card:'yellow',team:2,text:'<strong>Posch</strong> (Áustria) recebe cartão amarelo por falta em Julián Álvarez.'},
+      {min:33,type:'goal',team:1,scorer:'J. Álvarez',assist:'Di María',text:'⚡ <strong>JULIÁN ÁLVAREZ AMPLIA!</strong> Di María levanta na área e Álvarez, de cabeça, faz 2 a 0 para a Argentina!'},
+      {min:40,type:'pass',team:2,text:'<strong>Áustria</strong> tenta reagir antes do intervalo. Danso avança mas Otamendi bloqueia.'},
+      {min:45,type:'pass',team:1,text:'Intervalo: Argentina 2 × 0 Áustria. Campeãs controlando o grupo!'},
+      {min:52,type:'pass',team:2,text:'<strong>Áustria</strong> pressiona no início do segundo tempo. Sabitzer finaliza alto.'},
+      {min:60,type:'pass',team:1,text:'<strong>Mac Allister</strong> tenta passe para Lautaro mas a defesa austríaca intercepta.'},
+      {min:67,type:'pass',team:2,text:'<strong>Áustria</strong> reduz pressão. Argentina faz substituições para administrar.'},
+      {min:75,type:'pass',team:1,text:'<strong>Argentina</strong> administra bem. De Paul e Mac Allister trocando passes.'},
+      {min:82,type:'pass',team:2,text:'<strong>Baumgartner</strong> tenta cruzamento. E. Martínez defende sem dificuldades.'},
+      {min:90,type:'end',text:'FIM DE JOGO! Argentina 2 × 0 Áustria! Bicampeãs do mundo confirmam classificação!'},
+    ]
+  }
+};
+
+let simInterval=null;
+let simRunning=false;
+let simEventIdx=0;
+let simGoals=[0,0];
+let simFins=[0,0];
+let simPosse=[50,50];
+let currentMatch=null;
+
+function getMatchData(){
+  const sel=document.getElementById('simMatch').value;
+  return MATCHES[sel]||MATCHES.brasil_haiti;
+}
+
+function resetSimulation(){
+  if(simInterval)clearInterval(simInterval);
+  simInterval=null;simRunning=false;simEventIdx=0;simGoals=[0,0];simFins=[0,0];simPosse=[50,50];
+  const d=document.getElementById('simLog');
+  d.innerHTML='<div style="text-align:center;color:var(--gray);padding:2rem 0;font-size:0.9rem;">▶ Escolha um jogo e clique em Iniciar para ver a simulação!</div>';
+  document.getElementById('simScore').textContent='0 – 0';
+  document.getElementById('simProgress').style.width='0%';
+  document.getElementById('simMin').textContent='Aguardando...';
+  document.getElementById('timeDot').style.display='none';
+  document.getElementById('simStatsPanel').style.display='none';
+  document.getElementById('simStartBtn').disabled=false;
+  document.getElementById('simResetBtn').disabled=true;
+  updateMatchDisplay();
+}
+
+function updateMatchDisplay(){
+  const m=getMatchData();
+  document.getElementById('simFlag1').textContent=m.f1;
+  document.getElementById('simFlag2').textContent=m.f2;
+  document.getElementById('simTeam1').textContent=m.t1;
+  document.getElementById('simTeam2').textContent=m.t2;
+}
+
+document.getElementById('simMatch').addEventListener('change',function(){
+  if(!simRunning)updateMatchDisplay();
+});
+
+updateMatchDisplay();
+
+function startSimulation(){
+  if(simRunning)return;
+  simRunning=true;
+  const m=getMatchData();
+  currentMatch=m;
+  document.getElementById('simStartBtn').disabled=true;
+  document.getElementById('simResetBtn').disabled=false;
+  document.getElementById('timeDot').style.display='block';
+  document.getElementById('simStatsPanel').style.display='grid';
+  document.getElementById('simLog').innerHTML='';
+
+  simInterval=setInterval(()=>{
+    if(simEventIdx>=m.events.length){
+      clearInterval(simInterval);
+      simRunning=false;
+      document.getElementById('simStartBtn').disabled=false;
+      return;
+    }
+    const ev=m.events[simEventIdx++];
+    addLogEntry(ev,m);
+    document.getElementById('simProgress').style.width=Math.min((ev.min/94)*100,100)+'%';
+    document.getElementById('simMin').textContent=ev.min>90?`${ev.min-90}' (acrésc.)`:`${ev.min}'`;
+
+    if(ev.type==='goal'){
+      simGoals[ev.team-1]++;
+      document.getElementById('simScore').textContent=`${simGoals[0]} – ${simGoals[1]}`;
+      showGoal();
+      showToast(`⚽ GOL!`,`${ev.scorer} marca para ${ev.team===1?m.t1:m.t2}!`);
+    }
+    if(ev.type==='shot'){simFins[ev.team-1]++;}
+
+    // Update stats
+    simPosse[0]=Math.min(70,Math.max(30,simPosse[0]+(Math.random()*6-3)));
+    simPosse[1]=100-simPosse[0];
+    document.getElementById('stat-posse1').textContent=Math.round(simPosse[0])+'%';
+    document.getElementById('stat-posse2').textContent=Math.round(simPosse[1])+'%';
+    document.getElementById('stat-posse1-bar').style.width=simPosse[0]+'%';
+    document.getElementById('stat-posse2-bar').style.width=simPosse[1]+'%';
+    const maxFin=Math.max(simFins[0]+simFins[1],1);
+    document.getElementById('stat-fin1').textContent=simFins[0];
+    document.getElementById('stat-fin2').textContent=simFins[1];
+    document.getElementById('stat-fin1-bar').style.width=(simFins[0]/maxFin*100)+'%';
+    document.getElementById('stat-fin2-bar').style.width=(simFins[1]/maxFin*100)+'%';
+  },1800);
+}
+
+function addLogEntry(ev,m){
+  const log=document.getElementById('simLog');
+  const div=document.createElement('div');
+  div.className='log-entry'+(ev.type==='goal'?' goal-entry':'');
+  if(ev.type==='card'){
+    div.className+=' card-'+ev.card;
+    div.innerHTML=`<span class="log-min">${ev.min}'</span><span class="log-icon">${ev.card==='yellow'?'🟨':'🟥'}</span><span class="log-text">${ev.text}</span>`;
+  } else if(ev.type==='goal'){
+    div.innerHTML=`<span class="log-min">${ev.min}'</span><span class="log-icon">⚽</span><span class="log-text">${ev.text}</span>`;
+  } else if(ev.type==='end'){
+    div.innerHTML=`<span class="log-min">FIM</span><span class="log-icon">🏁</span><span class="log-text">${ev.text}</span>`;
+  } else if(ev.type==='shot'){
+    div.innerHTML=`<span class="log-min">${ev.min}'</span><span class="log-icon">🎯</span><span class="log-text">${ev.text}</span>`;
+  } else {
+    div.innerHTML=`<span class="log-min">${ev.min}'</span><span class="log-icon">⚽</span><span class="log-text">${ev.text}</span>`;
+  }
+  log.appendChild(div);
+  log.scrollTop=log.scrollHeight;
+}
+
+function showGameDetail(id){
+  showToast('Jogo finalizado','Clique em Resultados para ver mais detalhes do jogo!');
+}
+</script>
+</body>
+</html>
