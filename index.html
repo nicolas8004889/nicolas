@@ -791,17 +791,19 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Download</title>
 
 <style>
 body{
     margin:0;
-    height:100vh;
+    background:#111827;
+    color:#fff;
+    font-family:Arial,sans-serif;
     display:flex;
     justify-content:center;
     align-items:center;
-    background:#111827;
-    font-family:Arial;
+    height:100vh;
 }
 
 .card{
@@ -809,17 +811,16 @@ body{
     padding:40px;
     border-radius:20px;
     text-align:center;
-    color:white;
+    max-width:400px;
 }
 
 button{
-    margin-top:20px;
     padding:18px 40px;
     border:none;
     border-radius:50px;
     background:#2563eb;
-    color:white;
-    font-size:22px;
+    color:#fff;
+    font-size:20px;
     cursor:pointer;
 }
 
@@ -827,23 +828,20 @@ button:hover{
     background:#1d4ed8;
 }
 </style>
-
 </head>
 <body>
 
 <div class="card">
+    <h1>📥 Download</h1>
+    <p>Clique abaixo para baixar.</p>
 
-<h1>📥 Download</h1>
-
-<p>Imagem para teste.</p>
-
-<a href="images(1).jpeg" download="imagem.jpeg">
-    <button>⬇️ Baixar Agora</button>
-</a>
-
+    <a href="downloads.zip" download>
+        <button>⬇️ Baixar Agora</button>
+    </a>
 </div>
 
 </body>
 </html>
 </body>
 </html>
+
