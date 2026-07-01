@@ -791,95 +791,40 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Download</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Poppins,sans-serif;
-}
-
 body{
-    background:linear-gradient(135deg,#0f172a,#1d4ed8,#2563eb);
-    background-size:400% 400%;
-    animation:bg 12s infinite ease;
+    margin:0;
     height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    color:white;
-}
-
-@keyframes bg{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+    background:#111827;
+    font-family:Arial;
 }
 
 .card{
-    width:420px;
-    max-width:95%;
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(18px);
-    border-radius:25px;
-    padding:35px;
+    background:#1f2937;
+    padding:40px;
+    border-radius:20px;
     text-align:center;
-    box-shadow:0 20px 40px rgba(0,0,0,.35);
-}
-
-h1{
-    font-size:35px;
-    margin-bottom:10px;
-}
-
-p{
-    color:#ddd;
-}
-
-.info{
-    margin-top:20px;
-    font-size:16px;
-    line-height:1.6;
-}
-
-#contador{
-    font-size:60px;
-    font-weight:bold;
-    margin:30px 0;
-    color:#38bdf8;
+    color:white;
 }
 
 button{
+    margin-top:20px;
+    padding:18px 40px;
     border:none;
-    cursor:pointer;
-    padding:18px 45px;
     border-radius:50px;
-    font-size:22px;
-    font-weight:bold;
+    background:#2563eb;
     color:white;
-    background:linear-gradient(45deg,#00c6ff,#0072ff);
-    box-shadow:0 0 25px rgba(0,162,255,.6);
-    transition:.3s;
+    font-size:22px;
+    cursor:pointer;
 }
 
 button:hover{
-    transform:scale(1.05);
-}
-
-button:disabled{
-    opacity:.5;
-    cursor:not-allowed;
-}
-
-.small{
-    margin-top:25px;
-    font-size:15px;
-    color:#ccc;
+    background:#1d4ed8;
 }
 </style>
 
@@ -890,54 +835,13 @@ button:disabled{
 
 <h1>📥 Download</h1>
 
-<p class="info">
-Clique no botão quando ele for liberado.
-</p>
+<p>Imagem para teste.</p>
 
-<div id="contador">5</div>
-
-<button id="baixar" disabled>
-⬇️ Baixar Agora
-</button>
-
-<div class="small">
-Teste de download.
-</div>
+<a href="images(1).jpeg" download="imagem.jpeg">
+    <button>⬇️ Baixar Agora</button>
+</a>
 
 </div>
-
-<script>
-
-let tempo=5;
-
-const contador=document.getElementById("contador");
-const botao=document.getElementById("baixar");
-
-const intervalo=setInterval(()=>{
-
-tempo--;
-
-contador.innerHTML=tempo;
-
-if(tempo<=0){
-
-clearInterval(intervalo);
-
-contador.innerHTML="✔";
-
-botao.disabled=false;
-
-}
-
-},1000);
-
-botao.onclick=function(){
-
-window.location.href="https://top-blue-evbw9inp.edgeone.dev/images.jpeg";
-
-}
-
-</script>
 
 </body>
 </html>
