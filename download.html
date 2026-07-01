@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baixar Arquivo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(-45deg,#0f172a,#1e3a8a,#2563eb,#38bdf8);
+    background-size:400% 400%;
+    animation:bg 12s ease infinite;
+}
+
+@keyframes bg{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.card{
+    width:420px;
+    max-width:90%;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:25px;
+    padding:40px;
+    text-align:center;
+    color:white;
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+    animation:entrada 1s ease;
+}
+
+@keyframes entrada{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+h1{
+    font-size:34px;
+    margin-bottom:10px;
+}
+
+p{
+    color:#d6d6d6;
+    margin-bottom:35px;
+    line-height:1.6;
+}
+
+.botao{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    text-decoration:none;
+    color:white;
+    font-size:20px;
+    font-weight:700;
+    background:linear-gradient(45deg,#00c6ff,#0072ff);
+    padding:18px 38px;
+    border-radius:50px;
+    transition:.35s;
+    box-shadow:0 0 25px rgba(0,140,255,.6);
+}
+
+.botao:hover{
+    transform:translateY(-5px) scale(1.05);
+    box-shadow:0 0 45px rgba(0,162,255,.95);
+}
+
+.botao:active{
+    transform:scale(.95);
+}
+
+.icone{
+    font-size:26px;
+}
+
+footer{
+    margin-top:35px;
+    color:#bfbfbf;
+    font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>📥 Download</h1>
+
+<p>
+Clique no botão abaixo para baixar o arquivo desejado.
+</p>
+
+<a class="botao"
+href="https://top-blue-evbw9inp.edgeone.dev/images.jpeg"
+download>
+
+<span class="icone">⬇️</span>
+
+Baixe aqui
+
+</a>
+
+<footer>
+Download rápido e seguro.
+</footer>
+
+</div>
+
+</body>
+</html>
