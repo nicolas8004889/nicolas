@@ -3,16 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Central de Downloads</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<title>Download da Imagem</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+    font-family:Arial,sans-serif;
 }
 
 body{
@@ -20,133 +18,57 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:linear-gradient(-45deg,#0f172a,#1e40af,#2563eb,#38bdf8);
-    background-size:400% 400%;
-    animation:bg 12s ease infinite;
-}
-
-@keyframes bg{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+    background:linear-gradient(135deg,#0f172a,#2563eb,#38bdf8);
 }
 
 .card{
-    width:450px;
-    max-width:95%;
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(20px);
-    border-radius:25px;
-    padding:40px;
+    width:420px;
+    background:white;
+    border-radius:20px;
+    padding:35px;
     text-align:center;
-    color:white;
-    box-shadow:0 20px 50px rgba(0,0,0,.4);
+    box-shadow:0 15px 35px rgba(0,0,0,.3);
 }
 
-h1{
-    font-size:36px;
-    margin-bottom:15px;
-}
-
-p{
-    color:#ddd;
-    margin-bottom:25px;
-}
-
-.progress{
-    width:100%;
-    height:16px;
-    background:#ffffff22;
-    border-radius:30px;
-    overflow:hidden;
-    margin:25px 0;
-}
-
-.bar{
-    height:100%;
-    width:0%;
-    background:linear-gradient(90deg,#00e5ff,#00ff88);
-    transition:width .2s;
+img{
+    width:250px;
+    border-radius:12px;
+    margin:20px 0;
 }
 
 button{
-    padding:18px 45px;
-    border:none;
-    border-radius:50px;
-    font-size:22px;
-    font-weight:bold;
-    cursor:pointer;
+    background:#2563eb;
     color:white;
-    background:linear-gradient(45deg,#00c6ff,#0072ff);
-    transition:.3s;
+    border:none;
+    padding:18px 35px;
+    border-radius:50px;
+    font-size:20px;
+    cursor:pointer;
 }
 
 button:hover{
-    transform:scale(1.05);
-}
-
-#status{
-    margin-top:20px;
-    font-size:18px;
+    background:#1d4ed8;
 }
 </style>
 
 </head>
-
 <body>
 
 <div class="card">
 
 <h1>📥 Download</h1>
 
-<p>Seu arquivo está pronto.</p>
+<p>Clique para baixar a imagem.</p>
 
-<div class="progress">
-<div class="bar" id="bar"></div>
-</div>
+<img src="assinatura.png">
 
-<button onclick="baixar()">
-⬇️ Baixe aqui
-</button>
+<br><br>
 
-<div id="status">
-Aguardando...
-</div>
+<a href="assinatura.png" download="assinatura.png">
+<button>⬇️ Baixe aqui</button>
+</a>
 
 </div>
-
-<script>
-
-function baixar(){
-
-const barra=document.getElementById("bar");
-const status=document.getElementById("status");
-
-let progresso=0;
-
-const animacao=setInterval(()=>{
-
-progresso++;
-
-barra.style.width=progresso+"%";
-
-status.innerHTML="Preparando download... "+progresso+"%";
-
-if(progresso>=100){
-
-clearInterval(animacao);
-
-status.innerHTML="Iniciando download...";
-
-window.location.href="COLOQUE_AQUI_O_LINK_DO_SEU_ARQUIVO";
-
-}
-
-},20);
-
-}
-
-</script>
 
 </body>
 </html>
