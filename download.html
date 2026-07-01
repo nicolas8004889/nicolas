@@ -3,86 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Download</title>
-
+<title>Download - Orelhudo</title>
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
-
-body{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    background:linear-gradient(135deg,#0f172a,#2563eb);
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f172a, #2563eb);
 }
-
-.card{
-    background:white;
-    padding:40px;
-    border-radius:20px;
-    text-align:center;
-    width:400px;
-    box-shadow:0 10px 30px rgba(0,0,0,.3);
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    width: 420px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
-
-h1{
-    margin-bottom:15px;
+h1 {
+    margin-bottom: 15px;
+    color: #1e40af;
 }
-
-p{
-    color:#555;
-    margin-bottom:25px;
+p {
+    color: #555;
+    margin-bottom: 25px;
 }
-
-button{
-    background:#2563eb;
-    color:white;
-    border:none;
-    padding:18px 40px;
-    font-size:20px;
-    border-radius:50px;
-    cursor:pointer;
-    transition:.3s;
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 18px 40px;
+    font-size: 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
 }
-
-button:hover{
-    transform:scale(1.05);
+button:hover {
+    transform: scale(1.05);
+    background: #1e40af;
 }
 </style>
 </head>
 <body>
-
 <div class="card">
-
-<h1>📥 Download</h1>
-
-<p>Clique abaixo para baixar a imagem.</p>
-
-<button onclick="baixar()">⬇️ Baixar Agora</button>
-
+    <h1>📥 Download</h1>
+    <p>Clique abaixo para baixar a imagem do Orelhudo.</p>
+    <button onclick="baixarOrelhudo()">
+        ⬇️ Baixar Orelhudo
+    </button>
 </div>
 
 <script>
-function baixar(){
-    const link=document.createElement("a");
-
-    // Troque pelo nome da sua imagem dentro do repositório
-    link.href="images(1).jpeg";
-
-    link.download="imagem.jpeg";
-
-    document.body.appendChild(link);
-
-    link.click();
-
-    document.body.removeChild(link);
-}
-</script>
-
-</body>
-</html>
+// Imagem embutida (data URL) - não depende de arquivo externo
+const imagemBase64 = "data:image/jpeg;base64,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 n
