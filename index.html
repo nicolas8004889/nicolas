@@ -787,30 +787,40 @@
     ⚠️ PALESTRA SOBRE DROGAS
   </button>
 </a>
-<a href="download.html" class="btn-download">
-📥 Download
+<!-- Botão flutuante de download -->
+<a href="download.html" class="btn-download" title="Baixar imagem">
+    📥 Download
 </a>
 
 <style>
-.btn-download{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#2563eb;
-color:white;
-padding:15px 30px;
-border-radius:40px;
-text-decoration:none;
-font-weight:bold;
-font-size:18px;
-z-index:99999;
-box-shadow:0 10px 30px rgba(0,0,0,.3);
-transition:.3s;
-}
+    .btn-download {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        color: white;
+        padding: 16px 32px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 18px;
+        z-index: 99999;
+        box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+    }
 
-.btn-download:hover{
-transform:scale(1.05);
-}
+    .btn-download:hover {
+        transform: scale(1.08) translateY(-3px);
+        box-shadow: 0 15px 35px rgba(37, 99, 235, 0.5);
+        background: linear-gradient(135deg, #1d4ed8, #2563eb);
+    }
+
+    .btn-download:active {
+        transform: scale(0.95);
+    }
 </style>
 </body>
 </html>
