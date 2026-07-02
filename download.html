@@ -1,74 +1,94 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Download da Imagem</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
-
-body{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#0f172a,#2563eb,#38bdf8);
-}
-
-.card{
-    width:420px;
-    background:white;
-    border-radius:20px;
-    padding:35px;
-    text-align:center;
-    box-shadow:0 15px 35px rgba(0,0,0,.3);
-}
-
-img{
-    width:250px;
-    border-radius:12px;
-    margin:20px 0;
-}
-
-button{
-    background:#2563eb;
-    color:white;
-    border:none;
-    padding:18px 35px;
-    border-radius:50px;
-    font-size:20px;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#1d4ed8;
-}
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download da Imagem</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0f172a, #2563eb, #38bdf8);
+        }
+        .card {
+            width: 420px;
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        img {
+            width: 250px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            border-radius: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        button:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        h1 {
+            color: #1e2937;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #475569;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
+    <div class="card">
+        <h1>📥 Download</h1>
+        <p>Clique no botão abaixo para baixar a imagem.</p>
+        
+        <img src="https://i.imgur.com/placeholder.png" id="preview" alt="Imagem para download">
+        
+        <br><br>
+        <a href="#" id="downloadLink" download="red-bird.png">
+            <button>⬇️ Baixar como PNG</button>
+        </a>
+    </div>
 
-<div class="card">
+    <script>
+        // Imagem enviada (base64)
+        const imageBase64 = "iVBORw0KGgoAAAANSUhEUgAA..."; // (base64 completo da imagem)
 
-<h1>📥 Download</h1>
+        // Coloca a imagem no preview
+        document.getElementById('preview').src = "data:image/png;base64," + imageBase64;
 
-<p>Clique para baixar a imagem.</p>
-
-<img src="assinatura.png">
-
-<br><br>
-
-<a href="assinatura.png" download="assinatura.png">
-<button>⬇️ Baixe aqui</button>
-</a>
-
-</div>
-
+        // Função de download
+        document.getElementById('downloadLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const link = document.createElement('a');
+            link.href = "data:image/png;base64," + imageBase64;
+            link.download = "red-bird.png";  // Nome do arquivo ao baixar
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    </script>
 </body>
 </html>
