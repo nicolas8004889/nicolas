@@ -21,70 +21,30 @@ body{
     height:100vh;
 }
 
-.container{
-    text-align:center;
-}
-
-img{
-    width:350px;
-    max-width:90%;
-    border-radius:12px;
-    box-shadow:0 0 25px rgba(255,255,255,.2);
-}
-
 button{
-    margin-top:25px;
-    padding:15px 35px;
+    padding:18px 40px;
     border:none;
     border-radius:12px;
-    font-size:20px;
+    background:#00c9a7;
+    color:#fff;
+    font-size:24px;
     font-weight:bold;
     cursor:pointer;
-    color:#fff;
-    background:#00b894;
     transition:.3s;
 }
 
 button:hover{
-    background:#00d9a5;
     transform:scale(1.05);
+    background:#00b894;
 }
 </style>
-</head>
 
+</head>
 <body>
 
-<div class="container">
-
-    <!-- Troque o caminho pela sua imagem -->
-    <img src="andre.png" alt="Nome André" id="imagem">
-
-    <br>
-
-    <button onclick="baixarImagem()">
-        abaixe aqui
-    </button>
-
-</div>
-
-<script>
-function baixarImagem(){
-
-    const link = document.createElement("a");
-
-    // Caminho da imagem
-    link.href = "andre.png";
-
-    // Nome do arquivo ao baixar
-    link.download = "andre.png";
-
-    document.body.appendChild(link);
-
-    link.click();
-
-    document.body.removeChild(link);
-}
-</script>
+<a href="./andre.png" download="andre.png">
+    <button>abaixe aqui</button>
+</a>
 
 </body>
 </html>
