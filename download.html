@@ -1,4 +1,75 @@
-&lt;h1&gt;Download de Arquivo&lt;/h1&gt;
-&lt;a href=&quot;arquivos/exemplo.pdf&quot; download&gt;
-&lt;button&gt;Baixar PDF&lt;/button&gt;
-&lt;/a&gt;
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baixar Imagem</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #2563eb);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        .card {
+            background: white;
+            color: #1e2937;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            max-width: 400px;
+        }
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #1d4ed8;
+            transform: scale(1.05);
+        }
+        img {
+            max-width: 280px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>📥 Download da Imagem</h1>
+        <p>Clique no botão abaixo para baixar</p>
+        
+        <img src="/home/workdir/attachments/images.png" alt="Imagem">
+        
+        <br>
+        <button onclick="baixarImagem()">⬇️ Baixar como PNG</button>
+    </div>
+
+    <script>
+        function baixarImagem() {
+            const link = document.createElement('a');
+            link.href = "/home/workdir/attachments/images.png";
+            link.download = "red-bird.png";     // Nome do arquivo ao baixar
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Download automático ao carregar a página (opcional)
+        // window.onload = baixarImagem;
+    </script>
+
+</body>
+</html>
