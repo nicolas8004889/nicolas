@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Diagnóstico de Falha no Boot</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #07111f;
+            color: #f1f5f9;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(7, 17, 31, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        nav {
+            max-width: 1150px;
+            margin: auto;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px 50px;
+
+            background:
+                linear-gradient(rgba(3,10,20,0.75), rgba(3,10,20,0.9)),
+                url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: aparecer 1.2s ease;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 7vw, 76px);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #38bdf8;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #cbd5e1;
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 14px 28px;
+            border-radius: 30px;
+            background: #0ea5e9;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 0 25px rgba(14,165,233,0.35);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            background: #0284c7;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 90px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .title h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .title p {
+            color: #94a3b8;
+        }
+
+        /* PROBLEMA */
+        .intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .intro img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .text-box {
+            background: #0d1b2a;
+            border: 1px solid #1e3a5f;
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .text-box h3 {
+            color: #38bdf8;
+            margin-bottom: 15px;
+        }
+
+        /* PASSOS */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .step {
+            position: relative;
+            background: #0d1b2a;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #1e3a5f;
+            transition: 0.35s;
+            overflow: hidden;
+        }
+
+        .step:hover {
+            transform: translateY(-8px);
+            border-color: #38bdf8;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+        }
+
+        .number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #0ea5e9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .step h3 {
+            margin-bottom: 10px;
+            color: #e0f2fe;
+        }
+
+        .step p {
+            color: #94a3b8;
+        }
+
+        /* IMAGEM BIOS */
+        .bios-section {
+            background: #0a1626;
+        }
+
+        .bios {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .bios img {
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        .bios-info h3 {
+            color: #38bdf8;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .bios-info p {
+            color: #cbd5e1;
+        }
+
+        /* FLUXO */
+        .flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 40px;
+        }
+
+        .flow-item {
+            background: #10243a;
+            border: 1px solid #25638a;
+            padding: 18px 20px;
+            border-radius: 12px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .arrow {
+            color: #38bdf8;
+            font-size: 25px;
+        }
+
+        /* ALERTA */
+        .warning {
+            margin-top: 50px;
+            padding: 25px;
+            border-radius: 15px;
+            background: rgba(245,158,11,0.08);
+            border: 1px solid #92400e;
+        }
+
+        .warning strong {
+            color: #fbbf24;
+        }
+
+        /* RESUMO */
+        .summary {
+            background:
+                linear-gradient(rgba(7,17,31,0.88), rgba(7,17,31,0.95)),
+                url("https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=1800&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .summary-box {
+            max-width: 900px;
+            margin: auto;
+            background: rgba(13,27,42,0.9);
+            padding: 40px;
+            border-radius: 25px;
+            border: 1px solid #1e3a5f;
+            text-align: center;
+        }
+
+        .summary-box h2 {
+            color: #38bdf8;
+            margin-bottom: 20px;
+        }
+
+        .summary-box p {
+            font-size: 18px;
+            color: #dbeafe;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            background: #040b14;
+            color: #64748b;
+        }
+
+        footer span {
+            color: #38bdf8;
+        }
+
+        /* ANIMAÇÕES */
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.8s;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 800px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .intro,
+            .bios,
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            section {
+                padding: 70px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="logo">BOOT diagnóstico</div>
+
+        <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#diagnostico">Diagnóstico</a></li>
+            <li><a href="#bios">BIOS/UEFI</a></li>
+            <li><a href="#resumo">Resumo</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+
+    <div class="hero-content">
+
+        <h1>Diagnóstico de <span>Falha no Boot</span></h1>
+
+        <p>
+            Aprenda como identificar e solucionar problemas de inicialização
+            verificando o HD/SSD, BIOS/UEFI, Boot Order e o sistema operacional.
+        </p>
+
+        <a href="#diagnostico" class="btn">
+            Ver diagnóstico
+        </a>
+
+    </div>
+
+</section>
+
+<!-- INTRO -->
+<section id="diagnostico">
+
+    <div class="container">
+
+        <div class="title">
+            <h2>Como diagnosticar?</h2>
+            <p>Uma análise organizada ajuda a encontrar a causa do problema.</p>
+        </div>
+
+        <div class="intro reveal">
+
+            <img
+                src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=1000&q=80"
+                alt="Componentes de computador">
+
+            <div class="text-box">
+
+                <h3>O que é uma falha no Boot?</h3>
+
+                <p>
+                    A falha no boot acontece quando o computador não consegue
+                    iniciar corretamente o sistema operacional. Isso pode estar
+                    relacionado ao armazenamento, à configuração da BIOS/UEFI,
+                    à partição de inicialização ou ao próprio Windows.
+                </p>
+
+                <br>
+
+                <p>
+                    Para solucionar o problema, é importante seguir uma ordem
+                    de verificação antes de pensar em reinstalar o sistema.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PASSOS -->
+<section>
+
+    <div class="container">
+
+        <div class="title">
+            <h2>Etapas do diagnóstico</h2>
+            <p>Siga os passos na ordem para encontrar a possível causa.</p>
+        </div>
+
+        <div class="steps">
+
+            <div class="step reveal">
+                <div class="number">1</div>
+
+                <h3>Verificar o HD/SSD</h3>
+
+                <p>
+                    Primeiro, confira se o HD ou SSD está sendo reconhecido
+                    corretamente pela BIOS/UEFI.
+                </p>
+            </div>
+
+            <div class="step reveal">
+                <div class="number">2</div>
+
+                <h3>Conferir o Boot Order</h3>
+
+                <p>
+                    Verifique se o disco correto está configurado como a
+                    primeira opção de inicialização.
+                </p>
+            </div>
+
+            <div class="step reveal">
+                <div class="number">3</div>
+
+                <h3>Verificar a partição</h3>
+
+                <p>
+                    Analise a partição de inicialização e procure possíveis
+                    problemas que impeçam o Windows de iniciar.
+                </p>
+            </div>
+
+            <div class="step reveal">
+                <div class="number">4</div>
+
+                <h3>Verificar conexões</h3>
+
+                <p>
+                    Se o HD/SSD não aparecer, verifique cabos, conexões,
+                    encaixes e o estado físico do dispositivo.
+                </p>
+            </div>
+
+            <div class="step reveal">
+                <div class="number">5</div>
+
+                <h3>Analisar o Windows</h3>
+
+                <p>
+                    Caso o hardware esteja funcionando, verifique possíveis
+                    falhas nos arquivos ou na inicialização do sistema.
+                </p>
+            </div>
+
+            <div class="step reveal">
+                <div class="number">6</div>
+
+                <h3>Reinstalar o Windows</h3>
+
+                <p>
+                    A reinstalação deve ser considerada somente depois de
+                    realizar as outras verificações.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- BIOS -->
+<section class="bios-section" id="bios">
+
+    <div class="container">
+
+        <div class="title">
+            <h2>BIOS / UEFI</h2>
+            <p>Uma das primeiras coisas a verificar durante o diagnóstico.</p>
+        </div>
+
+        <div class="bios reveal">
+
+            <img
+                src="https://images.unsplash.com/photo-1555617981-dac3880eac6e?auto=format&fit=crop&w=1200&q=80"
+                alt="Placa-mãe de computador">
+
+            <div class="bios-info">
+
+                <h3>Por que verificar a BIOS/UEFI?</h3>
+
+                <p>
+                    A BIOS/UEFI é responsável por iniciar o hardware do
+                    computador e localizar um dispositivo que possa iniciar
+                    o sistema operacional.
+                </p>
+
+                <br>
+
+                <p>
+                    Se o HD ou SSD não for reconhecido, o problema pode estar
+                    relacionado às conexões, ao próprio dispositivo ou às
+                    configurações do computador.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FLUXO -->
+<section>
+
+    <div class="container">
+
+        <div class="title">
+            <h2>Fluxo de diagnóstico</h2>
+            <p>Veja a sequência básica de análise.</p>
+        </div>
+
+        <div class="flow">
+
+            <div class="flow-item">HD / SSD</div>
+
+            <div class="arrow">→</div>
+
+            <div class="flow-item">BIOS / UEFI</div>
+
+            <div class="arrow">→</div>
+
+            <div class="flow-item">Boot Order</div>
+
+            <div class="arrow">→</div>
+
+            <div class="flow-item">Partição</div>
+
+            <div class="arrow">→</div>
+
+            <div class="flow-item">Windows</div>
+
+        </div>
+
+        <div class="warning reveal">
+
+            <strong>⚠ Importante:</strong>
+
+            <span>
+                Não é recomendado reinstalar o Windows imediatamente.
+                Primeiro devem ser verificadas as possíveis causas do
+                problema de inicialização.
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- RESUMO -->
+<section class="summary" id="resumo">
+
+    <div class="container">
+
+        <div class="summary-box reveal">
+
+            <h2>Resumo para a prova</h2>
+
+            <p>
+                Primeiramente, verificaria se o HD/SSD está sendo reconhecido
+                pela BIOS/UEFI. Depois, conferiria o Boot Order, garantindo que
+                o disco correto seja a primeira opção de inicialização. Em
+                seguida, verificaria a partição de inicialização e possíveis
+                falhas no sistema operacional. Caso o HD/SSD não seja
+                reconhecido, verificaria suas conexões e seu estado. Somente
+                após esses procedimentos consideraria a reinstalação do
+                Windows.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    <p>
+        Site educativo sobre <span>Diagnóstico de Falha no Boot</span>
+    </p>
+
+    <p>
+        Desenvolvido para estudo de Sistemas Operacionais
+    </p>
+</footer>
+
+<script>
+
+    /* ANIMAÇÃO AO ROLAR A PÁGINA */
+
+    const elementos = document.querySelectorAll(".reveal");
+
+    function revelar() {
+
+        elementos.forEach(elemento => {
+
+            const posicao = elemento.getBoundingClientRect().top;
+
+            if (posicao < window.innerHeight - 100) {
+                elemento.classList.add("active");
+            }
+
+        });
+
+    }
+
+    window.addEventListener("scroll", revelar);
+
+    revelar();
+
+</script>
+
+</body>
+</html>
