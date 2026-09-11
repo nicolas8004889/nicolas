@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Site educativo sobre o uso de drones na agricultura, tecnologia, sensores, câmeras, navegação e geoprocessamento.">
+  <title>Uso de Drones na Agricultura</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --verde: #2f7d32;
+      --verde-escuro: #123d20;
+      --verde-claro: #dff2df;
+      --terra: #a86638;
+      --creme: #f7f4ec;
+      --texto: #243126;
+      --branco: #ffffff;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--texto);
+      background: var(--creme);
+      line-height: 1.6;
+    }
+
+    header {
+      min-height: 92vh;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      background:
+        linear-gradient(rgba(8, 38, 18, .68), rgba(8, 38, 18, .78)),
+        url("https://images.unsplash.com/photo-1492496913980-501348b61469?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+    }
+
+    .hero {
+      max-width: 950px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 16px;
+      border: 1px solid rgba(255,255,255,.5);
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      backdrop-filter: blur(6px);
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 5.4rem);
+      line-height: 1.02;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      max-width: 760px;
+      margin: 0 auto 30px;
+      color: #edf8ed;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      background: #8bc34a;
+      color: #102615;
+      padding: 13px 24px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: .25s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      background: white;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(18, 61, 32, .97);
+      box-shadow: 0 3px 15px rgba(0,0,0,.15);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 15px 18px;
+      font-weight: bold;
+      font-size: .95rem;
+    }
+
+    nav a:hover {
+      background: var(--verde);
+    }
+
+    section {
+      padding: 75px 7%;
+      max-width: 1250px;
+      margin: auto;
+    }
+
+    .titulo {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .titulo span {
+      color: var(--verde);
+      text-transform: uppercase;
+      font-size: .8rem;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+
+    .titulo h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--verde-escuro);
+      margin-top: 7px;
+    }
+
+    .titulo p {
+      max-width: 700px;
+      margin: 10px auto 0;
+      color: #617064;
+    }
+
+    .texto {
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(30,60,35,.08);
+      font-size: 1.05rem;
+    }
+
+    .destaque {
+      border-left: 6px solid var(--verde);
+      margin-top: 22px;
+      padding: 20px 24px;
+      background: var(--verde-claro);
+      border-radius: 0 12px 12px 0;
+      font-weight: bold;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      padding: 28px;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(30,60,35,.08);
+      border-top: 5px solid var(--verde);
+      transition: .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .icone {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      color: var(--verde-escuro);
+      margin-bottom: 9px;
+    }
+
+    .imagem {
+      min-height: 430px;
+      border-radius: 22px;
+      background:
+        linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,.18)),
+        url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      box-shadow: 0 12px 35px rgba(0,0,0,.16);
+    }
+
+    .legenda {
+      width: 100%;
+      padding: 25px;
+      color: white;
+      background: linear-gradient(transparent, rgba(0,0,0,.8));
+      font-size: 1.05rem;
+    }
+
+    .tecnologia {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      align-items: stretch;
+    }
+
+    .tech-img {
+      min-height: 420px;
+      border-radius: 20px;
+      background:
+        url("https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1200&q=85")
+        center/cover;
+    }
+
+    .lista {
+      background: var(--verde-escuro);
+      color: white;
+      border-radius: 20px;
+      padding: 35px;
+    }
+
+    .lista h3 {
+      font-size: 1.6rem;
+      margin-bottom: 18px;
+    }
+
+    .lista div {
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(255,255,255,.15);
+    }
+
+    .lista div:last-child {
+      border-bottom: 0;
+    }
+
+    .numero {
+      display: inline-flex;
+      width: 30px;
+      height: 30px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #8bc34a;
+      color: #17331c;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+
+    .curiosidade {
+      background:
+        linear-gradient(rgba(18,61,32,.88), rgba(18,61,32,.88)),
+        url("https://images.unsplash.com/photo-1579820010410-c10411aaaa88?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+      color: white;
+      max-width: none;
+      padding-left: 12%;
+      padding-right: 12%;
+    }
+
+    .curiosidade .inner {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .curiosidade h2 {
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      margin-bottom: 15px;
+    }
+
+    .rodape {
+      background: #0b2413;
+      color: #cfe0d1;
+      text-align: center;
+      padding: 35px 20px;
+    }
+
+    .rodape strong {
+      color: white;
+    }
+
+    @media (max-width: 850px) {
+      .cards,
+      .tecnologia {
+        grid-template-columns: 1fr;
+      }
+
+      .tech-img {
+        min-height: 300px;
+      }
+
+      nav a {
+        padding: 12px 10px;
+        font-size: .85rem;
+      }
+
+      section {
+        padding: 55px 5%;
+      }
+    }
+
+    @media (max-width: 520px) {
+      nav ul {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      nav a {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header id="inicio">
+    <div class="hero">
+      <div class="tag">CIÊNCIA E TECNOLOGIA • AGRICULTURA</div>
+      <h1>Uso de Drones na Agricultura</h1>
+      <p>
+        Como os veículos aéreos não tripulados estão transformando o monitoramento
+        das plantações por meio de sensores, câmeras, navegação e geoprocessamento.
+      </p>
+      <a class="btn" href="#sobre">Explorar o tema ↓</a>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#sobre">O tema</a></li>
+      <li><a href="#funcoes">Funções</a></li>
+      <li><a href="#tecnologia">Tecnologia</a></li>
+      <li><a href="#automacao">Automação</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section id="sobre">
+      <div class="titulo">
+        <span>Entenda</span>
+        <h2>O que são drones?</h2>
+        <p>Veículos aéreos não tripulados e suas aplicações no campo.</p>
+      </div>
+
+      <div class="texto">
+        <p>
+          Os <strong>veículos aéreos não tripulados (VANT)</strong>, também conhecidos
+          como <strong>drones</strong>, são dispositivos que possuem componentes
+          eletrônicos, mecânicos e estruturais responsáveis pelo seu funcionamento.
+          Eles podem ser equipados com diferentes recursos, como <strong>sensores e
+          câmeras</strong>, permitindo realizar diversas funções.
+        </p>
+
+        <div class="destaque">
+          Na agricultura, os drones ajudam a observar as plantações e a obter
+          informações que podem facilitar o trabalho e melhorar o acompanhamento
+          das áreas cultivadas.
+        </div>
+      </div>
+    </section>
+
+    <section id="funcoes">
+      <div class="titulo">
+        <span>Aplicações</span>
+        <h2>O que os drones podem fazer?</h2>
+        <p>A tecnologia permite realizar diferentes tarefas de monitoramento.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="icone">📷</div>
+          <h3>Captura de imagens</h3>
+          <p>
+            Câmeras instaladas nos drones permitem registrar imagens das áreas
+            agrícolas de diferentes pontos de vista.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="icone">🌱</div>
+          <h3>Monitoramento</h3>
+          <p>
+            As imagens e os dados coletados ajudam no acompanhamento das
+            plantações e das condições do ambiente.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="icone">🛰️</div>
+          <h3>Geoprocessamento</h3>
+          <p>
+            Sistemas de navegação e geoprocessamento ampliam as possibilidades
+            de análise e organização das informações obtidas.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="imagem">
+        <div class="legenda">
+          <strong>Tecnologia no campo</strong><br>
+          O uso de drones aproxima a tecnologia digital das atividades agrícolas.
+        </div>
+      </div>
+    </section>
+
+    <section id="tecnologia">
+      <div class="titulo">
+        <span>Inovação</span>
+        <h2>Tecnologias presentes nos drones</h2>
+      </div>
+
+      <div class="tecnologia">
+        <div class="tech-img"></div>
+
+        <div class="lista">
+          <h3>Principais recursos</h3>
+
+          <div>
+            <span class="numero">1</span>
+            <strong>Sensores</strong> — coletam diferentes tipos de informações.
+          </div>
+
+          <div>
+            <span class="numero">2</span>
+            <strong>Câmeras</strong> — registram imagens das áreas observadas.
+          </div>
+
+          <div>
+            <span class="numero">3</span>
+            <strong>Navegação</strong> — auxilia o drone durante seus deslocamentos.
+          </div>
+
+          <div>
+            <span class="numero">4</span>
+            <strong>Geoprocessamento</strong> — permite trabalhar e analisar dados
+            relacionados às áreas monitoradas.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="automacao">
+      <div class="titulo">
+        <span>Automação</span>
+        <h2>Quanto mais automatizado?</h2>
+        <p>
+          A automação está relacionada à quantidade de intervenção manual necessária.
+        </p>
+      </div>
+
+      <div class="texto">
+        <p>
+          O grau de automação de um drone depende de <strong>quanto de intervenção
+          manual ele precisa para executar suas funções</strong>. Quanto mais
+          recursos automáticos forem utilizados, menor pode ser a necessidade de
+          controle manual durante determinadas tarefas.
+        </p>
+
+        <div class="destaque">
+          Os avanços tecnológicos estão ampliando o uso dos drones na agricultura
+          e também no monitoramento ambiental.
+        </div>
+      </div>
+    </section>
+
+    <section class="curiosidade">
+      <div class="inner">
+        <h2>🚁 Tecnologia que observa de cima</h2>
+        <p>
+          Drones combinam recursos físicos e digitais para coletar informações
+          de forma prática. Sensores, câmeras, sistemas de navegação e
+          geoprocessamento trabalham juntos para ampliar as possibilidades
+          de uso dessa tecnologia no campo.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <p><strong>Uso de Drones na Agricultura</strong></p>
+    <p>Projeto educativo • Ciência e Tecnologia</p>
+  </footer>
+
+</body>
+</html>
