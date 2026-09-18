@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TRÂNSITO.EXE — O Corpo da Cidade</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@300;400;600;800&display=swap');
+
+:root {
+    --red: #ff304f;
+    --green: #35ff9b;
+    --yellow: #ffe66d;
+    --blue: #5d7cff;
+    --black: #080808;
+    --white: #f4f4f0;
+    --gray: #8a8a8a;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* CURSOR */
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    background: var(--red);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    left: var(--mouse-x);
+    top: var(--mouse-y);
+    box-shadow: 0 0 30px var(--red);
+}
+
+/* INTRO */
+
+.intro {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at center, #191919 0%, #080808 55%);
+}
+
+.intro-grid {
+    position: absolute;
+    inset: 0;
+    opacity: .15;
+    background-image:
+        linear-gradient(#fff 1px, transparent 1px),
+        linear-gradient(90deg, #fff 1px, transparent 1px);
+    background-size: 50px 50px;
+    transform: perspective(500px) rotateX(55deg) scale(2);
+}
+
+.intro-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 1000px;
+    padding: 30px;
+}
+
+.system {
+    font-family: 'DM Mono', monospace;
+    color: var(--green);
+    font-size: 12px;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: clamp(70px, 15vw, 190px);
+    line-height: .78;
+    letter-spacing: -10px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+h1 span {
+    color: var(--red);
+}
+
+.subtitle {
+    margin: 40px auto;
+    max-width: 600px;
+    color: #aaa;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.enter {
+    display: inline-block;
+    border: 1px solid #444;
+    padding: 15px 25px;
+    color: white;
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    transition: .3s;
+}
+
+.enter:hover {
+    background: var(--white);
+    color: black;
+}
+
+/* BATIMENTO */
+
+.pulse-section {
+    min-height: 100vh;
+    padding: 130px 8vw;
+    position: relative;
+}
+
+.label {
+    color: var(--gray);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.big-title {
+    font-size: clamp(45px, 8vw, 110px);
+    max-width: 1000px;
+    line-height: .9;
+    letter-spacing: -5px;
+}
+
+.big-title em {
+    color: var(--red);
+    font-style: normal;
+}
+
+.pulse {
+    width: 100%;
+    height: 200px;
+    margin-top: 80px;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+}
+
+.ecg {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    animation: movePulse 4s linear infinite;
+}
+
+.ecg svg {
+    width: 50%;
+    height: 100%;
+}
+
+@keyframes movePulse {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+.pulse-info {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    color: #666;
+    margin-top: 15px;
+}
+
+/* CORPO */
+
+.body-section {
+    background: #f4f4f0;
+    color: #080808;
+    padding: 140px 8vw;
+    min-height: 100vh;
+}
+
+.body-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+}
+
+.body-title {
+    font-size: clamp(50px, 8vw, 110px);
+    line-height: .85;
+    letter-spacing: -6px;
+}
+
+.body-title span {
+    color: var(--red);
+}
+
+.body-text {
+    font-size: 20px;
+    line-height: 1.7;
+    max-width: 550px;
+}
+
+/* CORPO VISUAL */
+
+.human {
+    width: 300px;
+    height: 600px;
+    margin: auto;
+    position: relative;
+}
+
+.head {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border: 4px solid black;
+    border-radius: 50%;
+    left: 105px;
+    top: 0;
+}
+
+.torso {
+    position: absolute;
+    width: 120px;
+    height: 230px;
+    border: 4px solid black;
+    left: 90px;
+    top: 105px;
+    border-radius: 50px 50px 20px 20px;
+}
+
+.arm {
+    position: absolute;
+    width: 35px;
+    height: 240px;
+    border: 4px solid black;
+    border-radius: 30px;
+    top: 110px;
+}
+
+.arm.left {
+    left: 45px;
+    transform: rotate(8deg);
+}
+
+.arm.right {
+    right: 45px;
+    transform: rotate(-8deg);
+}
+
+.leg {
+    position: absolute;
+    width: 42px;
+    height: 270px;
+    border: 4px solid black;
+    border-radius: 30px;
+    top: 315px;
+}
+
+.leg.left {
+    left: 100px;
+}
+
+.leg.right {
+    right: 100px;
+}
+
+.vein {
+    position: absolute;
+    width: 5px;
+    background: var(--red);
+    animation: blood 1.2s infinite alternate;
+}
+
+.vein.v1 {
+    height: 200px;
+    left: 148px;
+    top: 120px;
+}
+
+.vein.v2 {
+    height: 150px;
+    left: 147px;
+    top: 320px;
+}
+
+@keyframes blood {
+    from { opacity: .3; }
+    to { opacity: 1; box-shadow: 0 0 15px red; }
+}
+
+/* ÓRGÃOS */
+
+.organs {
+    padding: 140px 8vw;
+}
+
+.organs-title {
+    font-size: clamp(50px, 9vw, 120px);
+    letter-spacing: -7px;
+    line-height: .8;
+    margin-bottom: 80px;
+}
+
+.organs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+}
+
+.organ {
+    min-height: 350px;
+    padding: 35px;
+    border: 1px solid #222;
+    position: relative;
+    transition: .4s;
+    overflow: hidden;
+}
+
+.organ:hover {
+    background: #111;
+    transform: translateY(-10px);
+}
+
+.organ-number {
+    font-family: 'DM Mono';
+    color: #555;
+}
+
+.organ h3 {
+    font-size: 35px;
+    margin-top: 100px;
+}
+
+.organ p {
+    color: #777;
+    margin-top: 20px;
+    line-height: 1.5;
+}
+
+.organ .symbol {
+    position: absolute;
+    right: 30px;
+    top: 25px;
+    font-size: 50px;
+}
+
+/* TESTE */
+
+.test-section {
+    background: var(--red);
+    color: #080808;
+    padding: 150px 8vw;
+    min-height: 100vh;
+}
+
+.test-title {
+    font-size: clamp(60px, 11vw, 150px);
+    line-height: .8;
+    letter-spacing: -8px;
+    max-width: 1100px;
+}
+
+.test-sub {
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+.reaction-box {
+    margin-top: 80px;
+    background: #080808;
+    color: white;
+    padding: 50px;
+    max-width: 800px;
+}
+
+.reaction-light {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    margin: 20px auto 50px;
+    background: #222;
+    transition: .2s;
+}
+
+.reaction-light.waiting {
+    background: var(--yellow);
+    box-shadow: 0 0 70px var(--yellow);
+}
+
+.reaction-light.go {
+    background: var(--green);
+    box-shadow: 0 0 100px var(--green);
+}
+
+.reaction-light.bad {
+    background: var(--red);
+    box-shadow: 0 0 100px var(--red);
+}
+
+.reaction-button {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #444;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-family: 'DM Mono';
+    font-size: 15px;
+}
+
+.reaction-button:hover {
+    background: white;
+    color: black;
+}
+
+/* FRASE */
+
+.philosophy {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 8vw;
+    text-align: center;
+}
+
+.philosophy p {
+    max-width: 1100px;
+    font-size: clamp(40px, 7vw, 100px);
+    line-height: 1;
+    letter-spacing: -4px;
+}
+
+.philosophy strong {
+    color: var(--red);
+}
+
+/* FINAL */
+
+.final {
+    min-height: 100vh;
+    padding: 120px 8vw;
+    border-top: 1px solid #222;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.final h2 {
+    font-size: clamp(60px, 12vw, 170px);
+    line-height: .8;
+    letter-spacing: -10px;
+}
+
+.final h2 span {
+    color: var(--green);
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #222;
+    padding-top: 20px;
+    font-family: 'DM Mono';
+    color: #666;
+    font-size: 12px;
+}
+
+/* RESPONSIVO */
+
+@media(max-width: 800px) {
+
+    .body-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .organs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .human {
+        transform: scale(.8);
+    }
+
+    h1 {
+        letter-spacing: -5px;
+    }
+
+    .big-title,
+    .test-title,
+    .final h2 {
+        letter-spacing: -4px;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+
+<section class="intro">
+
+    <div class="intro-grid"></div>
+
+    <div class="intro-content">
+
+        <div class="system">
+            SEMANA NACIONAL DO TRÂNSITO // 18—25 SET
+        </div>
+
+        <h1>
+            TRÂNSITO<br>
+            <span>É UM CORPO.</span>
+        </h1>
+
+        <p class="subtitle">
+            E você está dentro dele.
+            <br><br>
+            Este não é um site sobre carros.
+            É uma autópsia de como uma cidade respira,
+            pensa, reage e pode parar.
+        </p>
+
+        <a href="#pulso" class="enter">
+            ENTRAR NO ORGANISMO ↓
+        </a>
+
+    </div>
+</section>
+
+
+<!-- PULSO -->
+
+<section class="pulse-section" id="pulso">
+
+    <div class="label">
+        01 / BATIMENTO URBANO
+    </div>
+
+    <h2 class="big-title">
+        TODA CIDADE<br>
+        TEM UM <em>PULSO.</em>
+    </h2>
+
+    <div class="pulse">
+
+        <div class="ecg">
+
+            <svg viewBox="0 0 1200 200" preserveAspectRatio="none">
+
+                <polyline
+                    points="
+                    0,100
+                    150,100
+                    190,100
+                    210,60
+                    230,150
+                    250,100
+                    400,100
+                    440,100
+                    460,40
+                    480,165
+                    500,100
+                    650,100
+                    690,100
+                    710,60
+                    730,150
+                    750,100
+                    900,100
+                    940,100
+                    960,40
+                    980,165
+                    1000,100
+                    1200,100"
+                    fill="none"
+                    stroke="#ff304f"
+                    stroke-width="4"
+                />
+
+            </svg>
+
+            <svg viewBox="0 0 1200 200" preserveAspectRatio="none">
+
+                <polyline
+                    points="
+                    0,100
+                    150,100
+                    190,100
+                    210,60
+                    230,150
+                    250,100
+                    400,100
+                    440,100
+                    460,40
+                    480,165
+                    500,100
+                    650,100
+                    690,100
+                    710,60
+                    730,150
+                    750,100
+                    900,100
+                    940,100
+                    960,40
+                    980,165
+                    1000,100
+                    1200,100"
+                    fill="none"
+                    stroke="#ff304f"
+                    stroke-width="4"
+                />
+
+            </svg>
+
+        </div>
+
+    </div>
+
+    <div class="pulse-info">
+        <span>VEÍCULOS</span>
+        <span>PEDESTRES</span>
+        <span>BICICLETAS</span>
+        <span>ÔNIBUS</span>
+        <span>VOCÊ</span>
+    </div>
+
+</section>
+
+
+<!-- CORPO -->
+
+<section class="body-section">
+
+    <div class="body-grid">
+
+        <div>
+
+            <div class="label">
+                02 / ANATOMIA
+            </div>
+
+            <h2 class="body-title">
+                A RUA<br>
+                É UMA<br>
+                <span>VEIA.</span>
+            </h2>
+
+            <p class="body-text">
+                Imagine a cidade como um organismo.
+                As avenidas transportam energia.
+                As ruas distribuem pessoas.
+                Os semáforos controlam o fluxo.
+                As faixas de pedestres protegem as conexões.
+                E cada pessoa é uma célula em movimento.
+                <br><br>
+                Quando uma parte ignora as outras,
+                todo o organismo sente.
+            </p>
+
+        </div>
+
+        <div class="human">
+
+            <div class="head"></div>
+
+            <div class="torso"></div>
+
+            <div class="arm left"></div>
+            <div class="arm right"></div>
+
+            <div class="leg left"></div>
+            <div class="leg right"></div>
+
+            <div class="vein v1"></div>
+            <div class="vein v2"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ÓRGÃOS -->
+
+<section class="organs">
+
+    <div class="label">
+        03 / ÓRGÃOS DO TRÂNSITO
+    </div>
+
+    <h2 class="organs-title">
+        QUEM<br>
+        MANTÉM<br>
+        TUDO <span>VIVO?</span>
+    </h2>
+
+    <div class="organs-grid">
+
+        <article class="organ">
+
+            <span class="organ-number">01</span>
+
+            <span class="symbol">🧠</span>
+
+            <h3>ATENÇÃO</h3>
+
+            <p>
+                O cérebro do trânsito.
+                Perceber o que acontece ao redor
+                antes de tomar uma decisão.
+            </p>
+
+        </article>
+
+
+        <article class="organ">
+
+            <span class="organ-number">02</span>
+
+            <span class="symbol">❤️</span>
+
+            <h3>RESPEITO</h3>
+
+            <p>
+                Não existe circulação segura
+                quando cada pessoa pensa apenas
+                em chegar primeiro.
+            </p>
+
+        </article>
+
+
+        <article class="organ">
+
+            <span class="organ-number">03</span>
+
+            <span class="symbol">👁</span>
+
+            <h3>VISÃO</h3>
+
+            <p>
+                Olhar não é apenas enxergar.
+                É antecipar movimentos,
+                pessoas e riscos.
+            </p>
+
+        </article>
+
+
+        <article class="organ">
+
+            <span class="organ-number">04</span>
+
+            <span class="symbol">🫁</span>
+
+            <h3>PACIÊNCIA</h3>
+
+            <p>
+                Alguns segundos de espera
+                podem ser muito menores
+                que as consequências de uma pressa.
+            </p>
+
+        </article>
+
+
+        <article class="organ">
+
+            <span class="organ-number">05</span>
+
+            <span class="symbol">🦶</span>
+
+            <h3>ESCOLHA</h3>
+
+            <p>
+                Caminhar, pedalar, dirigir,
+                esperar ou atravessar:
+                cada movimento altera o organismo.
+            </p>
+
+        </article>
+
+
+        <article class="organ">
+
+            <span class="organ-number">06</span>
+
+            <span class="symbol">🫀</span>
+
+            <h3>VIDA</h3>
+
+            <p>
+                O objetivo final do trânsito
+                não é velocidade.
+                É fazer todo mundo chegar.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- TESTE -->
+
+<section class="test-section">
+
+    <div class="label">
+        04 / EXPERIMENTO HUMANO
+    </div>
+
+    <h2 class="test-title">
+        SEU<br>
+        REFLEXO<br>
+        <span>DECIDE.</span>
+    </h2>
+
+    <p class="test-sub">
+        Um pequeno experimento sobre reação.
+        Não é uma competição. É uma lembrança.
+    </p>
+
+    <div class="reaction-box">
+
+        <div
+            class="reaction-light"
+            id="light">
+        </div>
+
+        <button
+            class="reaction-button"
+            id="reactionButton">
+            INICIAR EXPERIMENTO
+        </button>
+
+        <p
+            id="result"
+            style="
+            text-align:center;
+            margin-top:30px;
+            font-family:'DM Mono';
+            color:#aaa;">
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- FILOSOFIA -->
+
+<section class="philosophy">
+
+    <p>
+        A pergunta não é
+        <strong>“quanto rápido você consegue ir?”</strong>
+        <br><br>
+        A pergunta é:
+        <strong>“quanto longe conseguimos chegar juntos?”</strong>
+    </p>
+
+</section>
+
+
+<!-- FINAL -->
+
+<section class="final">
+
+    <div>
+
+        <div class="label">
+            05 / SISTEMA OPERACIONAL
+        </div>
+
+        <h2>
+            CUIDAR<br>
+            É O NOVO<br>
+            <span>FLUXO.</span>
+        </h2>
+
+    </div>
+
+    <div class="footer">
+
+        <span>
+            SEMANA NACIONAL DO TRÂNSITO
+        </span>
+
+        <span>
+            18 — 25 DE SETEMBRO
+        </span>
+
+        <span>
+            TRÂNSITO.EXE
+        </span>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* CURSOR */
+
+document.addEventListener("mousemove", function(e) {
+
+    document.body.style.setProperty(
+        "--mouse-x",
+        e.clientX + "px"
+    );
+
+    document.body.style.setProperty(
+        "--mouse-y",
+        e.clientY + "px"
+    );
+
+});
+
+
+/* EXPERIMENTO DE REFLEXO */
+
+const button = document.getElementById("reactionButton");
+const light = document.getElementById("light");
+const result = document.getElementById("result");
+
+let startTime = 0;
+let timeout;
+let waiting = false;
+
+button.addEventListener("click", function() {
+
+    if (waiting) {
+
+        clearTimeout(timeout);
+
+        light.className = "reaction-light bad";
+
+        result.innerHTML =
+            "Você tentou antecipar.<br><br>" +
+            "No trânsito, antecipar o movimento errado também pode custar caro.";
+
+        waiting = false;
+
+        button.innerHTML = "TENTAR NOVAMENTE";
+
+        return;
+    }
+
+    light.className = "reaction-light waiting";
+
+    result.innerHTML =
+        "Aguarde...<br>Não clique ainda.";
+
+    button.innerHTML =
+        "AGUARDANDO O SINAL...";
+
+    waiting = true;
+
+    const randomTime =
+        Math.floor(Math.random() * 4000) + 2000;
+
+    timeout = setTimeout(function() {
+
+        light.className = "reaction-light go";
+
+        startTime = Date.now();
+
+        button.innerHTML =
+            "CLIQUE AGORA!";
+
+    }, randomTime);
+
+});
+
+
+button.addEventListener("click", function() {
+
+    if (
+        waiting &&
+        light.classList.contains("go")
+    ) {
+
+        const reaction =
+            Date.now() - startTime;
+
+        light.className =
+            "reaction-light";
+
+        result.innerHTML =
+            "Seu tempo de reação: <strong>" +
+            reaction +
+            " ms</strong><br><br>" +
+            "Na rua, existem situações que não permitem uma segunda tentativa.";
+
+        button.innerHTML =
+            "FAZER NOVAMENTE";
+
+        waiting = false;
+
+    }
+
+});
+
+
+/* EFEITO DE ENTRADA DOS ÓRGÃOS */
+
+const organs =
+    document.querySelectorAll(".organ");
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform =
+                        "translateY(0)";
+
+                }
+
+            });
+
+        },
+        {
+            threshold: .2
+        }
+    );
+
+
+organs.forEach(organ => {
+
+    organ.style.opacity = "0";
+    organ.style.transform =
+        "translateY(50px)";
+    organ.style.transition =
+        "opacity .8s ease, transform .8s ease";
+
+    observer.observe(organ);
+
+});
+
+</script>
+
+</body>
+</html>
