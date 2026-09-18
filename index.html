@@ -107,7 +107,6 @@
             40%, 60% { transform: translate3d(3px, 0, 0); }
         }
 
-        /* Botões de projetos organizados */
         .project-btn {
             display: flex;
             align-items: center;
@@ -130,7 +129,6 @@
             text-align: center;
         }
 
-        /* Botão flutuante de download */
         .btn-download {
             position: fixed;
             bottom: 28px;
@@ -236,7 +234,7 @@
                             0 MATÉRIAS NA MOCHILA
                         </div>
 
-                        <!-- SEÇÃO DE PROJETOS / LINKS ORGANIZADA -->
+                        <!-- SEÇÃO DE PROJETOS / LINKS -->
                         <div class="mt-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-5">
                             <h3 class="text-sm font-semibold text-indigo-300 uppercase tracking-wider mb-4 flex items-center gap-2">
                                 <i class="fa-solid fa-link"></i>
@@ -264,9 +262,13 @@
                                     <span>Diagnóstico de Falha no Boot</span>
                                 </a>
                                 <a href="drone.html" class="project-btn bg-violet-600/90 hover:bg-violet-500 text-white">
-    <i class="fa-solid fa-helicopter"></i>
-    <span>Drone</span>
-</a>
+                                    <i class="fa-solid fa-helicopter"></i>
+                                    <span>Drone</span>
+                                </a>
+                                <a href="transito.html" class="project-btn bg-amber-600/90 hover:bg-amber-500 text-white">
+                                    <i class="fa-solid fa-traffic-light"></i>
+                                    <span>Trânsito</span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -353,7 +355,6 @@
             </div>
             <div class="p-6 sm:p-8 overflow-auto flex-1 space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <!-- Matemática -->
                     <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
                         <h4 class="text-lg font-bold mb-2 flex items-center gap-2"><i class="fa-solid fa-calculator text-indigo-400"></i> Matemática</h4>
                         <p class="text-white/80 text-sm mb-3">Desenvolver raciocínio lógico, resolver problemas e interpretar dados do mundo real.</p>
@@ -364,7 +365,6 @@
                             <li>Matemática financeira e modelagem</li>
                         </ul>
                     </div>
-                    <!-- Língua Portuguesa -->
                     <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
                         <h4 class="text-lg font-bold mb-2 flex items-center gap-2"><i class="fa-solid fa-book text-indigo-400"></i> Língua Portuguesa</h4>
                         <p class="text-white/80 text-sm mb-3">Aprimorar leitura, escrita, interpretação e argumentação crítica.</p>
@@ -375,7 +375,6 @@
                             <li>Literatura brasileira e gêneros textuais</li>
                         </ul>
                     </div>
-                    <!-- Inglês -->
                     <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
                         <h4 class="text-lg font-bold mb-2 flex items-center gap-2"><i class="fa-solid fa-globe text-indigo-400"></i> Inglês</h4>
                         <p class="text-white/80 text-sm mb-3">Comunicar-se em inglês em contextos reais e entender cultura global.</p>
@@ -386,7 +385,6 @@
                             <li>Conversação e escrita (e-mails, essays)</li>
                         </ul>
                     </div>
-                    <!-- Biologia -->
                     <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
                         <h4 class="text-lg font-bold mb-2 flex items-center gap-2"><i class="fa-solid fa-dna text-indigo-400"></i> Biologia</h4>
                         <p class="text-white/80 text-sm mb-3">Entender a vida, seres vivos e relações com o ambiente.</p>
@@ -397,7 +395,6 @@
                             <li>Biotecnologia e saúde</li>
                         </ul>
                     </div>
-                    <!-- Geografia -->
                     <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
                         <h4 class="text-lg font-bold mb-2 flex items-center gap-2"><i class="fa-solid fa-earth-americas text-indigo-400"></i> Geografia</h4>
                         <p class="text-white/80 text-sm mb-3">Analisar o espaço, sociedade e impactos ambientais.</p>
@@ -408,7 +405,6 @@
                             <li>Geopolítica e economia mundial</li>
                         </ul>
                     </div>
-                    <!-- História -->
                     <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
                         <h4 class="text-lg font-bold mb-2 flex items-center gap-2"><i class="fa-solid fa-landmark text-indigo-400"></i> História</h4>
                         <p class="text-white/80 text-sm mb-3">Compreender processos históricos e formar cidadania crítica.</p>
@@ -419,7 +415,6 @@
                             <li>Cultura afro-brasileira e indígena</li>
                         </ul>
                     </div>
-                    <!-- Projeto de Vida -->
                     <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
                         <h4 class="text-lg font-bold mb-2 flex items-center gap-2"><i class="fa-solid fa-person-walking text-indigo-400"></i> Projeto de Vida</h4>
                         <p class="text-white/80 text-sm mb-3">Planejar futuro pessoal, escolhas profissionais e bem-estar.</p>
@@ -430,7 +425,6 @@
                             <li>Ética e valores</li>
                         </ul>
                     </div>
-                    <!-- Estudos Orientados -->
                     <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
                         <h4 class="text-lg font-bold mb-2 flex items-center gap-2"><i class="fa-solid fa-book-open-reader text-indigo-400"></i> Estudos Orientados</h4>
                         <p class="text-white/80 text-sm mb-3">Desenvolver métodos de estudo, pesquisa e organização.</p>
@@ -441,7 +435,6 @@
                             <li>Preparação para provas</li>
                         </ul>
                     </div>
-                    <!-- AMC -->
                     <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
                         <h4 class="text-lg font-bold mb-2 flex items-center gap-2"><i class="fa-solid fa-microchip text-indigo-400"></i> AMC - Arquitetura e Manutenção</h4>
                         <p class="text-white/80 text-sm mb-3">Entender hardware, montagem e manutenção de PCs.</p>
@@ -452,7 +445,6 @@
                             <li>Redes básicas e segurança</li>
                         </ul>
                     </div>
-                    <!-- Lógica de Programação -->
                     <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
                         <h4 class="text-lg font-bold mb-2 flex items-center gap-2"><i class="fa-solid fa-code text-indigo-400"></i> Lógica de Programação</h4>
                         <p class="text-white/80 text-sm mb-3">Desenvolver pensamento computacional e algoritmos.</p>
@@ -463,7 +455,6 @@
                             <li>Resolução de problemas lógicos</li>
                         </ul>
                     </div>
-                    <!-- Programação Web -->
                     <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
                         <h4 class="text-lg font-bold mb-2 flex items-center gap-2"><i class="fa-solid fa-globe text-indigo-400"></i> Programação Web</h4>
                         <p class="text-white/80 text-sm mb-3">Criar sites e aplicações web básicas.</p>
@@ -474,7 +465,6 @@
                             <li>Introdução a frameworks</li>
                         </ul>
                     </div>
-                    <!-- Noção de Robótica -->
                     <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
                         <h4 class="text-lg font-bold mb-2 flex items-center gap-2"><i class="fa-solid fa-robot text-indigo-400"></i> Noção de Robótica</h4>
                         <p class="text-white/80 text-sm mb-3">Entender conceitos básicos de robôs e automação.</p>
@@ -485,7 +475,6 @@
                             <li>Aplicações industriais e domésticas</li>
                         </ul>
                     </div>
-                    <!-- HTML -->
                     <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
                         <h4 class="text-lg font-bold mb-2 flex items-center gap-2"><i class="fa-solid fa-code text-indigo-400"></i> HTML</h4>
                         <p class="text-white/80 text-sm mb-3">Estruturar conteúdo na web de forma semântica.</p>
@@ -496,7 +485,6 @@
                             <li>Acessibilidade básica</li>
                         </ul>
                     </div>
-                    <!-- Práticas Experimentais -->
                     <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
                         <h4 class="text-lg font-bold mb-2 flex items-center gap-2"><i class="fa-solid fa-flask text-indigo-400"></i> Práticas Experimentais</h4>
                         <p class="text-white/80 text-sm mb-3">Realizar experimentos e desenvolver método científico.</p>
