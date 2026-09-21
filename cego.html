@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Site sobre o Dia Internacional das Pessoas com Deficiência (3 de dezembro), com foco na deficiência visual e no significado das cores das bengalas.">
+  <meta name="keywords" content="deficiência, deficiência visual, bengala branca, bengala verde, surdocegueira, inclusão, acessibilidade">
+  <title>Dia Internacional das Pessoas com Deficiência | Deficiência Visual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --azul: #1a73e8;
+      --azul-escuro: #0d47a1;
+      --verde: #2e7d32;
+      --vermelho: #c62828;
+      --branco: #ffffff;
+      --cinza-claro: #f5f7fa;
+      --cinza: #546e7a;
+      --texto: #212121;
+      --sombra: 0 4px 20px rgba(0,0,0,0.08);
+      --radius: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--texto);
+      line-height: 1.7;
+      background: var(--cinza-claro);
+    }
+
+    h1, h2, h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    a {
+      color: var(--azul);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background: linear-gradient(135deg, var(--azul-escuro), var(--azul));
+      color: var(--branco);
+      padding: 1.2rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo span {
+      font-size: 1.5rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--branco);
+      font-weight: 600;
+      font-size: 0.95rem;
+      opacity: 0.95;
+      transition: opacity 0.2s;
+    }
+
+    nav a:hover {
+      opacity: 1;
+      text-decoration: none;
+      border-bottom: 2px solid #fff;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, #0d47a1 0%, #1565c0 50%, #1a73e8 100%);
+      color: var(--branco);
+      padding: 4.5rem 1.5rem 5rem;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      margin-bottom: 1rem;
+    }
+
+    .hero .data {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      opacity: 0.95;
+      max-width: 650px;
+      margin: 0 auto 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--branco);
+      color: var(--azul-escuro);
+      padding: 0.85rem 1.8rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+      text-decoration: none;
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 4rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      color: var(--azul-escuro);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--cinza);
+      margin-bottom: 2.5rem;
+      font-size: 1.05rem;
+    }
+
+    /* ===== SOBRE O DIA ===== */
+    .sobre {
+      background: var(--branco);
+    }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .sobre-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--cinza-claro);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      box-shadow: var(--sombra);
+    }
+
+    .card h3 {
+      color: var(--azul);
+      margin-bottom: 0.8rem;
+      font-size: 1.25rem;
+    }
+
+    .card ul {
+      padding-left: 1.2rem;
+    }
+
+    .card li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* ===== DEFICIÊNCIA VISUAL ===== */
+    .visual {
+      background: var(--cinza-claro);
+    }
+
+    .info-box {
+      background: var(--branco);
+      border-left: 5px solid var(--azul);
+      padding: 1.5rem 1.8rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 2rem;
+      box-shadow: var(--sombra);
+    }
+
+    /* ===== BENGALAS ===== */
+    .bengalas {
+      background: var(--branco);
+    }
+
+    .bengalas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1rem;
+    }
+
+    .bengala-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--sombra);
+      transition: transform 0.25s;
+      background: #fff;
+    }
+
+    .bengala-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .bengala-header {
+      padding: 1.5rem;
+      text-align: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+
+    .bengala-branca .bengala-header {
+      background: #e0e0e0;
+      color: #333;
+      border-bottom: 4px solid #9e9e9e;
+    }
+
+    .bengala-verde .bengala-header {
+      background: var(--verde);
+    }
+
+    .bengala-vermelha .bengala-header {
+      background: linear-gradient(90deg, #c62828 50%, #f5f5f5 50%);
+      color: #fff;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .bengala-body {
+      padding: 1.5rem;
+    }
+
+    .bengala-body p {
+      margin-bottom: 0.8rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #e3f2fd;
+      color: var(--azul-escuro);
+      padding: 0.25rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+
+    .lei-box {
+      background: #e8f5e9;
+      border: 1px solid #a5d6a7;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-top: 2.5rem;
+      text-align: center;
+    }
+
+    .lei-box strong {
+      color: var(--verde);
+    }
+
+    /* ===== VÍDEO ===== */
+    .video-section {
+      background: var(--cinza-claro);
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--sombra);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-link {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    /* ===== DICAS ===== */
+    .dicas {
+      background: var(--branco);
+    }
+
+    .dicas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .dica-card {
+      background: var(--cinza-claro);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      text-align: center;
+      box-shadow: var(--sombra);
+    }
+
+    .dica-card .icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .dica-card h3 {
+      font-size: 1.1rem;
+      color: var(--azul-escuro);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #0d47a1;
+      color: #e3f2fd;
+      padding: 2.5rem 1.5rem 1.5rem;
+      text-align: center;
+    }
+
+    footer a {
+      color: #90caf9;
+    }
+
+    footer p {
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .footer-links {
+      margin: 1.2rem 0;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* ===== ACESSIBILIDADE ===== */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--azul);
+      color: #fff;
+      padding: 8px 16px;
+      z-index: 200;
+      transition: top 0.3s;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
+    @media (max-width: 600px) {
+      nav ul {
+        gap: 1rem;
+      }
+      .hero {
+        padding: 3rem 1rem 3.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#conteudo" class="skip-link">Pular para o conteúdo principal</a>
+
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        <span aria-hidden="true">♿</span> Inclusão para Todos
+      </div>
+      <nav aria-label="Menu principal">
+        <ul>
+          <li><a href="#sobre">Sobre o Dia</a></li>
+          <li><a href="#visual">Deficiência Visual</a></li>
+          <li><a href="#bengalas">Cores das Bengalas</a></li>
+          <li><a href="#video">Vídeo</a></li>
+          <li><a href="#dicas">Como Ajudar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="titulo-principal">
+      <div class="hero-content">
+        <div class="data">3 de Dezembro</div>
+        <h1 id="titulo-principal">Dia Internacional das Pessoas com Deficiência</h1>
+        <p>
+          Uma data da ONU para promover a inclusão, os direitos e o bem-estar de mais de 1 bilhão de pessoas com deficiência em todo o mundo. 
+          Neste site, damos especial atenção à <strong>deficiência visual</strong> e ao significado das cores das bengalas.
+        </p>
+        <a href="#bengalas" class="btn">Conhecer as cores das bengalas</a>
+      </div>
+    </section>
+
+    <!-- SOBRE O DIA -->
+    <section id="sobre" class="sobre" aria-labelledby="titulo-sobre">
+      <div class="container">
+        <h2 id="titulo-sobre" class="section-title">Sobre o Dia Internacional</h2>
+        <p class="section-subtitle">Celebrado anualmente em 3 de dezembro desde 1992</p>
+
+        <div class="sobre-grid">
+          <div class="card">
+            <h3>História e Objetivo</h3>
+            <p>
+              O Dia Internacional das Pessoas com Deficiência foi proclamado pela Assembleia Geral das Nações Unidas em 1992 (Resolução 47/3). 
+              Seu principal objetivo é:
+            </p>
+            <ul>
+              <li>Promover a compreensão sobre questões relacionadas à deficiência;</li>
+              <li>Mobilizar o apoio à dignidade, aos direitos e ao bem-estar das pessoas com deficiência;</li>
+              <li>Destacar os benefícios de uma sociedade inclusiva e acessível para todos.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Tema 2025</h3>
+            <p>
+              O tema oficial de 2025 é: <strong>“Promovendo sociedades inclusivas para pessoas com deficiência, visando o avanço do progresso social”</strong>.
+            </p>
+            <p>
+              A data reforça que não pode haver desenvolvimento sustentável sem a plena inclusão das pessoas com deficiência em todas as esferas da vida: social, cultural, econômica e política.
+            </p>
+            <p>
+              No Brasil, segundo o IBGE (PNAD Contínua 2023), existem cerca de <strong>18,6 milhões</strong> de pessoas com deficiência (8,9% da população de 2 anos ou mais).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEFICIÊNCIA VISUAL -->
+    <section id="visual" class="visual" aria-labelledby="titulo-visual">
+      <div class="container">
+        <h2 id="titulo-visual" class="section-title">Deficiência Visual</h2>
+        <p class="section-subtitle">Cegueira, baixa visão e surdocegueira</p>
+
+        <div class="info-box">
+          <p>
+            A deficiência visual é um impedimento de longo prazo na função visual que, em interação com barreiras, pode limitar a participação plena na sociedade. 
+            Ela inclui desde a cegueira total até diferentes graus de baixa visão (visão subnormal).
+          </p>
+        </div>
+
+        <div class="sobre-grid">
+          <div class="card">
+            <h3>Cegueira</h3>
+            <p>
+              É a ausência total ou quase total da visão. A pessoa não consegue perceber luz, formas ou movimentos de forma útil para se orientar no ambiente. 
+              Pode ser congênita (desde o nascimento) ou adquirida (por doenças, acidentes ou outras causas).
+            </p>
+          </div>
+          <div class="card">
+            <h3>Baixa Visão (Visão Subnormal)</h3>
+            <p>
+              A pessoa tem comprometimento visual significativo, mas ainda possui algum resíduo de visão útil. 
+              Pode distinguir luzes, vultos e, em alguns casos, objetos ou rostos. 
+              Os graus variam entre leve, moderado e profundo.
+            </p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 1.8rem;">
+          <h3>Surdocegueira</h3>
+          <p>
+            É a combinação de deficiência visual e auditiva, em diferentes graus. 
+            A comunicação e a mobilidade exigem estratégias específicas (como o sistema Tadoma ou Língua de Sinais Tátil). 
+            A identificação correta dessa condição é fundamental para oferecer o apoio adequado.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORES DAS BENGALAS -->
+    <section id="bengalas" class="bengalas" aria-labelledby="titulo-bengalas">
+      <div class="container">
+        <h2 id="titulo-bengalas" class="section-title">Cores das Bengalas e seus Significados</h2>
+        <p class="section-subtitle">
+          No Brasil, a Lei nº 14.951/2024 padronizou as cores da bengala longa para identificar o tipo de deficiência visual
+        </p>
+
+        <div class="bengalas-grid">
+          <!-- Branca -->
+          <article class="bengala-card bengala-branca" aria-labelledby="bengala-branca">
+            <div class="bengala-header" id="bengala-branca">
+              ⚪ Bengala Branca
+            </div>
+            <div class="bengala-body">
+              <p><strong>Indica:</strong> Cegueira total (ou ausência de visão útil).</p>
+              <p>
+                A pessoa não consegue identificar obstáculos, movimentos ou luz de forma funcional. 
+                É a bengala mais conhecida e o símbolo universal de autonomia e mobilidade independente.
+              </p>
+              <span class="tag">Cegueira</span>
+            </div>
+          </article>
+
+          <!-- Verde -->
+          <article class="bengala-card bengala-verde" aria-labelledby="bengala-verde">
+            <div class="bengala-header" id="bengala-verde">
+              🟢 Bengala Verde
+            </div>
+            <div class="bengala-body">
+              <p><strong>Indica:</strong> Baixa visão ou visão subnormal.</p>
+              <p>
+                A pessoa ainda possui algum grau de visão residual e pode realizar algumas tarefas com autonomia. 
+                Muitas vezes, o uso da bengala verde evita julgamentos equivocados (ex.: “está usando celular, então não precisa de bengala”).
+              </p>
+              <span class="tag">Baixa Visão</span>
+            </div>
+          </article>
+
+          <!-- Vermelha e Branca -->
+          <article class="bengala-card bengala-vermelha" aria-labelledby="bengala-vermelha">
+            <div class="bengala-header" id="bengala-vermelha">
+              🔴⚪ Bengala Vermelha e Branca
+            </div>
+            <div class="bengala-body">
+              <p><strong>Indica:</strong> Surdocegueira.</p>
+              <p>
+                A pessoa tem comprometimento tanto da visão quanto da audição. 
+                A comunicação oral pode não ser eficiente. É importante abordar de forma respeitosa e, se necessário, oferecer apoio tátil.
+              </p>
+              <span class="tag">Surdocegueira</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="lei-box">
+          <p>
+            <strong>Lei 14.951/2024:</strong> O Sistema Único de Saúde (SUS) deve fornecer a bengala longa na cor adequada. 
+            O poder público tem o dever de divulgar o significado das cores e os direitos dos usuários.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VÍDEO -->
+    <section id="video" class="video-section" aria-labelledby="titulo-video">
+      <div class="container">
+        <h2 id="titulo-video" class="section-title">Vídeo: Cores das Bengalas</h2>
+        <p class="section-subtitle">Explicação clara sobre o significado de cada cor</p>
+
+        <div class="video-wrapper">
+          <iframe 
+            src="https://www.youtube.com/embed/-ZLeG0XvOuQ" 
+            title="Graziela explica: Cores das bengalas para pessoas com deficiência visual e auditiva"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+
+        <div class="video-link">
+          <p>
+            Assista também no YouTube: 
+            <a href="https://www.youtube.com/watch?v=-ZLeG0XvOuQ" target="_blank" rel="noopener noreferrer">
+              Graziela explica as cores das bengalas
+            </a>
+          </p>
+          <p style="margin-top: 0.8rem; font-size: 0.95rem; color: var(--cinza);">
+            Outros vídeos recomendados:<br>
+            <a href="https://www.youtube.com/watch?v=GZndgdwz_Q4" target="_blank" rel="noopener noreferrer">A Bengala Branca: Uma Aliada na Mobilidade e Inclusão</a> · 
+            <a href="https://www.youtube.com/watch?v=H5kJrfAo-Ck" target="_blank" rel="noopener noreferrer">Como funcionam as bengalas?</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMO AJUDAR -->
+    <section id="dicas" class="dicas" aria-labelledby="titulo-dicas">
+      <div class="container">
+        <h2 id="titulo-dicas" class="section-title">Como Ajudar de Forma Respeitosa</h2>
+        <p class="section-subtitle">Pequenas atitudes fazem grande diferença</p>
+
+        <div class="dicas-grid">
+          <div class="dica-card">
+            <div class="icon" aria-hidden="true">👋</div>
+            <h3>Peça permissão</h3>
+            <p>Antes de ajudar, pergunte: “Posso ajudar em alguma coisa?”. Nem sempre a pessoa precisa de assistência.</p>
+          </div>
+          <div class="dica-card">
+            <div class="icon" aria-hidden="true">🗣️</div>
+            <h3>Fale normalmente</h3>
+            <p>Não é necessário falar mais alto ou mais devagar. Use linguagem natural e descreva o ambiente se for útil.</p>
+          </div>
+          <div class="dica-card">
+            <div class="icon" aria-hidden="true">🦮</div>
+            <h3>Não toque na bengala</h3>
+            <p>A bengala é uma extensão do corpo. Nunca a mova ou a segure sem autorização.</p>
+          </div>
+          <div class="dica-card">
+            <div class="icon" aria-hidden="true">🐕</div>
+            <h3>Respeite o cão-guia</h3>
+            <p>Não acaricie, alimente ou distraia o cão-guia enquanto ele estiver trabalhando.</p>
+          </div>
+          <div class="dica-card">
+            <div class="icon" aria-hidden="true">♿</div>
+            <h3>Observe a cor da bengala</h3>
+            <p>A cor indica o tipo de deficiência. Isso ajuda a oferecer o apoio mais adequado (ex.: comunicação tátil no caso de surdocegueira).</p>
+          </div>
+          <div class="dica-card">
+            <div class="icon" aria-hidden="true">❤️</div>
+            <h3>Promova inclusão</h3>
+            <p>Defenda acessibilidade, respeite as leis de cotas e valorize as capacidades de cada pessoa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>Dia Internacional das Pessoas com Deficiência</strong> — 3 de dezembro</p>
+      <p>Site criado para promover conscientização e inclusão. Pronto para publicação no GitHub Pages.</p>
+      
+      <div class="footer-links">
+        <a href="https://brasil.un.org/pt-br/306437-dia-internacional-das-pessoas-com-defici%C3%AAncia" target="_blank" rel="noopener">ONU Brasil</a>
+        <a href="https://www.gov.br/saude/pt-br/assuntos/noticias/2024/agosto/sancionada-lei-que-define-cores-de-bengala-para-identificar-niveis-de-deficiencia-visual" target="_blank" rel="noopener">Lei 14.951/2024</a>
+        <a href="https://www.un.org/en/observances/day-of-persons-with-disabilities" target="_blank" rel="noopener">United Nations</a>
+      </div>
+
+      <p style="margin-top: 1.5rem; font-size: 0.85rem; opacity: 0.8;">
+        Fontes: ONU, Ministério da Saúde (Brasil), Lei 14.951/2024, IBGE.<br>
+        Este site é de caráter informativo e educativo.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
