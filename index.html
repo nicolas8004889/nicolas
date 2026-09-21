@@ -106,7 +106,6 @@
             30%, 50%, 70% { transform: translate3d(-3px, 0, 0); }
             40%, 60% { transform: translate3d(3px, 0, 0); }
         }
-
         .project-btn {
             display: flex;
             align-items: center;
@@ -128,7 +127,6 @@
             width: 24px;
             text-align: center;
         }
-
         .btn-download {
             position: fixed;
             bottom: 28px;
@@ -189,7 +187,6 @@
                 </div>
             </div>
         </header>
-
         <div class="pt-24 pb-16 px-5 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             
@@ -210,7 +207,6 @@
                                 Sua mochila inteligente
                             </p>
                         </div>
-
                         <!-- Input de adicionar matéria -->
                         <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-5 shadow-2xl">
                             <div class="flex gap-3">
@@ -227,13 +223,11 @@
                             </div>
                             <p class="text-center text-xs text-white/50 mt-3">Pressione ENTER para adicionar</p>
                         </div>
-
                         <!-- Status -->
                         <div id="count"
                              class="mt-5 text-center text-xs font-mono tracking-widest text-emerald-400">
                             0 MATÉRIAS NA MOCHILA
                         </div>
-
                         <!-- SEÇÃO DE PROJETOS / LINKS -->
                         <div class="mt-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-5">
                             <h3 class="text-sm font-semibold text-indigo-300 uppercase tracking-wider mb-4 flex items-center gap-2">
@@ -269,11 +263,15 @@
                                     <i class="fa-solid fa-traffic-light"></i>
                                     <span>Trânsito</span>
                                 </a>
+                                <!-- BOTÃO NOVO -->
+                                <a href="cego.html" class="project-btn bg-indigo-700/90 hover:bg-indigo-600 text-white">
+                                    <i class="fa-solid fa-eye-low-vision"></i>
+                                    <span>Dia da Deficiência Visual</span>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <!-- LISTA DE MATÉRIAS -->
                 <div class="lg:col-span-8">
                     <div class="mb-6 flex items-center justify-between">
@@ -298,7 +296,6 @@
             </div>
         </div>
     </div>
-
     <!-- MODAL DE ANOTAÇÕES -->
     <div id="notes-modal"
          class="hidden fixed inset-0 bg-black/80 backdrop-blur-3xl z-[999] flex items-center justify-center p-4 sm:p-6">
@@ -336,7 +333,6 @@
             </div>
         </div>
     </div>
-
     <!-- MODAL: OBJETIVOS DAS MATÉRIAS -->
     <div id="objectives-modal"
          class="hidden fixed inset-0 bg-black/80 backdrop-blur-3xl z-[999] flex items-center justify-center p-4 sm:p-6">
@@ -505,20 +501,17 @@
             </div>
         </div>
     </div>
-
     <!-- Toast -->
     <div id="toast"
          class="hidden fixed bottom-8 left-1/2 -translate-x-1/2 sm:left-auto sm:right-8 sm:translate-x-0 bg-indigo-600 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3 text-sm font-medium z-[100]">
         <i class="fa-solid fa-check-circle"></i>
         <span id="toast-text"></span>
     </div>
-
     <!-- Botão flutuante de download -->
     <a href="download.html" class="btn-download" title="Baixar materiais">
         <i class="fa-solid fa-download"></i>
         Download
     </a>
-
     <audio id="sound-add" preload="auto">
         <source src="https://www.myinstants.com/media/sounds/dbz-powerup.mp3" type="audio/mpeg">
     </audio>
@@ -528,7 +521,6 @@
     <audio id="sound-remove" preload="auto">
         <source src="https://www.myinstants.com/media/sounds/dragon-ball-z-heavy-punch.mp3" type="audio/mpeg">
     </audio>
-
     <script>
         let subjects = [];
         let currentSubjectId = null;
@@ -539,7 +531,6 @@
         function playAdd() { soundAdd.currentTime = 0; soundAdd.play().catch(() => {}); }
         function playNote() { soundNote.currentTime = 0; soundNote.play().catch(() => {}); }
         function playRemove() { soundRemove.currentTime = 0; soundRemove.play().catch(() => {}); }
-
         function loadSubjects() {
             const saved = localStorage.getItem('mochilaSubjects');
             if (saved) subjects = JSON.parse(saved);
