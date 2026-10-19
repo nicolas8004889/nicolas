@@ -1,1 +1,694 @@
-hbuyb
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Férias de Dia das Crianças | 2025</title>
+    <meta name="description" content="Relato das minhas férias de uma semana no Dia das Crianças: casa, jogos e planos para o futuro.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #09090b;
+            --card: #18181b;
+            --card-hover: #1f1f23;
+            --border: #27272a;
+            --accent: #a78bfa;
+            --accent-soft: rgba(167, 139, 250, 0.15);
+            --text: #fafafa;
+            --muted: #a1a1aa;
+            --success: #4ade80;
+            --horror: #f87171;
+            --roblox: #00b2ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse 80% 50% at 20% -20%, rgba(167, 139, 250, 0.12), transparent),
+                radial-gradient(ellipse 60% 40% at 80% 100%, rgba(0, 178, 255, 0.08), transparent);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        header {
+            text-align: center;
+            padding: 100px 24px 60px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--accent-soft);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(167, 139, 250, 0.25);
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.4rem, 6vw, 3.6rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.15rem;
+            color: var(--muted);
+            max-width: 540px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0 20px 50px;
+            position: sticky;
+            top: 12px;
+            z-index: 40;
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 999px;
+            background: rgba(24, 24, 27, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.25s ease;
+        }
+
+        nav a:hover {
+            color: var(--text);
+            border-color: var(--accent);
+            background: var(--card);
+        }
+
+        main {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 24px 100px;
+        }
+
+        section {
+            margin-bottom: 90px;
+            scroll-margin-top: 80px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 28px;
+            letter-spacing: -0.01em;
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid var(--border);
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: #3f3f46;
+            background: var(--card-hover);
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 1.05rem;
+            margin-bottom: 14px;
+        }
+
+        .card p strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 28px;
+            margin-top: 28px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            bottom: 6px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 28px;
+            padding-left: 20px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 3px solid var(--bg);
+        }
+
+        .timeline-item strong {
+            color: var(--text);
+            display: block;
+            margin-bottom: 4px;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .timeline-item span {
+            color: var(--muted);
+            font-size: 0.98rem;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .image-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: #111;
+            border: 1px solid var(--border);
+            transition: transform 0.35s ease, border-color 0.35s ease;
+        }
+
+        .image-card:hover {
+            transform: translateY(-4px);
+            border-color: #3f3f46;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .image-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .image-card .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            padding: 40px 14px 14px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #e4e4e7;
+        }
+
+        .games {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-top: 28px;
+        }
+
+        @media (min-width: 700px) {
+            .games {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .game-card {
+            background: var(--card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: border-color 0.3s ease, transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-card:hover {
+            border-color: #3f3f46;
+            transform: translateY(-3px);
+        }
+
+        .game-card.granny:hover {
+            border-color: rgba(248, 113, 113, 0.4);
+        }
+
+        .game-card.roblox:hover {
+            border-color: rgba(0, 178, 255, 0.4);
+        }
+
+        .character-area {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .character-area.granny-bg {
+            background: linear-gradient(160deg, #1a1015 0%, #0f0a0c 100%);
+        }
+
+        .character-area.roblox-bg {
+            background: linear-gradient(160deg, #0a1520 0%, #071018 100%);
+        }
+
+        .character-area img {
+            max-height: 140px;
+            max-width: 80%;
+            object-fit: contain;
+            filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5));
+            transition: transform 0.4s ease;
+        }
+
+        .game-card:hover .character-area img {
+            transform: scale(1.08);
+        }
+
+        .character-area.granny-bg img {
+            animation: subtleFloat 4s ease-in-out infinite;
+        }
+
+        .character-area.roblox-bg img {
+            animation: subtleFloat 5s ease-in-out infinite 0.5s;
+        }
+
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .game-card:hover .character-area img {
+            animation: none;
+            transform: scale(1.08);
+        }
+
+        .game-info {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin-bottom: 12px;
+            width: fit-content;
+        }
+
+        .tag-horror {
+            background: rgba(248, 113, 113, 0.15);
+            color: var(--horror);
+        }
+
+        .tag-fun {
+            background: rgba(0, 178, 255, 0.15);
+            color: var(--roblox);
+        }
+
+        .game-info h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .game-info p {
+            color: var(--muted);
+            font-size: 0.98rem;
+            flex: 1;
+        }
+
+        .future-box {
+            background: linear-gradient(145deg, rgba(167, 139, 250, 0.08), rgba(0, 178, 255, 0.05));
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            border-radius: 16px;
+            padding: 40px 32px;
+            text-align: center;
+        }
+
+        .future-box h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .future-box p {
+            font-size: 1.05rem;
+            color: var(--muted);
+            max-width: 580px;
+            margin: 0 auto 16px;
+        }
+
+        .future-box p strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .promise {
+            display: inline-block;
+            background: var(--card);
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--success);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            margin-top: 20px;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+        .promise:hover {
+            background: rgba(74, 222, 128, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .goals {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .goal {
+            background: rgba(0,0,0,0.25);
+            border-radius: 12px;
+            padding: 18px 14px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: border-color 0.25s ease, transform 0.25s ease;
+        }
+
+        .goal:hover {
+            border-color: #3f3f46;
+            transform: translateY(-3px);
+        }
+
+        .goal strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.95rem;
+        }
+
+        .goal span {
+            font-size: 0.82rem;
+            color: var(--muted);
+        }
+
+        footer {
+            text-align: center;
+            padding: 48px 24px;
+            color: var(--muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+        }
+
+        footer p + p {
+            margin-top: 6px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 70px 20px 40px;
+            }
+            .card, .future-box {
+                padding: 24px 20px;
+            }
+            .section-title {
+                font-size: 1.45rem;
+            }
+            .character-area {
+                height: 160px;
+            }
+            .character-area img {
+                max-height: 110px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="badge">Dia das Crianças 2025</div>
+        <h1>Minhas Férias de Uma Semana</h1>
+        <p class="subtitle">
+            Uma semana só em casa, entre sono, ajuda em casa e muita jogatina. 
+            E um desejo claro para o próximo ano.
+        </p>
+    </header>
+
+    <nav>
+        <a href="#rotina">A Rotina</a>
+        <a href="#jogos">Os Jogos</a>
+        <a href="#futuro">Ano Que Vem</a>
+    </nav>
+
+    <main>
+        <section id="rotina">
+            <h2 class="section-title">Como foram meus dias</h2>
+            
+            <div class="card">
+                <p>
+                    Durante a semana do <strong>Dia das Crianças</strong>, eu fiquei <strong>só em casa</strong>. 
+                    Não saí, não viajei. Foi uma férias bem caseira, mas cheia de momentos.
+                </p>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <strong>Dormia tarde e acordava cedo</strong>
+                        <span>O ritmo ficou um pouco bagunçado, mas aproveitei cada hora.</span>
+                    </div>
+                    <div class="timeline-item">
+                        <strong>Ajudava minha mãe</strong>
+                        <span>Em algumas tarefas de casa. Sempre que ela precisava, eu estava lá.</span>
+                    </div>
+                    <div class="timeline-item">
+                        <strong>Depois era hora de jogar</strong>
+                        <span>Celular e computador. Muita jogatina, muita diversão.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-grid">
+                <div class="image-card">
+                    <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&q=80" alt="Quarto aconchegante" loading="lazy">
+                    <div class="caption">Fiquei só em casa</div>
+                </div>
+                <div class="image-card">
+                    <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=800&q=80" alt="Pessoa dormindo" loading="lazy">
+                    <div class="caption">Dormia tarde e acordava cedo</div>
+                </div>
+                <div class="image-card">
+                    <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&q=80" alt="Ajudando em casa" loading="lazy">
+                    <div class="caption">Ajudava minha mãe</div>
+                </div>
+                <div class="image-card">
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&q=80" alt="Setup de jogos" loading="lazy">
+                    <div class="caption">Hora de jogar</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="jogos">
+            <h2 class="section-title">Os jogos que mais joguei</h2>
+            
+            <p style="color: var(--muted); margin-bottom: 8px; font-size: 1.05rem;">
+                Dois jogos dominaram a semana: <strong style="color: var(--horror)">Granny</strong> e <strong style="color: var(--roblox)">Roblox</strong>.
+            </p>
+
+            <div class="games">
+                <div class="game-card granny">
+                    <div class="character-area granny-bg">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Granny_logo.png" alt="Granny">
+                    </div>
+                    <div class="game-info">
+                        <div class="game-tag tag-horror">Horror</div>
+                        <h3>Granny</h3>
+                        <p>
+                            Tensão e adrenalina. Eu passava horas tentando escapar da casa dela sem fazer barulho. 
+                            Cada porta que abria era um susto. Ela ouve tudo.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="game-card roblox">
+                    <div class="character-area roblox-bg">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Roblox_Logo_2025.png" alt="Roblox">
+                    </div>
+                    <div class="game-info">
+                        <div class="game-tag tag-fun">Diversão</div>
+                        <h3>Roblox</h3>
+                        <p>
+                            Mundo aberto de possibilidades. Joguei vários jogos diferentes, conversei com amigos 
+                            e explorei mapas novos. Diversão garantida todos os dias.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-grid" style="margin-top: 28px;">
+                <div class="image-card">
+                    <img src="https://images.unsplash.com/photo-1612287230202-1ff1d867d530?w=800&q=80" alt="Jogando no celular" loading="lazy">
+                    <div class="caption">No celular</div>
+                </div>
+                <div class="image-card">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80" alt="Jogando no computador" loading="lazy">
+                    <div class="caption">No computador</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="futuro">
+            <h2 class="section-title">Ano que vem</h2>
+            
+            <div class="future-box">
+                <h2>Meu desejo para o próximo ano</h2>
+                <p>
+                    Eu quero ser <strong>mais disciplinado</strong>.  
+                    Focar no que realmente preciso e <strong>parar de procrastinar</strong>.
+                </p>
+                <p>
+                    Quero lembrar todos os dias de <strong>quem eu quero ser</strong> e de quem eu vou me tornar 
+                    se eu tiver <strong>foco e consistência</strong>.
+                </p>
+                <p>
+                    Essas férias me mostraram que eu consigo passar horas concentrado em algo que gosto.  
+                    Agora quero usar essa mesma energia para construir a versão melhor de mim.
+                </p>
+
+                <div class="promise" onclick="this.textContent = 'Você consegue. Continua firme.'">
+                    Foco + Consistência = A pessoa que eu quero ser
+                </div>
+
+                <div class="goals">
+                    <div class="goal">
+                        <strong>Mais disciplina</strong>
+                        <span>Fazer o que precisa ser feito</span>
+                    </div>
+                    <div class="goal">
+                        <strong>Zero procrastinação</strong>
+                        <span>Agir agora, não depois</span>
+                    </div>
+                    <div class="goal">
+                        <strong>Foco total</strong>
+                        <span>Concentração no que importa</span>
+                    </div>
+                    <div class="goal">
+                        <strong>Consistência</strong>
+                        <span>Um passo por dia</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-grid" style="margin-top: 28px;">
+                <div class="image-card">
+                    <img src="https://images.unsplash.com/photo-14565130808-af99590cebf2?w=800&q=80" alt="Foco e estudos" loading="lazy">
+                    <div class="caption">Mais disciplina e foco</div>
+                </div>
+                <div class="image-card">
+                    <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&q=80" alt="Planejamento" loading="lazy">
+                    <div class="caption">Sem procrastinação</div>
+                </div>
+                <div class="image-card">
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80" alt="Caminho" loading="lazy">
+                    <div class="caption">Quem eu quero ser</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Feito para lembrar dessas férias e dos planos que eu tenho.</p>
+        <p>GitHub Pages · Dia das Crianças 2025</p>
+    </footer>
+
+    <script>
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.12 });
+
+        sections.forEach(sec => observer.observe(sec));
+    </script>
+</body>
+</html>
